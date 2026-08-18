@@ -1,0 +1,275 @@
+<script
+  type="application/json"
+  data-section-type="faq"
+  data-section-id="{{ section.id }}"
+>
+</script>
+
+{% style %}
+  {% render 'section-space' %}
+{% endstyle %}
+
+<section
+  class="section"
+  {% if section.settings.title != blank %}
+    aria-labelledby="faq-section-title-{{ section.id }}"
+  {% endif %}
+>
+  <div
+    class="
+      container
+      main
+      content
+      has-background
+      has-gutter-enabled
+    "
+  >
+    {% if section.settings.title != blank %}
+      <div
+        class="
+          one-whole
+          column
+          page
+        "
+      >
+        <h2 id="faq-section-title-{{ section.id }}" class="title">
+          {{ section.settings.title | escape }}
+        </h2>
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          {% assign image = true %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <div
+      class="
+        {% if image == true %}
+          one-half
+        {% else %}
+          one-whole
+        {% endif %}
+        medium-down--one-whole
+        column
+        faq
+        faq__column-1
+      "
+    >
+      {% comment %}
+        Headings stay outside <dl> (valid HTML). Each group of Q&A sits in its own
+        <dl class="faqAccordion"> so dt/dd only contain allowed descendants.
+      {% endcomment %}
+      {% if section.blocks.size > 0 %}
+        {% assign faq_dl_open = false %}
+        {% for block in section.blocks %}
+          {% if block.type == 'heading' %}
+            {% if faq_dl_open %}
+              </dl>
+              {% assign faq_dl_open = false %}
+            {% endif %}
+            {% if block.settings.faq_title != blank %}
+              <h2 class="title faq--heading">
+                {{ block.settings.faq_title }}
+              </h2>
+            {% endif %}
+          {% elsif block.type == 'content' and block.settings.title != blank %}
+            {% unless faq_dl_open %}
+              <dl class="faqAccordion">
+              {% assign faq_dl_open = true %}
+            {% endunless %}
+            <dt>
+              <button
+                type="button"
+                aria-controls="faq-panel-{{ block.id }}"
+                aria-expanded="false"
+              >
+                {{ block.settings.title }}
+              </button>
+            </dt>
+            <dd id="faq-panel-{{ block.id }}" aria-hidden="true">
+              {{ block.settings.answer }}
+            </dd>
+          {% endif %}
+        {% endfor %}
+        {% if faq_dl_open %}
+          </dl>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          <div
+            class="
+              one-half
+              medium-down--one-whole
+              column
+              faq
+              faq--image
+              faq__column-2
+            "
+          >
+            {% if block.settings.image != blank %}
+              {%- assign faq_image_alt = block.settings.image.alt | default: section.settings.title | default: 'FAQ' | escape -%}
+              {%
+                render 'image-element',
+                image: block.settings.image,
+                alt: faq_image_alt,
+                focal_point: block.settings.image.presentation.focal_point,
+              %}
+            {% else %}
+              <span aria-hidden="true">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "shopify-section--faq FAQ jsFAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "FAQ"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Frequently Asked Question",
+      "type": "content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Provide the answer to the question here.</p>"
+        }
+      ]
+    },
+    {
+      "name": "Heading",
+      "type": "heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "faq_title",
+          "label": "Heading",
+          "default": "Section heading"
+        }
+      ]
+    },
+    {
+      "name": "Image",
+      "type": "image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1000 x 1000px recommended"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "category": "Store information",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+          }
+        },
+        {
+          "type": "heading",
+          "settings": {
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [ "*" ]
+  }
+}
+
+{% endschema %}

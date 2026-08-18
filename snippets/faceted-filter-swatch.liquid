@@ -1,0 +1,36 @@
+{% comment %}
+  @param type {String}
+    The type of visual representation, either "colors" or "image".
+
+  @param value {Object}
+    The visual representation, either a list of colors, or an image.
+  
+  @param label {String}
+    The name of the filter (e.g., "Blue", "Stainless Steel"). 
+    Adding this ensures the swatch has a discernible name.
+{% endcomment %}
+
+<div
+  class="
+    faceted-filter-swatch
+    faceted-filter-swatch--{{ settings.swatch_style }}
+  "
+  aria-hidden="true"
+>
+  {%- case type -%}
+    {%- when 'colors' -%}
+      {% comment %} 
+        We use aria-hidden="true" on the wrapper because the text label 
+        next to the swatch already tells the user the color name. 
+      {% endcomment %}
+      <div class="faceted-filter-swatch__color" style="--faceted-filter-swatch-color: {{ value }};"></div>
+
+    {%- when 'image' -%}
+      {% comment %} 
+        FIX: We ensure an alt attribute is always present. 
+        If the image has no alt text, we use the filter label as a fallback.
+      {% endcomment %}
+      {%- assign swatch_alt = value.alt | default: label | default: 'Filter swatch' -%}
+      {{- value | image_url: width: 100 | image_tag: class: 'faceted-filter-swatch__image', alt: swatch_alt, loading: 'lazy' -}}
+  {%- endcase -%}
+</div>

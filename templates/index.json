@@ -1,0 +1,333 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_yCf6RX": {
+      "type": "image-with-text-overlay",
+      "name": "Banner with Link to Cook's Tools",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify://shop_images/Coook1.jpg",
+        "pretext": "",
+        "title": "COOK'S TOOLS",
+        "subtitle": "<p>130' Wall Featuring 2,000+ Cooking Tools</p>",
+        "button1": "SHOP NOW",
+        "button1_link": "shopify://collections/cooks-tools",
+        "button1_style": "global-button--banner-text",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "right",
+        "text_align": "center",
+        "caption_content_background": "text_box",
+        "mobile_image": "shopify://shop_images/Coook1.jpg",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "slideshow-1": {
+      "type": "slideshow",
+      "blocks": {
+        "block-1": {
+          "type": "image",
+          "name": "Cooking Tools",
+          "settings": {
+            "image": "shopify://shop_images/Coook1.jpg",
+            "pretext": "",
+            "title": "Cooking Tools",
+            "subtitle": "<p>130 Foot Wall of Cooking Tools. </p>",
+            "button1": "SHOP NOW",
+            "button1_link": "shopify://collections/cooks-tools",
+            "button1_style": "global-button--banner-highlighted",
+            "button2": "",
+            "button2_link": "",
+            "button2_style": "global-button--banner",
+            "text_position": "right",
+            "text_align": "center",
+            "caption_content_background": "text_box"
+          }
+        },
+        "block-2": {
+          "type": "image",
+          "name": "Slide - BBQHQ",
+          "settings": {
+            "image": "shopify://shop_images/BBQ_3126d2fb-9586-4ac1-b923-a8be0119eebb.jpg",
+            "pretext": "",
+            "title": "#BBQHQ",
+            "subtitle": "<p>Whether it is the perfect Grill, Charcoal or Accessory that you are looking for, we have it!</p>",
+            "button1": "Shop Now",
+            "button1_link": "shopify://collections/bbq-outdoors",
+            "button1_style": "global-button--banner",
+            "button2": "",
+            "button2_link": "",
+            "button2_style": "global-button--banner",
+            "text_position": "right",
+            "text_align": "center",
+            "caption_content_background": "text_box"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "slideshow_text_animation": "fadeInDown",
+        "slideshow_animation": "slide",
+        "slideshow_speed": 6,
+        "activate_adaptiveHeight": false,
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured-promotions-1": {
+      "type": "featured-promotions",
+      "blocks": {
+        "block-2": {
+          "type": "image",
+          "name": "Cooking & Baking",
+          "settings": {
+            "image": "shopify://shop_images/284266244_10158332288796555_6902283072435739871_n_819d0586-2124-43f6-9f71-2ee067ab43ec.jpg",
+            "link": "shopify://collections/cooking-baking",
+            "title": "Cooking & Baking",
+            "text": "",
+            "button_label": "SHOP NOW"
+          }
+        },
+        "block-3": {
+          "type": "image",
+          "name": "Featured",
+          "settings": {
+            "image": "shopify://shop_images/134429494_10159101602966873_4501871983386349403_n.jpg",
+            "mobile_image": "shopify://shop_images/134429494_10159101602966873_4501871983386349403_n.jpg",
+            "link": "shopify://collections/cooks-tools",
+            "title": "COOK'S TOOLS",
+            "text": "<p>2,000+ Cooking Tools for Every Occasion.</p>",
+            "button_label": "SHOP NOW"
+          }
+        },
+        "block-1": {
+          "type": "image",
+          "name": "Featured",
+          "settings": {
+            "image": "shopify://shop_images/Irnwd_650_food_close-1201x801-d21b45d.jpg",
+            "mobile_image": "shopify://shop_images/Irnwd_650_food_close-1201x801-d21b45d.jpg",
+            "link": "shopify://collections/bbq-outdoors",
+            "title": "BBQ & Outdoors",
+            "text": "",
+            "button_label": "SHOP NOW"
+          }
+        }
+      },
+      "block_order": [
+        "block-2",
+        "block-3",
+        "block-1"
+      ],
+      "name": "Featured Promotions",
+      "settings": {
+        "wide_display": false,
+        "promo_text_on_image_enabled": true,
+        "featured_promos_per_row": 3,
+        "featured_links_animation": "fadeInDown",
+        "feature_style": "rounded",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_collection_4kddXg": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured",
+        "collection_description": false,
+        "collection_view_all": true,
+        "collection": "featured-products",
+        "collection_style": "slider",
+        "products_per": 5,
+        "products_limit": 20,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "testimonials-1": {
+      "type": "testimonial",
+      "blocks": {
+        "image_UDMkPX": {
+          "type": "image",
+          "settings": {
+            "title": "Guest Testimonial",
+            "testimonial": "<p>Great store for a variety of household needs as well as grilling items . Fair prices and friendly staff . I would recommend popping and checking the place out if you haven’t already .</p>",
+            "name": "Matt B.",
+            "store_name": "",
+            "link": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original"
+          }
+        },
+        "block-1": {
+          "type": "image",
+          "settings": {
+            "title": "Guest Testimonial",
+            "testimonial": "<p>I found Kitchen & Company when searching for an uncommon kitchen utensil.  I ordered it online for a good price. The utensil arrived in only a few days, it was beautifully packaged and worked perfectly.  Thank you Kitchen & Company, great job!!!!</p>",
+            "name": "Russell E.",
+            "store_name": "",
+            "link": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "darken_bg"
+          }
+        },
+        "block-2": {
+          "type": "image",
+          "settings": {
+            "title": "Guest Testimonial",
+            "testimonial": "<p>We love this store! Everything you need for your kitchen and even more you didn't know you needed.</p>",
+            "name": "",
+            "store_name": "",
+            "link": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original"
+          }
+        },
+        "block-3": {
+          "type": "image",
+          "settings": {
+            "title": "Guest Testimonial",
+            "testimonial": "<p>I can walk here from my home. Tons of gadgets I don’t need and some I didn’t know how much I needed. Torani Sugar free and regular syrups of so many flavors. Can’t find them except here. Staff always friendly!</p>",
+            "name": "Barbara L.",
+            "store_name": "",
+            "link": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original"
+          }
+        }
+      },
+      "block_order": [
+        "image_UDMkPX",
+        "block-1",
+        "block-2",
+        "block-3"
+      ],
+      "settings": {
+        "wide_display": true,
+        "testimonial_text_animation": "fadeInDown",
+        "testimonial_speed": 6,
+        "activate_adaptiveHeight": false,
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_D6Faib": {
+      "type": "featured-text",
+      "name": "Rich text and image",
+      "settings": {
+        "title": "FIND US",
+        "content": "",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "map_fMeJXX": {
+      "type": "map",
+      "blocks": {
+        "guest_service_overlay_jjHVQk": {
+          "type": "guest_service_overlay",
+          "settings": {
+            "caption_content_background": "original",
+            "heading": "Kitchen & Company",
+            "address": "Henlopen Plaza\n34164 Citizen Drive\nLewes, DE 19958",
+            "phone": "302-644-7749",
+            "email": "guestservice@kitchenandcompany.com",
+            "hours_mon": "9:00 am to 7:00 pm",
+            "hours_tue": "9:00 am to 7:00 pm",
+            "hours_wed": "9:00 am to 7:00 pm",
+            "hours_thu": "9:00 am to 7:00 pm",
+            "hours_fri": "9:00 am to 8:00 pm",
+            "hours_sat": "9:00 am to 8:00 pm",
+            "hours_sun": "10:00 am to 6:00 pm"
+          }
+        }
+      },
+      "block_order": [
+        "guest_service_overlay_jjHVQk"
+      ],
+      "name": "Map",
+      "settings": {
+        "map_wide_display": true,
+        "map_image_alt": "Store location map",
+        "map_address": "34164 Citizen Drive, Lewes, DE 19958",
+        "map_height": 400,
+        "zoom_level": 15,
+        "api_key": "",
+        "show_pin": true,
+        "map_style": "default",
+        "map_iframe_title": "Google Map showing our store location",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "newsletter-1": {
+      "type": "newsletter",
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "SIGN UP FOR OUR NEWSLETTER",
+        "newsletter_text": "",
+        "newsletter_section_text_align": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_yCf6RX",
+    "slideshow-1",
+    "featured-promotions-1",
+    "featured_collection_4kddXg",
+    "testimonials-1",
+    "featured_text_D6Faib",
+    "map_fMeJXX",
+    "newsletter-1"
+  ]
+}

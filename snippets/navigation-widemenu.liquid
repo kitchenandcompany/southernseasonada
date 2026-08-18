@@ -1,0 +1,85 @@
+{% comment %}
+
+  @param menu {Linklist} [Optional] Linklist for which to render nav items.
+
+{% endcomment %}
+
+{%- capture t_wm -%}{{ 'navigation.header.widemenu_label' | t }}{%- endcapture -%}
+{%- capture widemenu_region -%}{% render 'a11y-missing-fallback', text: t_wm, fallback: 'Product menu' %}{%- endcapture -%}
+{%- capture t_w_sub -%}{{ 'navigation.header.submenu' | t }}{%- endcapture -%}
+{%- capture w_sub -%}{% render 'a11y-missing-fallback', text: t_w_sub, fallback: 'submenu' %}{%- endcapture -%}
+<ul class="widemenu" aria-label="{{ widemenu_region | escape }}">
+  {% for menu_item in menu.links %}
+    {% if linklists[menu_item.handle].links.size > 0 %}
+      <li class="widemenu__submenu">
+        <a 
+          href="{{ menu_item.url }}" 
+          class="widemenu__submenu-heading widemenu__link"
+          {% if menu_item.active %}aria-current="page"{% endif %}
+          {% if menu_item.child_active %}aria-describedby="active-child-{{ forloop.index }}"{% endif %}
+        >
+          {{ menu_item.title | escape }}
+        </a>
+        
+        {% if menu_item.child_active %}
+          {% comment %}
+            Instead of claiming the parent is the current page, we provide an invisible 
+            cue indicating that one of its children is currently active.
+          {% endcomment %}
+          <span id="active-child-{{ forloop.index }}" class="visually-hidden">
+            (Current section)
+          </span>
+        {% endif %}
+        
+        {% comment %}
+          Adding role="group" guarantees that the aria-label is recognized and announced 
+          by screen readers across all major browser engines.
+        {% endcomment %}
+        <ul 
+          class="widemenu__submenu-items"
+          role="group"
+          aria-label="{{ menu_item.title | escape }} {{ w_sub | escape }}"
+        >
+          {% for sub_item in linklists[menu_item.handle].links %}
+            <li class="widemenu__submenu-item">
+              <a 
+                href="{{ sub_item.url }}" 
+                class="widemenu__submenu-item-link widemenu__link"
+                {% if sub_item.active %}aria-current="page"{% endif %}
+              >
+                {{ sub_item.title | escape }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% else %}
+      <li class="widemenu__item">
+        <a 
+          href="{{ menu_item.url }}" 
+          class="widemenu__item-heading widemenu__link"
+          {% if menu_item.active %}aria-current="page"{% endif %}
+        >
+          {{ menu_item.title | escape }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+{% comment %} 
+  Include this CSS in your stylesheet if not already globally defined 
+  to hide the "Current section" text from sighted users.
+{% endcomment %}
+<style>
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+</style>

@@ -1,0 +1,982 @@
+<script
+  type="application/json"
+  data-section-type="header"
+  data-section-id="{{ section.id }}"
+>
+</script>
+
+{% comment %} Structured data {% endcomment %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append:'x' %}
+      "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+    {% endif %}
+    "sameAs": [
+      "{{ settings.behance_link }}",
+      "{{ settings.clubhouse_link }}",
+      "{{ settings.discord_link }}",
+      "{{ settings.dribbble_link }}",
+      "{{ settings.facebook_link }}",
+      "{{ settings.flickr_link }}",
+      "{{ settings.houzz_link }}",
+      "{{ settings.instagram_link }}",
+      "{{ settings.kickstarter_link }}",
+      "{{ settings.linkedin_link }}",
+      "{{ settings.medium_link }}",
+      "{{ settings.messenger_link }}",
+      "{{ settings.opensea_link }}",
+      "{{ settings.pinterest_link }}",
+      "{{ settings.reddit_link }}",
+      "{{ settings.rss_link }}",
+      "{{ settings.snapchat_link }}",
+      "{{ settings.spotify_link }}",
+      "{{ settings.tiktok_link }}",
+      "{{ settings.tumblr_link }}",
+      "{{ settings.twitch_link }}",
+      "{{ settings.twitter_link }}",
+      "{{ settings.vimeo_link }}",
+      "{{ settings.whatsapp_link }}",
+      "{{ settings.youtube_link }}"
+    ],
+    "url": "{{ shop.url }}{{ page.url }}"
+  }
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ routes.search_url }}?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}
+
+{%- assign locale_selector = false -%}
+{%- assign currency_selector = false -%}
+
+{%- if section.settings.show_currency_selector and shop.enabled_currencies.size > 1 -%}
+  {%- assign currency_selector = true -%}
+{%- endif -%}
+
+{%- if section.settings.show_locale_selector and shop.published_locales.size > 1 -%}
+  {%- assign locale_selector = true -%}
+{%- endif -%}
+
+{% comment %}Mobile navigation{% endcomment %}
+{%- comment -%} Screen reader: resolve theme strings; avoid "Translation missing" and empty link/landmark names. {%- endcomment -%}
+{%- capture _logo_home_t -%}{{ 'layout.general.logo_home_link' | t: shop: shop.name }}{%- endcapture -%}
+{%- assign _logo_home_fb = shop.name | append: ' home' -%}
+{%- capture header_logo_link_text -%}{% render 'a11y-missing-fallback', text: _logo_home_t, fallback: _logo_home_fb %}{%- endcapture -%}
+
+{%- capture _main_nav_t -%}{{ 'layout.general.main_navigation' | t }}{%- endcapture -%}
+{%- capture header_main_nav_landmark -%}{% render 'a11y-missing-fallback', text: _main_nav_t, fallback: 'Main navigation' %}{%- endcapture -%}
+
+{%- capture _menu_word_t -%}{{ 'layout.general.menu' | t }}{%- endcapture -%}
+{%- capture header_menu_panel_label -%}{% render 'a11y-missing-fallback', text: _menu_word_t, fallback: 'Menu' %}{%- endcapture -%}
+
+{%- capture _menu_open_t -%}{{ 'layout.general.menu_button' | t }}{%- endcapture -%}
+{%- capture mobile_menu_summary_name -%}{% render 'a11y-missing-fallback', text: _menu_open_t, fallback: 'Open menu' %}{%- endcapture -%}
+
+<header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
+  {% capture a11y_skip_to_content %}{{ 'general.accessibility.skip_to_content' | t }}{% endcapture %}
+  {% capture a11y_close_announcement %}{{ 'general.accessibility.close_announcement' | t }}{% endcapture %}
+  {% comment %} <a href="#MainContent" class="visually-hidden skip-link">{% render 'a11y-missing-fallback', text: a11y_skip_to_content, fallback: 'Skip to main content' %}</a> {% endcomment %}
+  {% if section.settings.promo_text != blank %}
+    <div class="promo-banner" role="status">
+      <div class="promo-banner__content">
+        {{ section.settings.promo_text }}
+      </div>
+      <button type="button" class="promo-banner__close" aria-label="{% render 'a11y-missing-fallback', text: a11y_close_announcement, fallback: 'Close announcement' %}"></button>
+    </div>
+  {% endif %}
+
+  <div class="top-bar">
+    <details data-mobile-menu>
+      <summary class="mobile_nav dropdown_link" role="button" tabindex="0" aria-expanded="false" data-mobile-menu-trigger aria-label="Menu">
+        <div data-mobile-menu-icon aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <span class="mobile-menu-title">{{ header_menu_panel_label | escape }}</span>
+      </summary>
+      <nav class="mobile-menu-container dropdown" data-nav aria-label="{{ header_menu_panel_label | escape }}">
+        <ul class="menu" id="mobile_menu">
+          {%
+            render 'mobile-menu',
+            menu: section.settings.main_linklist,
+          %}
+          {%
+            render 'mobile-menu',
+            menu: section.settings.main_linklist2,
+          %}
+          {%
+            render 'mobile-menu',
+            menu: section.settings.top_bar_menu,
+            context: 'top_bar_menu',
+          %}
+
+          {% if section.settings.phone_number != blank %}
+            <li>
+              <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '-', '' }}" aria-label="Call us at {{ section.settings.phone_number }}">
+                {{ section.settings.phone_number }}
+              </a>
+            </li>
+          {% endif %}
+
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <li>
+                <a href="{{ routes.account_url }}" data-no-instant>{{ customer.name }}</a>
+              </li>
+
+              <li data-no-instant>
+                <a href="{{ routes.account_logout_url }}" id="customer_logout_link">{{ 'layout.customer.log_out' | t }}</a>
+              </li>
+            {% else %}
+              <li data-no-instant>
+                <a href="{{ routes.account_login_url }}" id="customer_login_link">{{ 'layout.customer.log_in' | t }}</a>
+              </li>
+            {% endif %}
+          {% endif %}
+
+          {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
+            {%
+              render 'localization-switcher-mobile',
+              additional_classes: 'mobile-menu__disclosure',
+              currency_selector: currency_selector,
+              locale_selector: locale_selector,
+              show_currency: section.settings.show_currency_selector,
+            %}
+          {% endif %}
+        </ul>
+      </nav>
+    </details>
+
+    <a href="{{ routes.root_url }}" class="mobile_logo logo" aria-label="{{ header_logo_link_text }} logo" title="{{ header_logo_link_text }} logo">
+      {% if section.settings.logo_mobile != blank %}
+        {% comment %} <span class="visually-hidden">{{ header_logo_link_text }}</span> {% endcomment %}
+        <img
+          src="{{ section.settings.logo_mobile | img_url: '410x' }}"
+          alt="{{ header_logo_link_text }} logo"
+          class="lazyload"
+          style="object-fit: cover; object-position: {{ section.settings.logo_mobile.presentation.focal_point }};">
+      {% elsif section.settings.logo != blank %}
+        <span class="visually-hidden">{{ header_logo_link_text }}</span>
+        <img
+          src="{{ section.settings.logo | img_url: '410x' }}"
+          alt="{{ header_logo_link_text }} logo"
+          style="object-fit: cover; object-position: {{ section.settings.logo.presentation.focal_point }};">
+      {% else %}
+        <span class="header__logo-text">{{ shop.name }}</span>
+      {% endif %}
+    </a>
+
+    <div class="top-bar--right">
+      {% if section.settings.search_enabled %}
+        <a href="{{ routes.search_url }}" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" aria-label="{{ 'general.search.title' | t }}" data-dropdown-rel="search" aria-haspopup="dialog" role="button" tabindex="0"></a>
+      {% endif %}
+
+      {% if section.settings.show_cart %}
+        <div class="cart-container">
+          <a href="{{ routes.cart_url }}" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" aria-label="{{ 'layout.general.cart' | t }}, ({{ cart.item_count }}) items" data-no-instant aria-haspopup="dialog" role="button" tabindex="0">
+            <span class="cart_count" aria-live="polite" aria-atomic="true">{{ cart.item_count }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+{% if template contains "index" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "collection" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "blog" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "article" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "contact" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "product" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "gallery" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "banner" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "faq" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "search" %}
+  {%- assign feature_image = true -%}
+{% elsif template contains "cart" %}
+  {%- assign feature_image = true -%}
+{% else %}
+  {%- assign feature_image = false -%}
+{% endif %}
+
+{% comment %}Main navigation{% endcomment %}
+
+<header
+  class="
+    {% if section.settings.logo_home != blank %}secondary_logo--true{% endif %}
+    search-enabled--{{ section.settings.search_enabled }}
+  "
+  data-desktop-header
+  data-header-feature-image="{{ feature_image }}"
+>
+  <div
+    class="
+      header
+      header-fixed--{{ section.settings.fixed_header }}
+      {% if settings.header_background %}header-background--solid{% endif %}
+    "
+      data-header-is-absolute="{% if feature_image and settings.header_background == false %}true{% endif %}"
+  >
+    {% if section.settings.promo_text != blank %}
+      <div class="promo-banner" role="status">
+        <div class="promo-banner__content">
+          {{ section.settings.promo_text }}
+        </div>
+        <button type="button" class="promo-banner__close" aria-label="{% render 'a11y-missing-fallback', text: a11y_close_announcement, fallback: 'Close announcement' %}"></button>
+      </div>
+    {% endif %}
+
+    <div class="top-bar">
+      {% if section.settings.social_icons_header %}
+        {% render 'social-icons' %}
+      {% endif %}
+
+      <ul class="top-bar__menu menu">
+          {% if section.settings.phone_number != blank %}
+            <li>
+              <a href="tel:+1{{ section.settings.phone_number | replace: ' ', '' | replace: '-', '' }}" aria-label="Call us at: {{ section.settings.phone_number }}">
+                {{ section.settings.phone_number }}
+              </a>
+            </li>
+          {% endif %}
+
+          {% if section.settings.top_bar_menu != blank %}
+            {% for link in linklists[section.settings.top_bar_menu].links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+      </ul>
+
+      <div class="top-bar--right-menu">
+        <ul class="top-bar__menu">
+          {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
+            <li class="localization-wrap">
+              {%
+                render 'localization-switcher',
+                additional_classes: 'header-menu__disclosure',
+                id: 'header__selector-form',
+                currency_selector: currency_selector,
+                locale_selector: locale_selector,
+                show_currency: section.settings.show_currency_selector
+              %}
+            </li>
+          {% endif %}
+
+          {% if shop.customer_accounts_enabled %}
+            <li>
+              <a
+                href="{{ routes.account_url }}"
+                class="top-bar__login-link icon-user"
+                title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"
+                aria-label="{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}"
+              >
+                {% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+
+        {% if section.settings.show_cart %}
+          <div class="cart-container">
+            <a href="{{ routes.cart_url }}" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant aria-label="{{ 'layout.general.cart' | t }}, {{ cart.item_count }} items" aria-haspopup="dialog" role="button" tabindex="0">
+              <span class="cart_count" aria-live="polite" aria-atomic="true">{{ cart.item_count }}</span>
+            </a>
+
+            {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
+              <div class="tos_warning cart_content animated fadeIn" tabindex="-1" role="dialog" aria-modal="true" aria-label="{{ 'layout.general.cart' | t }}">
+              <button class="show-new-btn" aria-label="Close Cart Drawer">
+                  <span aria-hidden="true">&times;</span>
+              </button> 
+              <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+                  <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+                </div>
+
+                <form action="{{ routes.cart_url }}"
+                      method="post"
+                      class="{% if cart.item_count == 0 %}hidden{% endif %}"
+                      data-total-discount="{{ cart.total_discount }}"
+                      data-money-format="{{ shop.money_format | strip_html }}"
+                      data-shop-currency="{{ shop.currency }}"
+                      data-shop-name="{{ shop.name | escape }}"
+                      data-cart-form="mini-cart">
+                  
+                  <button type="button" class="cart_content__continue-shopping secondary_button">
+                    {{ 'cart.general.continue_shopping' | t }}
+                  </button>
+
+                  <ul class="cart_items js-cart_items">
+                    {%- assign total_saving = 0 -%}
+
+                    {% for item in cart.items %}
+                      {% if item.variant.compare_at_price > item.variant.price %}
+                        {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
+                        {%- assign total_saving = saving | plus: total_saving -%}
+                      {% endif %}
+
+                      <li class="mini-cart__item" data-cart-item data-line-id="{{ forloop.index }}" data-variant-id="{{ item.id }}">
+                        
+                        {% comment %} Focus management: Hidden from screen readers to prevent redundant tabbing {% endcomment %}
+                        <a href="{{ item.url }}" aria-hidden="true" tabindex="-1">
+                          {% if item.image %}
+                            <div class="cart_image mini-cart__item-image">
+                              <img src="{{ item.image | img_url: '320x' }}" alt="{{ item.product.title | escape }}" class="lazyload" />
+                            </div>
+                          {% endif %}
+                        </a>
+
+                        <div class="mini-cart__item-content">
+                          <div class="mini-cart__item-title">
+                            
+                            {% comment %} The primary focal link for keyboard/screen reader users {% endcomment %}
+                            <a href="{{ item.url }}">
+                              {{- item.product.title | escape -}}
+
+                              {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
+                                -
+                                {% for option in item.product.options %}
+                                  {{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                                {% endfor %}
+                              {% endunless %}
+                            </a>
+
+                            {% if item.selling_plan_allocation.selling_plan %}
+                              <p class="meta">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                            {% endif %}
+
+                            {% if item.properties %}
+                              <div class="mini-cart__item-properties">
+                                {% for p in item.properties %}
+                                  {% assign property_first_char = p.first | slice: 0 %}
+                                  {% if p.last != blank and property_first_char != '_' %}
+                                    <div class="mini-cart__item-property">
+                                      {{ p.first }}: {{ p.last }}
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+                          </div>
+
+ <div class="mini-cart__item-price">
+  {% if item.price > 0 %}
+
+    {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}
+
+      <span class="visually-hidden">Sale Price</span>
+      <span class="money sale">
+        {%
+          render 'price-element',
+          price: item.final_price
+        %}
+      </span>
+
+      <span class="visually-hidden">Regular Price</span>
+      <span class="money was_price">
+        {%
+          render 'price-element',
+          price: item.variant.compare_at_price
+        %}
+      </span>
+
+    {% else %}
+
+      <span class="visually-hidden">Regular Price</span>
+      <span class="money">
+        {%
+          render 'price-element',
+          price: item.final_price
+        %}
+      </span>
+
+    {% endif %}
+
+  {% else %}
+    {{ settings.free_price_text }}
+  {% endif %}
+</div>
+
+                          {%
+                            render 'unit-price',
+                            item: item,
+                            variant: item.variant,
+                            product: item.product,
+                            class: 'mini-cart__unit-price'
+                          %}
+
+                          {% if item.line_level_discount_allocations.size > 0 %}
+                            {% for discount_allocation in item.line_level_discount_allocations %}
+                              <p class="notification-discount meta">
+                                {{ discount_allocation.discount_application.title }}
+                              </p>
+                            {% endfor %}
+                          {% endif %}
+
+                          <div class="product-quantity-box">
+                            <button type="button" class="ss-icon product-minus js-change-quantity" data-func="minus" aria-label="Decrease quantity {{ item.product.title | escape }} by 1">
+                              <span class="icon-minus" aria-hidden="true"></span>
+                            </button>
+
+                            <label for="updates_{{ item.id }}" class="visually-hidden">Quantity</label>
+                            <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-cart-quantity-input="mini-cart" {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %}/>
+
+                            <button type="button" class="ss-icon product-plus js-change-quantity" data-func="plus" aria-label="Increase quantity {{ item.product.title | escape }} by 1">
+                              <span class="icon-plus" aria-hidden="true"></span>
+                            </button>
+                          </div>
+                        </div>
+
+                        <button type="button" class="cart__remove-btn" data-line-id="{{ forloop.index }}" data-remove-item="mini-cart" aria-label="Remove {{ item.product.title | escape }} from cart">
+                          <span class="remove-icon" aria-hidden="true"></span>
+                        </button>
+                      </li>
+                    {% endfor %}
+                  </ul>
+
+                  <ul>
+                    <li class="cart_discounts js-cart_discounts sale">
+                      {% if cart.cart_level_discount_applications != blank %}
+                        {% for discount_application in cart.cart_level_discount_applications %}
+                          <span class="cart_discounts--title">{{ discount_application.title }}</span>
+
+                          <span class="cart_discounts--price">
+                            -<span class="money">
+                              {%
+                                render 'price-element',
+                                price: discount_application.total_allocated_amount
+                              %}
+                            </span>
+                          </span>
+                        {% endfor %}
+                      {% endif %}
+                    </li>
+
+                    <li class="cart_subtotal js-cart_subtotal">
+                      <span class="right">
+                        <span class="money">
+                          {%
+                            render 'price-element',
+                            price: cart.total_price
+                          %}
+                        </span>
+                      </span>
+
+                      <span>{{ 'layout.general.subtotal' | t }}</span>
+                    </li>
+
+                    <li class="cart_savings sale js-cart_savings">
+                      {% if settings.display_savings and total_saving > 0 or settings.display_savings and cart.total_discount > 0 %}
+                        <span class="right">
+                          <span class="money">
+                            {% assign total_savings = total_saving | plus: cart.total_discount %}
+                            {%
+                              render 'price-element',
+                              price: total_savings
+                            %}
+                          </span>
+                        </span>
+
+                        <span>{{ 'layout.general.savings' | t }}</span>
+                      {% endif %}
+                    </li>
+
+                    <li>
+                      {%- capture taxes_shipping_checkout -%}
+                        {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                          {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                        {%- elsif cart.taxes_included -%}
+                          {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+                        {%- elsif shop.shipping_policy.body != blank -%}
+                          {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                        {%- else -%}
+                          {{ 'cart.general.tax_and_shipping' | t }}
+                        {%- endif -%}
+                      {%- endcapture -%}
+
+                      <p class="cart-message meta">{{ taxes_shipping_checkout }}</p>
+                    </li>
+
+                    <li>
+                      {% if settings.display_special_instructions and settings.go_to_checkout %}
+                        <label for="note" class="visually-hidden">{{ 'layout.general.cart_note' | t }}</label>
+                        <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" data-cart-note>{{- cart.note -}}</textarea>
+                      {% endif %}
+
+                      {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                        <p class="tos">
+                          <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+
+                          <label class="tos_label" for="sliding_agree">
+                            {{ 'cart.general.agree_to_terms_html' | t }}
+                          </label>
+
+                          {% if settings.tos_page != blank %}
+                            <a href="{{ settings.tos_page }}" target="_blank" rel="noopener noreferrer" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                          {% endif %}
+                        </p>
+                      {% endif %}
+
+                      {% if settings.cart_message != blank %}
+                        <div class="cart_text">
+                          {{ settings.cart_message }}
+                        </div>
+                      {% endif %}
+
+                      {% if settings.go_to_checkout %}
+                        <button type="submit" name="checkout" class="global-button global-button--primary add_to_cart" data-minicart-checkout-button>{% if settings.show_lock_icon %}<span class="icon-lock" aria-hidden="true"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+                      {% else %}
+                        <button type="submit" class="global-button global-button--primary add_to_cart" data-minicart-checkout-button>{% if settings.show_lock_icon and settings.go_to_checkout %}<span class="icon-lock" aria-hidden="true"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            {% endunless %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="main-nav__wrapper">
+      <div class="main-nav menu-position--{{ section.settings.menu_position }} logo-alignment--{{ section.settings.logo_alignment }} logo-position--{{ section.settings.logo_position }} search-enabled--{{ section.settings.search_enabled }}" {% if section.settings.dropdown_click == true %}data-show-dropdown-on-click{% endif %}>
+        {% capture logo %}
+          <div class="header__logo {% if section.settings.logo_home == blank and section.settings.logo == blank %}logo--text{% else %}logo--image{% endif %}">
+            <a href="{{ routes.root_url }}" aria-label="{{ header_logo_link_text }} logo">
+              {% if section.settings.logo_home != blank or section.settings.logo != blank %}
+                {% comment %} <span class="visually-hidden">{{ header_logo_link_text }} logo</span> {% endcomment %}
+              {% endif %}
+              {% if section.settings.logo_home != blank %}
+                <img
+                  src="{{ section.settings.logo_home | img_url: '410x' }}"
+                  class="secondary_logo"
+                  alt="{{ header_logo_link_text }} logo"
+                  style="object-fit: cover; object-position: {{ section.settings.logo_home.presentation.focal_point }};">
+              {% endif %}
+
+              {% if section.settings.logo != blank %}
+                <img
+                  src="{{ section.settings.logo | img_url: '410x' }}"
+                  class="primary_logo lazyload"
+                  alt="{{ header_logo_link_text }} logo"
+                  style="object-fit: cover; object-position: {{ section.settings.logo.presentation.focal_point }};"
+                  
+                >
+              {% endif %}
+              {% if section.settings.logo_home == blank and section.settings.logo == blank %}
+                <span class="header__logo-text">{{ shop.name }}</span>
+              {% endif %}
+            </a>
+          </div>
+        {% endcapture %}
+
+        {% assign menu_style = 'wide' %}
+        {% if section.settings.vertical_menu %}
+          {% assign menu_style = 'vertical' %}
+        {% endif %}
+
+        {%- assign menu_left_list = linklists[section.settings.main_linklist] -%}
+        {%- assign menu_right_list = linklists[section.settings.main_linklist2] -%}
+
+        {% capture menu_left %}
+          {%
+            render 'navigation-desktop',
+            menu: section.settings.main_linklist,
+            style: menu_style,
+            menu_label: menu_left_list.title,
+          %}
+        {% endcapture %}
+
+        {% comment %} {% capture menu_right %}
+          {%
+            render 'navigation-desktop',
+            menu: section.settings.main_linklist2,
+            style: menu_style,
+            menu_label: menu_right_list.title,
+          %}
+        {% endcapture %} {% endcomment %}
+
+        {% capture search %}
+          {% if section.settings.search_enabled %}
+            <div class="search-container">
+              {%
+                render 'search-form',
+                context: 'header',
+              %}
+
+              <div class="search-link">
+                <a
+                  class="icon-search dropdown_link"
+                  href="{{ routes.search_url }}"
+                  title="{{ 'general.search.title' | t | escape }}"
+                  data-dropdown-rel="search"
+                  aria-haspopup="dialog"
+                  aria-expanded="false"
+                  aria-label="{{ 'general.search.title' | t }}"
+                >
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endcapture %}
+
+        {% if section.settings.menu_position == 'inline' %}
+          {% if section.settings.logo_position == 'left' %}
+            {{ logo }}
+
+            <div class="nav nav--combined {{ section.settings.menu_alignment }}">
+              {{ menu_left }}
+              {% comment %} {{ menu_right }} {% endcomment %}
+            </div>
+
+            {{ search }}
+          {% else %}
+            <div class="nav nav--left {{ section.settings.menu_alignment }}">
+              {{ menu_left }}
+            </div>
+
+            {{ logo }}
+
+            <div
+              class="
+                nav nav--right
+                {% if section.settings.menu_alignment == 'align_left' %}
+                  align_right
+                {% elsif section.settings.menu_alignment == 'align_right' %}
+                  align_left
+                {% else %}
+                  {{ section.settings.menu_alignment }}
+                {% endif %}
+              "
+            >
+              {{ menu_right }}
+            </div>
+
+            {{ search }}
+          {% endif %}
+        {% else %}
+          {{ logo }}
+
+          <div
+            class="
+              nav
+              nav--combined
+              nav--{{ section.settings.menu_alignment }}
+              {{ section.settings.menu_alignment }}
+            "
+          >
+            <div class="combined-menu-container">
+              {{ menu_left }}
+              {{ menu_right }}
+            </div>
+
+            {{ search }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+
+{% comment %}
+  Dynamic JS fallback script.
+{% endcomment %}
+<script>
+  (() => {
+    const header = document.querySelector('[data-header-feature-image="true"]');
+    if (header) {
+      header.classList.add('feature_image');
+    }
+
+    const headerContent = document.querySelector('[data-header-is-absolute="true"]');
+    if (header) {
+      header.classList.add('is-absolute');
+    }
+  })();
+</script>
+
+<style>
+  div.header__logo,
+  div.header__logo img,
+  div.header__logo span,
+  .sticky_nav .menu-position--block .header__logo {
+    max-width: {{ section.settings.logo_display_width | append: 'px' }};
+  }
+
+  /* Screen-reader only fallback styles */
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "shopify-section--header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "richtext",
+      "id": "promo_text",
+      "label": "Text",
+      "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "header",
+      "content": "Top bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_icons_header",
+      "label": "Show social media header icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "info": "1-800-555-5555"
+    },
+    {
+      "type": "link_list",
+      "id": "top_bar_menu",
+      "label": "Menu",
+      "info": "This menu won't show drop-down items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "cart_icon",
+      "label": "Cart icon",
+      "default": "cart",
+      "options": [
+        {
+          "value": "cart",
+          "label": "Cart"
+        },
+        {
+          "value": "bag",
+          "label": "Bag"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Language selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Show language selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Country selector",
+      "info": "To add a country, go to your [payment settings.](/admin/settings/payments)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show country selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logos"
+    },
+    {
+      "type": "range",
+      "id": "logo_display_width",
+      "label": "Logo display width",
+      "step": 5,
+      "min": 105,
+      "max": 405,
+      "default": 405,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "400 x 200px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_home",
+      "label": "Secondary logo over content (optional)",
+      "info": "400 x 200px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Mobile logo",
+      "info": "100 x 50px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist2",
+      "label": "Secondary menu",
+      "default": "footer"
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_menu",
+      "label": "Enable vertical menus",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "dropdown_click",
+      "label": "Open dropdowns on click instead of hover",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_enabled",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "fixed_header",
+      "label": "Fixed ('sticky') header",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position",
+      "info": "Applies when menu position has been set to 'Inline with logo'",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "logo_alignment",
+      "label": "Logo alignment",
+      "info": "Applies when menu position has been set to 'Under logo'",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "menu_position",
+      "label": "Menu position",
+      "default": "inline",
+      "options": [
+        {
+          "value": "inline",
+          "label": "Inline with logo"
+        },
+        {
+          "value": "block",
+          "label": "Under logo"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "menu_alignment",
+      "label": "Menu alignment",
+      "default": "align_left",
+      "options": [
+        {
+          "value": "align_left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "align_right",
+          "label": "Right"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

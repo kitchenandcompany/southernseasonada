@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "custom_css": [
+        "span.icon-down-arrow {color: #000 !important;}"
+      ],
+      "settings": {
+        "promo_text": "",
+        "social_icons_header": true,
+        "phone_number": "302-644-7749",
+        "top_bar_menu": "",
+        "show_cart": true,
+        "cart_icon": "cart",
+        "show_locale_selector": false,
+        "show_currency_selector": false,
+        "logo_display_width": 355,
+        "logo": "shopify://shop_images/K_C_logo_Unstacked_Deep_orange_vector_Converted.png",
+        "main_linklist": "main-menu",
+        "main_linklist2": "",
+        "vertical_menu": false,
+        "dropdown_click": true,
+        "search_enabled": true,
+        "fixed_header": false,
+        "logo_position": "center",
+        "logo_alignment": "center",
+        "menu_position": "block",
+        "menu_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

@@ -1,0 +1,131 @@
+<ul class="social_icons">
+  {% if settings.behance_link != '' %}
+    {%- assign behance_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Behance' -%}
+    <li><a href="{{ settings.behance_link }}" title="{{ behance_aria | escape }}" aria-label="{{ behance_aria | escape }}" rel="me" target="_blank" class="icon-behance"></a></li>
+  {% endif %}
+
+  {% if settings.clubhouse_link != '' %}
+    {%- assign clubhouse_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Clubhouse' -%}
+    <li><a href="{{ settings.clubhouse_link }}" title="{{ clubhouse_aria | escape }}" aria-label="{{ clubhouse_aria | escape }}" rel="me" target="_blank" class="icon-clubhouse"></a></li>
+  {% endif %}
+
+  {% if settings.discord_link != '' %}
+    {%- assign discord_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Discord' -%}
+    <li><a href="{{ settings.discord_link }}" title="{{ discord_aria | escape }}" aria-label="{{ discord_aria | escape }}" rel="me" target="_blank" class="icon-discord"></a></li>
+  {% endif %}
+
+   {% if settings.dribbble_link != '' %}
+    {%- assign dribbble_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Dribbble' -%}
+    <li><a href="{{ settings.dribbble_link }}" title="{{ dribbble_aria | escape }}" aria-label="{{ dribbble_aria | escape }}" rel="me" target="_blank" class="icon-dribbble"></a></li>
+  {% endif %}
+
+  {% if settings.email_link != '' %}
+    {%- assign email_aria = 'general.accessibility.social_email' | t: shop: shop.name -%}
+    <li><a href="mailto:{{ settings.email_link }}" title="Email Address: {{ settings.email_link }}" aria-label="Email Address: {{ settings.email_link }}" class="icon-email"></a></li>
+  {% endif %}
+
+  {% if settings.facebook_link != '' %}
+    {%- assign facebook_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Facebook' -%}
+    <li><a href="{{ settings.facebook_link }}" title="{{ facebook_aria | escape }}" aria-label="{{ facebook_aria | escape }}" rel="me" target="_blank" class="icon-facebook"></a></li>
+  {% endif %}
+
+  {% if settings.flickr_link != '' %}
+    {%- assign flickr_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Flickr' -%}
+    <li><a href="{{ settings.flickr_link }}" title="{{ flickr_aria | escape }}" aria-label="{{ flickr_aria | escape }}" rel="me" target="_blank" class="icon-flickr"></a></li>
+  {% endif %}
+
+  {% if settings.houzz_link != '' %}
+    {%- assign houzz_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Houzz' -%}
+    <li><a href="{{ settings.houzz_link }}" title="{{ houzz_aria | escape }}" aria-label="{{ houzz_aria | escape }}" rel="me" target="_blank" class="icon-houzz"></a></li>
+  {% endif %}
+
+  {% if settings.instagram_link != '' %}
+    {%- assign instagram_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Instagram' -%}
+    <li><a href="{{ settings.instagram_link }}" title="{{ instagram_aria | escape }}" aria-label="{{ instagram_aria | escape }}" rel="me" target="_blank" class="icon-instagram"></a></li>
+  {% endif %}
+
+  {% if settings.kickstarter_link != '' %}
+    {%- assign kickstarter_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Kickstarter' -%}
+    <li><a href="{{ settings.kickstarter_link }}" title="{{ kickstarter_aria | escape }}" aria-label="{{ kickstarter_aria | escape }}" rel="me" target="_blank" class="icon-kickstarter"></a></li>
+  {% endif %}
+
+  {% if settings.linkedin_link != '' %}
+    {%- assign linkedin_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'LinkedIn' -%}
+    <li><a href="{{ settings.linkedin_link }}" title="{{ linkedin_aria | escape }}" aria-label="{{ linkedin_aria | escape }}" rel="me" target="_blank" class="icon-linkedin"></a></li>
+  {% endif %}
+
+  {% if settings.medium_link != '' %}
+    {%- assign medium_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Medium' -%}
+    <li><a href="{{ settings.medium_link }}" title="{{ medium_aria | escape }}" aria-label="{{ medium_aria | escape }}" rel="me" target="_blank" class="icon-medium"></a></li>
+  {% endif %}
+
+  {% if settings.messenger_link != '' %}
+    {%- assign messenger_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Messenger' -%}
+    <li><a href="{{ settings.messenger_link }}" title="{{ messenger_aria | escape }}" aria-label="{{ messenger_aria | escape }}" rel="me" target="_blank" class="icon-messenger"></a></li>
+  {% endif %}
+
+  {% if settings.opensea_link != '' %}
+    {%- assign opensea_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'OpenSea' -%}
+    <li><a href="{{ settings.opensea_link }}" title="{{ opensea_aria | escape }}" aria-label="{{ opensea_aria | escape }}" rel="me" target="_blank" class="icon-opensea"></a></li>
+  {% endif %}
+
+  {% if settings.pinterest_link != '' %}
+    {%- assign pinterest_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Pinterest' -%}
+    <li><a href="{{ settings.pinterest_link }}" title="{{ pinterest_aria | escape }}" aria-label="{{ pinterest_aria | escape }}" rel="me" target="_blank" class="icon-pinterest"></a></li>
+  {% endif %}
+
+  {% if settings.reddit_link != '' %}
+    {%- assign reddit_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Reddit' -%}
+    <li><a href="{{ settings.reddit_link }}" title="{{ reddit_aria | escape }}" aria-label="{{ reddit_aria | escape }}" rel="me" target="_blank" class="icon-reddit"></a></li>
+  {% endif %}
+
+  {% if settings.rss_link != '' %}
+    {%- assign rss_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'RSS' -%}
+    <li><a href="{{ settings.rss_link }}" title="{{ rss_aria | escape }}" aria-label="{{ rss_aria | escape }}" rel="me" target="_blank" class="icon-rss"></a></li>
+  {% endif %}
+
+  {% if settings.snapchat_link != '' %}
+    {%- assign snapchat_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Snapchat' -%}
+    <li><a href="{{ settings.snapchat_link }}" title="{{ snapchat_aria | escape }}" aria-label="{{ snapchat_aria | escape }}" rel="me" target="_blank" class="icon-snapchat"></a></li>
+  {% endif %}
+
+  {% if settings.spotify_link != '' %}
+    {%- assign spotify_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Spotify' -%}
+    <li><a href="{{ settings.spotify_link }}" title="{{ spotify_aria | escape }}" aria-label="{{ spotify_aria | escape }}" rel="me" target="_blank" class="icon-spotify"></a></li>
+  {% endif %}
+
+  {% if settings.tiktok_link != '' %}
+    {%- assign tiktok_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'TikTok' -%}
+    <li><a href="{{ settings.tiktok_link }}" title="{{ tiktok_aria | escape }}" aria-label="{{ tiktok_aria | escape }}" rel="me" target="_blank" class="icon-tiktok"></a></li>
+  {% endif %}
+
+  {% if settings.tumblr_link != '' %}
+    {%- assign tumblr_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Tumblr' -%}
+    <li><a href="{{ settings.tumblr_link }}" title="{{ tumblr_aria | escape }}" aria-label="{{ tumblr_aria | escape }}" rel="me" target="_blank" class="icon-tumblr"></a></li>
+  {% endif %}
+
+  {% if settings.twitch_link != '' %}
+    {%- assign twitch_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Twitch' -%}
+    <li><a href="{{ settings.twitch_link }}" title="{{ twitch_aria | escape }}" aria-label="{{ twitch_aria | escape }}" rel="me" target="_blank" class="icon-twitch"></a></li>
+  {% endif %}
+
+  {% if settings.twitter_link != '' %}
+    {%- assign twitter_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Twitter' -%}
+    <li><a href="{{ settings.twitter_link }}" title="{{ twitter_aria | escape }}" aria-label="{{ twitter_aria | escape }}" rel="me" target="_blank" class="icon-twitter"></a></li>
+  {% endif %}
+
+  {% if settings.vimeo_link != '' %}
+    {%- assign vimeo_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'Vimeo' -%}
+    <li><a href="{{ settings.vimeo_link }}" title="{{ vimeo_aria | escape }}" aria-label="{{ vimeo_aria | escape }}" rel="me" target="_blank" class="icon-vimeo"></a></li>
+  {% endif %}
+
+  {% if settings.whatsapp_link != '' %}
+    {%- assign whatsapp_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'WhatsApp' -%}
+    <li><a href="{{ settings.whatsapp_link }}" title="{{ whatsapp_aria | escape }}" aria-label="{{ whatsapp_aria | escape }}" rel="me" target="_blank" class="icon-whatsapp"></a></li>
+  {% endif %}
+
+  {% if settings.youtube_link != '' %}
+    {%- assign youtube_aria = 'general.accessibility.social_on_platform' | t: shop: shop.name, platform: 'YouTube' -%}
+    <li><a href="{{ settings.youtube_link }}" title="{{ youtube_aria | escape }}" aria-label="{{ youtube_aria | escape }}" rel="me" target="_blank" class="icon-youtube"></a></li>
+  {% endif %}
+</ul>

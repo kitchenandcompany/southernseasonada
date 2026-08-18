@@ -1,0 +1,171 @@
+{% if context == 'top_bar_menu' %}
+  {% comment %}
+    We wrap the top bar items in a UL to maintain valid HTML list structures.
+  {% endcomment %}
+  <ul class="top-bar-menu">
+    {% for link in linklists[menu].links %}
+      <li>
+        <a 
+          data-no-instant 
+          href="{{ link.url }}" 
+          class="{% if link.url == '' or link.url == '/' or link.url == '#' %}parent-link--false{% else %}parent-link--true{% endif %}"
+          {% if link.active %}aria-current="page"{% endif %}
+        >
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <template data-nav-parent-template>
+    <li class="sublink">
+      <button 
+        type="button"
+        data-no-instant 
+        class="parent-link--true mobile-menu-trigger"
+        aria-expanded="false"
+      >
+        <div class="mobile-menu-item-title" data-nav-title></div>
+        <span class="right icon-down-arrow" aria-hidden="true"></span>
+      </button>
+      <ul class="mobile-mega-menu" data-meganav-target-container>
+      </ul>
+    </li>
+  </template>
+
+  {% for link in linklists[menu].links %}
+    {% if linklists[link.handle] == empty %}
+      <li data-mobile-dropdown-rel="{{ link.handle }}" data-meganav-mobile-target="{{ link.title | handle }}">
+        <a 
+          data-nav-title 
+          data-no-instant 
+          href="{{ link.url }}" 
+          class="{% if link.url == '' or link.url == '/' or link.url == '#' %}parent-link--false{% else %}parent-link--true{% endif %}"
+          {% if link.active %}aria-current="page"{% endif %}
+        >
+          {{ link.title }}
+        </a>
+      </li>
+    {% else %}
+      {% assign tier_1_index = forloop.index %}
+      <li data-mobile-dropdown-rel="{{ link.handle }}" class="sublink" data-meganav-mobile-target="{{ link.title | handle }}">
+        
+        <div class="mobile-nav__split-link-wrapper">
+          {% if link.url == '' or link.url == '/' or link.url == '#' %}
+            {% comment %}
+              Pure toggle button when no valid URL exists.
+            {% endcomment %}
+            <button 
+              type="button"
+              data-no-instant 
+              class="parent-link--false mobile-menu-trigger"
+              aria-expanded="false"
+              aria-controls="mobile-tier-2-{{ tier_1_index }}"
+            >
+              <div class="mobile-menu-item-title" data-nav-title>{{ link.title }}</div>
+              <span class="right icon-down-arrow" aria-hidden="true"></span>
+            </button>
+          {% else %}
+            {% comment %}
+              Dual link structure: The anchor safely navigates directly to the collection/page.
+            {% endcomment %}
+            <a 
+              data-no-instant 
+              href="{{ link.url }}" 
+              class="parent-link--true mobile-nav__split-anchor"
+              {% if link.active %}aria-current="page"{% endif %}
+            >
+              <div class="mobile-menu-item-title" data-nav-title>{{ link.title }}</div>
+            </a>
+
+            {% comment %}
+              The button immediately adjacent triggers the visual drop-down animation safely.
+            {% endcomment %}
+            <button 
+              type="button"
+              class="mobile-nav__split-trigger mobile-menu-trigger"
+              aria-expanded="false"
+              aria-controls="mobile-tier-2-{{ tier_1_index }}"
+              aria-label="Toggle {{ link.title }} submenu"
+            >
+              <span class="right icon-down-arrow" aria-hidden="true"></span>
+            </button>
+          {% endif %}
+        </div>
+
+        <ul 
+          id="mobile-tier-2-{{ tier_1_index }}" 
+          aria-label="{{ link.title | escape }} submenu"
+          role="group"
+        >
+          {% for sub_link in linklists[link.handle].links %}
+            {% if linklists[sub_link.handle] == empty %}
+              <li>
+                <a 
+                  href="{{ sub_link.url }}"
+                  {% if sub_link.active %}aria-current="page"{% endif %}
+                >
+                  {{ sub_link.title }}
+                </a>
+              </li>
+            {% else %}
+              <li class="sublink">
+                {% assign tier_2_index = forloop.index %}
+                
+                <div class="mobile-nav__split-link-wrapper">
+                  {% if sub_link.url == '' or sub_link.url == '/' or sub_link.url == '#' %}
+                    <button 
+                      type="button"
+                      data-no-instant 
+                      class="parent-link--false mobile-menu-trigger"
+                      aria-expanded="false"
+                      aria-controls="mobile-tier-3-{{ tier_1_index }}-{{ tier_2_index }}"
+                    >
+                      {{ sub_link.title }} <span class="right icon-down-arrow" aria-hidden="true"></span>
+                    </button>
+                  {% else %}
+                    <a 
+                      data-no-instant 
+                      href="{{ sub_link.url }}" 
+                      class="parent-link--true mobile-nav__split-anchor"
+                      {% if sub_link.active %}aria-current="page"{% endif %}
+                    >
+                      {{ sub_link.title }}
+                    </a>
+
+                    <button 
+                      type="button"
+                      class="mobile-nav__split-trigger mobile-menu-trigger"
+                      aria-expanded="false"
+                      aria-controls="mobile-tier-3-{{ tier_1_index }}-{{ tier_2_index }}"
+                      aria-label="Toggle {{ sub_link.title }} submenu"
+                    >
+                      <span class="right icon-down-arrow" aria-hidden="true"></span>
+                    </button>
+                  {% endif %}
+                </div>
+
+                <ul 
+                  id="mobile-tier-3-{{ tier_1_index }}-{{ tier_2_index }}" 
+                  aria-label="{{ sub_link.title | escape }} submenu"
+                  role="group"
+                >
+                  {% for grand_child_link in linklists[sub_link.handle].links %}
+                    <li>
+                      <a 
+                        href="{{ grand_child_link.url }}"
+                        {% if grand_child_link.active %}aria-current="page"{% endif %}
+                      >
+                        {{ grand_child_link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    {% endif %}
+  {% endfor %}
+{% endif %}

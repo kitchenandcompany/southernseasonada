@@ -1,0 +1,93 @@
+<div class="newsletter">
+  <div class="{% if context == 'blog' or context == 'password-page' %}popup-signup-show--true{% else %}popup-signup-show--{{ settings.newsletter_popup_form }}{% endif %}">
+    
+    {% comment %} 
+      WCAG 2.2 FIX: Empty spans used as dynamic JS targets should have aria-live so screen readers catch the injection.
+    {% endcomment %}
+    <span class="message" aria-live="polite"></span>
+
+    {% if settings.mailchimp_link != blank %}
+      <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form" target="_blank">
+        
+        {% comment %} Grouping personal info fields {% endcomment %}
+        <fieldset style="border: none; padding: 0; margin: 0;">
+          <legend class="visually-hidden">Your Information</legend>
+          
+          <div class="input-row">
+            {% if settings.display_first_name %}
+              <div class="field-wrapper">
+                <label for="mc-FNAME" class="field-label">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+                <input id="mc-FNAME" type="text" value="" class="firstName" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" autocomplete="given-name">
+              </div>
+            {% endif %}
+
+            {% if settings.display_last_name %}
+              <div class="field-wrapper">
+                <label for="mc-LNAME" class="field-label">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+                <input id="mc-LNAME" type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" autocomplete="family-name">
+              </div>
+            {% endif %}
+          </div>
+        </fieldset>
+
+        <div class="input-row">
+          <div class="field-wrapper">
+            <label for="mc-EMAIL" class="field-label">{{ 'general.newsletter_form.placeholder' | t }}</label>
+            <input id="mc-EMAIL" type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}" required autocomplete="email">
+          </div>
+          <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="global-button global-button--primary newsletter-form__sign-up" name="subscribe" />
+        </div>
+      </form>
+
+    {% else %}
+
+      {% form 'customer' %}
+        {% comment %} 
+          WCAG 2.2 FIX: Placed dynamic errors and successes inside a live region so screen readers read them immediately on page reload.
+        {% endcomment %}
+        <div aria-live="polite">
+          {% if form.posted_successfully? %}
+            <p role="status"><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
+          {% elsif form.errors %}
+            <div role="alert" class="form-errors">
+              {% for field in form.errors %}
+                <p><em>{{ field | capitalize }} - {{ form.errors.messages[field] }}</em></p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+        
+        <fieldset style="border: none; padding: 0; margin: 0;">
+          <legend class="visually-hidden">Your Information</legend>
+          
+          <div class="input-row {% if settings.display_first_name and settings.display_last_name %}newsletter-both-names--true {% else %}newsletter-both-names--false {% endif %}">
+            {% if settings.display_first_name %}
+              <div class="field-wrapper">
+                <label for="customer-FNAME" class="field-label">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+                <input id="customer-FNAME" type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" autocomplete="given-name" />
+              </div>
+            {% endif %}
+
+            {% if settings.display_last_name %}
+              <div class="field-wrapper">
+                <label for="customer-LNAME" class="field-label">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+                <input id="customer-LNAME" type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" autocomplete="family-name" />
+              </div>
+            {% endif %}
+          </div>
+        </fieldset>
+
+        <div class="input-row">
+          <input type="hidden" name="challenge" value="false" />
+          <div class="field-wrapper">
+            <label for="customer-EMAIL" class="field-label">{{ 'general.newsletter_form.placeholder' | t }}</label>
+            <input id="customer-EMAIL" type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" autocomplete="email" />
+          </div>
+          <input type='submit' class="global-button global-button--primary newsletter-form__sign-up" value="{{ 'general.newsletter_form.submit' | t }}" />
+        </div>
+      {% endform %}
+    {% endif %}
+  </div>
+</div>

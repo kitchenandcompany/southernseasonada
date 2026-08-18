@@ -1,0 +1,363 @@
+{% comment %}
+** Map - dynamic **
+- Draggable section
+{% endcomment %}
+
+{% capture map_iframe_title_default_t %}{{ 'general.accessibility.map_iframe_title_default' | t }}{% endcapture %}
+{% capture map_guest_sidebar_t %}{{ 'general.accessibility.map_guest_sidebar' | t }}{% endcapture %}
+
+{% liquid
+  if type == 'block'
+    assign object = block
+  else
+    assign object = section
+  endif
+
+  assign id = object.id
+  assign map_address = object.settings.map_address
+  assign image = object.settings.map_image
+  assign mobile_image = object.settings.map_mobile_image
+  assign map_iframe_title = iframe_title | default: object.settings.map_iframe_title
+  assign map_alt_primary = object.settings.map_image_alt | default: '' | strip
+%}
+{% if map_iframe_title == blank %}
+  {% capture map_iframe_title %}{% render 'a11y-missing-fallback', text: map_iframe_title_default_t, fallback: 'Google Map showing our store location' %}{% endcapture %}
+  {% assign map_iframe_title = map_iframe_title | strip %}
+{% endif %}
+
+{% style %}
+  {% render 'section-space' %}
+
+  {%
+    render 'css-loop',
+    css: object.settings.custom_css,
+    id: id,
+  %}
+{% endstyle %}
+
+<section
+  class="
+    section
+    {% if object.settings.map_wide_display == false %}
+      is-width-standard
+    {% else %}
+      is-width-wide
+      has-no-side-gutter
+    {% endif %}
+    map-section
+    section--draggable
+    map-id--{{ id }}
+    full-width--{{ object.settings.map_wide_display }}
+    {{ object.settings.css_class }}
+  "
+>
+  <div class="container">
+    <div class="one-whole column map-section__map-column">
+    <div class="map-section__layout {% if map_overlay != blank %}map-section__layout--split map-section__layout--split-{{ id }}{% endif %}">
+    <div class="map-section__map-pane map-section__map-pane--{{ id }}">
+    <div class="map-section__map-and-overlay map-section__map-and-overlay--{{ id }}">
+    {% if map_address != blank and object.settings.api_key != blank %}
+      <div id="map--{{ id }}" class="embed-container maps {% if object.settings.api_key %}js-api-map{% endif %}">
+          {% if object.settings.api_key != blank %}
+            <div class="map-section__container map" id="map-{{ id }}"
+                  data-address="{{ map_address | strip_html }}"
+                  data-zoom="{{ object.settings.zoom_level }}"
+                  data-pin="{{ object.settings.show_pin }}"
+                  data-id="map-{{ id }}"
+                  data-style="{{ object.settings.map_style }}"
+                  data-api-key="{{ object.settings.api_key }}"
+                  data-directions-address="{{ map_address | strip_html | handleize | replace: '_', '+' | replace: ' ', '+'}}">
+            </div>
+          {% endif %}
+      </div>
+
+    {% elsif map_address != blank and object.settings.api_key == blank %}
+      <div id="map--{{ id }}" class="lazyframe lazymap embed-container maps" data-init="true" data-src="https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q={% if map_address != blank %}{{ map_address | strip_html | replace: ' ', '+' }}{% else %}{{ shop.address.street }}{% endif %}&z={{ object.settings.zoom_level }}&output=embed">
+        
+        {% comment %} 
+          ACCESSIBILITY FIX: This is the frame title we added.
+          URL Reverted to http:// to comply with theme script matching.
+        {% endcomment %}
+        <iframe
+          title="{{ map_iframe_title | escape }}"
+          width="100%"
+          height="{{ object.settings.map_height }}"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q={% if map_address != blank %}{{ map_address | strip_html | replace: ' ', '+' }}{% else %}{{ shop.address.street }}{% endif %}&z={{ object.settings.zoom_level }}&output=embed">
+        </iframe>
+      </div>
+    {% else %}
+      {% unless template contains 'page.contact-custom' %}
+        <div id="map--{{ id }}" class="map__placeholder maps">
+          
+          {%- assign fallback_alt = "Map showing our store location at " | append: shop.address.street -%}
+          {%- assign map_static_alt = map_alt_primary | default: image.alt | default: mobile_image.alt | default: fallback_alt -%}
+
+          {% if mobile_image != blank %}
+            <div class="is-hidden-mobile-only">
+          {% endif %}
+
+          {% if image != blank %}
+            {%
+              render 'image-element',
+              image: image,
+              alt: map_alt_primary | default: image.alt | default: fallback_alt,
+              focal_point: image.presentation.focal_point,
+            %}
+          {% else %}
+            <span class="map-section__map-placeholder-svg" role="img" aria-label="{{ map_static_alt | escape }}">
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--map' }}
+            </span>
+          {% endif %}
+
+          {% if mobile_image != blank %}
+            </div>
+            <div class="is-hidden-desktop-only">
+              {%
+                render 'image-element',
+                image: mobile_image,
+                alt: map_alt_primary | default: mobile_image.alt | default: fallback_alt,
+                stretch_width: true,
+                focal_point: mobile_image.presentation.focal_point,
+              %}
+            </div>
+          {% endif %}
+        </div>
+      {% endunless %}
+    {% endif %}
+
+    {% if map_overlay_contrast == 'darken_bg' %}
+      <div class="map-section__map-darken-bg" aria-hidden="true"></div>
+    {% endif %}
+
+    </div>
+    </div>
+    {% if map_overlay != blank %}
+      <aside
+        class="map-section__guest-sidebar map-section__guest-sidebar--{{ id }}"
+        role="complementary"
+        {% if map_overlay_title_id != blank %}
+          aria-labelledby="{{ map_overlay_title_id }}"
+        {% else %}
+          aria-label="{% render 'a11y-missing-fallback', text: map_guest_sidebar_t, fallback: 'Guest services' %}"
+        {% endif %}
+      >
+        {{ map_overlay }}
+      </aside>
+    {% endif %}
+    </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #map--{{ id }}.maps,
+  #map--{{ id }}.maps .map,
+  #map--{{ id }}.maps iframe,
+  #map--{{ id }}.maps .placeholder-svg,
+  #map--{{ id }}.maps .map-section__map-placeholder-svg {
+    height: {{ object.settings.map_height }}px;
+  }
+
+  #map--{{ id }}.maps .map-section__map-placeholder-svg {
+    display: block;
+  }
+
+  #map--{{ id }}.maps .map-section__map-placeholder-svg .placeholder-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #map--{{ id }}.map__placeholder img {
+    max-height: {{ object.settings.map_height }}px;
+  }
+
+  .maps {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .map-section__map-and-overlay--{{ id }} {
+    position: relative;
+  }
+
+  .map-section__layout--split-{{ id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media only screen and (min-width: 799px) {
+    .map-section__layout--split-{{ id }} {
+      flex-direction: row;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .map-section__map-pane--{{ id }} {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .map-section__guest-sidebar--{{ id }} {
+      flex: 0 0 clamp(260px, 32%, 360px);
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .map-section__guest-sidebar--{{ id }} {
+    width: 100%;
+    display: block;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .map-section__map-and-overlay--{{ id }} .map-section__map-darken-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-section__guest-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+
+  @media only screen and (min-width: 799px) {
+    .map-section__guest-sidebar--{{ id }} .map-section__guest-card {
+      max-width: none;
+    }
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--original {
+    background: transparent;
+    box-shadow: none;
+    color: {{ settings.banner_color }};
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--darken_bg {
+    background: transparent;
+    box-shadow: none;
+    color: {{ settings.banner_color }};
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--text_box {
+    background-color: {{ settings.banner_background_color }};
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    color: {{ settings.banner_color }};
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--translucent_text_box {
+    background-color: {{ settings.banner_background_color | color_modify: 'alpha', 0.6 }};
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    color: {{ settings.banner_color }};
+  }
+
+{%- if settings.slideshow_shadow != blank -%}
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--original .map-section__guest-title,
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--original .guest-service-hours__body,
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--darken_bg .map-section__guest-title,
+  .map-section__guest-sidebar--{{ id }} .map-overlay-contrast--darken_bg .guest-service-hours__body {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+{%- endif -%}
+
+  .map-section__guest-sidebar--{{ id }} .map-section__guest-title {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: inherit;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-section__guest-address-row {
+    margin-bottom: 0;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-section__guest-address-row .guest-service-hours__body {
+    line-height: 1.45;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .map-section__guest-rule {
+    height: 1px;
+    margin: 6px 0 14px;
+    background: currentColor;
+    opacity: 0.2;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__row:last-child {
+    margin-bottom: 0;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__icon svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__body {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.35;
+    font-size: 0.875rem;
+    color: inherit;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__body a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__body a:hover,
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__body a:focus {
+    text-decoration: underline;
+    opacity: 0.88;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 4px;
+    align-items: baseline;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__day {
+    font-weight: 700;
+  }
+
+  .map-section__guest-sidebar--{{ id }} .guest-service-hours__time {
+    text-align: right;
+  }
+</style>

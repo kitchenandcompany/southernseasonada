@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer_0": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/K_C_logo_unstacked_black_vector_LG2.png",
+            "text_align": "center",
+            "social_icons_footer": true
+          }
+        },
+        "footer_1": {
+          "type": "link_list",
+          "settings": {
+            "menu": "customer-services",
+            "social_icons_footer": false
+          }
+        },
+        "footer_2": {
+          "type": "link_list",
+          "settings": {
+            "menu": "about-us",
+            "social_icons_footer": false
+          }
+        },
+        "guest_service_hours_Ry67GN": {
+          "type": "guest_service_hours",
+          "name": "Contact Information",
+          "settings": {
+            "heading": "Get in Touch",
+            "phone": "302-644-7749",
+            "email": "guestservice@kitchenandcompany.com",
+            "hours_mon": "10:00 am to 7:00 pm",
+            "hours_tue": "10:00 am to 7:00 pm",
+            "hours_wed": "10:00 am to 7:00 pm",
+            "hours_thu": "10:00 am to 7:00 pm",
+            "hours_fri": "10:00 am to 8:00 pm",
+            "hours_sat": "9:00 am to 8:00 pm",
+            "hours_sun": "10:00 am to 6:00 pm",
+            "social_icons_footer": false
+          }
+        }
+      },
+      "block_order": [
+        "footer_0",
+        "footer_1",
+        "footer_2",
+        "guest_service_hours_Ry67GN"
+      ],
+      "custom_css": [
+        "span.icon-down-arrow {color: #000 !important;}"
+      ],
+      "settings": {
+        "copyright_text": "",
+        "display_designed_by": false,
+        "display_payment_methods": true,
+        "enable_follow_on_shop": false,
+        "show_locale_selector": true,
+        "show_currency_selector": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

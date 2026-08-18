@@ -1,0 +1,9 @@
+{% comment %}
+  When a `t` key is not in the published locale files yet, Shopify outputs
+  "Translation missing: …". Use this snippet so visible/ARIA text degrades to `fallback`.
+{% endcomment %}
+{% if text contains 'Translation missing' -%}
+  {{- fallback -}}
+{%- else -%}
+  {{- text -}}
+{%- endif -%}

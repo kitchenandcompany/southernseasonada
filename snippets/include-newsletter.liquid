@@ -1,0 +1,348 @@
+{% comment %}
+** Newsletter - dynamic **
+- Draggable section
+{% endcomment %}
+
+{% liquid
+  if type == 'block'
+    assign object = block
+  else
+    assign object = section
+  endif
+
+  assign id = object.id
+
+  assign newsletter_title = object.settings.newsletter_title
+  assign newsletter_text = object.settings.newsletter_text
+  assign image = object.settings.image
+  assign mobile_image = object.settings.mobile_image
+%}
+
+{% style %}
+  {% render 'section-space' %}
+
+  #shopify-section-{{ id }} .newsletter_section {
+    background-position: {{ image.presentation.focal_point }};
+  }
+
+  @media only screen and (max-width: 480px) {
+    #shopify-section-{{ id }} .newsletter_section {
+      background-position: {{ mobile_image.presentation.focal_point }};
+    }
+  }
+
+  {% comment %} 
+    Hides accessibility labels visually while keeping them exposed to screen readers.
+    Check if your theme already has a .visually-hidden or .sr-only class! 
+  {% endcomment %}
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  {%
+    render 'css-loop',
+    css: object.settings.custom_css,
+    id: id,
+  %}
+
+  {% comment %}
+    Template Newsletter section (not footer): inline heading + email + button.
+    Scoped to #shopify-section-{{ id }} so it wins over theme .newsletter width rules.
+  {% endcomment %}
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__signup-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__signup-cluster {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 28px;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__signup-heading {
+    margin: 0;
+    flex: 0 0 auto;
+    max-width: 100%;
+    text-align: start;
+    align-self: center;
+    line-height: 1.25;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter.newsletter--inline-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1 1 340px;
+    min-width: 0;
+    max-width: 580px;
+    width: auto;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter--inline-signup form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__names-row {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__email-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px 12px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__email-row input.contact_email[type="email"] {
+    flex: 1 1 220px;
+    min-width: 0;
+    width: auto !important;
+    max-width: none;
+    min-height: 44px;
+    max-height: none;
+    height: auto;
+    margin-bottom: 0 !important;
+    float: none !important;
+    box-sizing: border-box;
+  }
+  #shopify-section-{{ id }} .newsletter_section .newsletter-section__email-row .newsletter-form__sign-up {
+    flex: 0 0 auto;
+    width: auto !important;
+    min-height: 44px;
+    height: auto;
+    max-height: none;
+    margin: 0 !important;
+    box-sizing: border-box;
+    align-self: center;
+  }
+  @media only screen and (max-width: 798px) {
+    #shopify-section-{{ id }} .newsletter_section {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      min-height: 0;
+    }
+    #shopify-section-{{ id }} .newsletter_section.newsletter-bgr-true {
+      min-height: 0 !important;
+    }
+    #shopify-section-{{ id }} .newsletter_section .section_form {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter-section__signup-row {
+      min-height: 0;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter-section__signup-cluster {
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      gap: 6px 16px;
+      min-height: 0;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter-section__signup-heading {
+      text-align: center;
+      align-self: stretch;
+      width: 100%;
+      line-height: 1.2;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter.newsletter--inline-signup {
+      width: 100%;
+      max-width: min(15rem, calc(100vw - 2.5rem));
+      flex: 0 1 auto;
+      min-width: 0;
+      min-height: 0;
+      margin-left: auto;
+      margin-right: auto;
+      align-self: center;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter--inline-signup > .message:empty {
+      display: none;
+      margin: 0;
+      padding: 0;
+      height: 0;
+      min-height: 0;
+      overflow: hidden;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter--inline-signup form {
+      gap: 6px;
+      margin-bottom: 0 !important;
+      min-height: 0;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter-section__email-row {
+      flex-direction: column;
+      align-items: stretch;
+      flex: 0 0 auto;
+      min-height: 0;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter-section__email-row input.contact_email[type="email"] {
+      flex: 0 0 auto;
+      width: 100% !important;
+      max-width: 100%;
+      height: 44px !important;
+      min-height: 44px !important;
+      max-height: 44px !important;
+      margin-bottom: 0 !important;
+      box-sizing: border-box;
+    }
+    #shopify-section-{{ id }} .newsletter_section .newsletter-section__email-row .newsletter-form__sign-up {
+      flex: 0 0 auto;
+      width: 100%;
+      height: auto;
+      min-height: 44px;
+      max-height: none;
+    }
+  }
+{% endstyle %}
+
+{% comment %} 
+  Fix 1: Gave the section an aria-label or referenced the title 
+  so it functions as a proper landmark.
+{% endcomment %}
+<section
+  class="
+    section
+    {{ object.settings.css_class }}
+    {% if object.settings.wide_display == true %}
+      is-width-wide
+      has-no-side-gutter
+    {% endif %}
+  "
+  {% if newsletter_title != blank %}
+    aria-labelledby="NewsletterHeading-{{ id }}"
+  {% else %}
+    aria-label="{{ 'general.newsletter_form.submit' | t }}"
+  {% endif %}
+>
+  <div
+    class="
+      newsletter_section
+      {% if object.settings.display_first_name and object.settings.display_last_name %}
+        newsletter-both-names--true
+      {% else %}
+        newsletter-both-names--false
+      {% endif %}
+      {% if image != blank %}
+        newsletter-bgr-true
+      {% endif %}
+      text-align--{{ object.settings.newsletter_section_text_align }}
+      lazyload
+      {{ settings.image_loading_style }}
+    "
+    {% if image != blank %}
+      data-bg="{{ image | img_url: '1600x' }}"
+      {% if mobile_image != blank %}
+        data-mobile-bg="{{ mobile_image | img_url: '800x' }}"
+      {% endif %}
+      data-sizes="100vw"
+    {% endif %}
+  >
+    <div class="container">
+      <div class="one-whole column section_form">
+        {% if newsletter_text != blank %}
+          <div class="newsletter-text newsletter-section__subheading">
+            {{ newsletter_text }}
+          </div>
+        {% endif %}
+
+        <div class="newsletter-section__signup-row">
+          <div class="newsletter-section__signup-cluster">
+            {% if newsletter_title != blank %}
+              <h2 class="title newsletter-section__signup-heading" id="NewsletterHeading-{{ id }}">{{ newsletter_title }}</h2>
+            {% endif %}
+
+            <div class="newsletter newsletter--inline-signup">
+            <span class="message" aria-live="polite"></span>
+
+            {% if settings.mailchimp_link != blank %}
+              <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" id="contact_form_{{ id }}" target="_blank">
+
+                {% if object.settings.display_first_name or object.settings.display_last_name %}
+                  <div class="input-row newsletter-section__names-row">
+                    {% if object.settings.display_first_name %}
+                      {% comment %} Fix 2: Mapped screen reader labels to inputs {% endcomment %}
+                      <label for="FNAME-{{ id }}" class="visually-hidden">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+                      <input id="FNAME-{{ id }}" type="text" value="" class="firstName" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+                    {% endif %}
+
+                    {% if object.settings.display_last_name %}
+                      <label for="LNAME-{{ id }}" class="visually-hidden">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+                      <input id="LNAME-{{ id }}" type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                <div class="input-row newsletter-section__email-row">
+                  <label for="EMAIL-{{ id }}" class="visually-hidden">{{ 'general.newsletter_form.placeholder' | t }}</label>
+                  <input id="EMAIL-{{ id }}" type="email" value="" name="EMAIL" class="contact_email" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+                  <input type="submit" aria-label="Sign up for newsletter. After signing up, it will open in a new tab." value="{{ 'general.newsletter_form.submit' | t }}" class="global-button global-button--primary newsletter-form__sign-up" name="subscribe" />
+                </div>
+              </form>
+            {% else %}
+
+              {% form 'customer', id: id %}
+                {% if form.posted_successfully? %}
+                  <p><em role="status">{{ 'general.newsletter_form.success_text' | t }}</em></p>
+                {% elsif form.errors %}
+                  <div role="alert">
+                    {% for field in form.errors %}
+                      <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+
+                {% if object.settings.display_first_name or object.settings.display_last_name %}
+                  <div class="input-row newsletter-section__names-row">
+                    {% if object.settings.display_first_name %}
+                      <label for="ContactFirstName-{{ id }}" class="visually-hidden">{{ 'general.newsletter_form.subscriber_first_name' | t }}</label>
+                      <input id="ContactFirstName-{{ id }}" type="text" class="firstName" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+                    {% endif %}
+
+                    {% if object.settings.display_last_name %}
+                      <label for="ContactLastName-{{ id }}" class="visually-hidden">{{ 'general.newsletter_form.subscriber_last_name' | t }}</label>
+                      <input id="ContactLastName-{{ id }}" type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                <div class="input-row newsletter-section__email-row">
+                  <input type="hidden" name="challenge" value="false" />
+
+                  {% comment %} Fix 3: Proper form label for the Shopify customer form email input {% endcomment %}
+                  <label for="ContactEmail-{{ id }}" class="visually-hidden">{{ 'general.newsletter_form.placeholder' | t }}</label>
+                  <input id="ContactEmail-{{ id }}" type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+
+                  <input type="submit" class="global-button global-button--primary newsletter-form__sign-up" value="{{ 'general.newsletter_form.submit' | t }}" />
+                </div>
+              {% endform %}
+
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

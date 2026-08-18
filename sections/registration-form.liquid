@@ -1,0 +1,76 @@
+<script
+  type="application/json"
+  data-section-type="registration-form"
+  data-section-id="{{ section.id }}"
+>
+</script>
+
+<section class="section">
+  <div class="container content">
+    <div class="one-whole column collection_nav">
+      <h1>{{ 'customer.register.title' | t }}</h1>
+      <div class="feature-divider"></div>
+    </div>
+
+    <div class="three-eighths columns medium-down--one-whole offset-by-five is-hidden-offset-mobile-only">
+      <br />
+
+      <div id="customer">
+        <div id="create-customer">
+          {% form 'create_customer' %}
+            {{ form.errors | default_errors }}
+
+            <div class="register-field">
+              <label for="RegisterForm-FirstName-{{ section.id }}" class="login">{{ 'customer.register.first_name' | t }}</label>
+              <input type="text" value="" name="customer[first_name]" id="RegisterForm-FirstName-{{ section.id }}" size="30" autocomplete="given-name" />
+            </div>
+
+            <div class="register-field">
+              <label for="RegisterForm-LastName-{{ section.id }}" class="login">{{ 'customer.register.last_name' | t }}</label>
+              <input type="text" value="" name="customer[last_name]" id="RegisterForm-LastName-{{ section.id }}" size="30" autocomplete="family-name" />
+            </div>
+
+            <div class="register-field">
+              <label for="RegisterForm-Email-{{ section.id }}" class="login">{{ 'customer.register.email' | t }}</label>
+              <input type="email" value="" name="customer[email]" id="RegisterForm-Email-{{ section.id }}" size="30" autocomplete="email" />
+            </div>
+
+            <div class="register-field">
+              <label for="RegisterForm-Password-{{ section.id }}" class="login">{{ 'customer.register.password' | t }}</label>
+              <input type="password" value="" name="customer[password]" id="RegisterForm-Password-{{ section.id }}" class="password" size="30" autocomplete="new-password" />
+            </div>
+
+            {% if section.settings.text %}
+              {{ section.settings.text }}
+            {% endif %}
+
+            <div class="acceptsMarketing">
+              <input type="checkbox" id="RegisterForm-AcceptsMarketing-{{ section.id }}" name="customer[accepts_marketing]">
+              <label for="RegisterForm-AcceptsMarketing-{{ section.id }}">{{ 'customer.register.accepts_marketing' | t }}</label>
+            </div>
+
+            <div class="action_bottom">
+              <input class="global-button global-button--primary" type="submit" value="{{ 'customer.register.sign_up' | t }}" />
+              <p class="right" style="padding-top: 8px;">{{ 'customer.register.returning_customer_label' | t }} <a href="{{ routes.account_login_url }}" id="customer_login_link">{{ 'customer.register.sign_in_html' | t }}</a></p>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Register",
+  "class": "shopify-section--registration-form",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ]
+}
+
+{% endschema %}

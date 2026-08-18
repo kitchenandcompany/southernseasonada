@@ -1,0 +1,43 @@
+<div class="back-to-top" data-back-to-top>
+  {% comment %}
+    Swapped to an anchor link pointing to the MainContent ID we put in theme.liquid.
+    This naturally shifts screen reader and keyboard focus back to the top of the site's content.
+  {% endcomment %}
+  <a
+    href="#top-back"
+    class="back-to-top__button global-button global-button--{{ settings.back_to_top_button_style }}"
+    aria-label="Back to top" role="button" tabindex="0"
+  >
+    {% comment %} 
+      We wrap the labels in aria-hidden="true" so screen readers ignore 
+      the visual toggle and only read the clean fallback aria-label above.
+    {% endcomment %}
+    <span aria-hidden="true">
+      <span class="back-to-top__desktop-label-wrapper">
+        <span
+          class="
+            back-to-top__button-label
+            back-to-top__button-label--desktop
+          "
+        >
+          {{- 'general.back_to_top_button.desktop_button_label' | t -}}
+        </span>
+      </span>
+
+      <span
+        class="
+          back-to-top__button-label
+          back-to-top__button-label--mobile
+        "
+      >
+        {{- 'general.back_to_top_button.mobile_button_label' | t -}}
+      </span>
+    </span>
+
+    {% comment %} 
+      Icons should always be hidden from screen readers. 
+      If you have an up arrow icon in your theme, change the class below!
+    {% endcomment %}
+    <span class="icon-down-arrow" aria-hidden="true"></span>
+  </a>
+</div>
