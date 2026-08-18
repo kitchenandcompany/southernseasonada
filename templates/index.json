@@ -63,7 +63,6 @@
           "type": "image",
           "name": "Slide - BBQHQ",
           "settings": {
-            "image": "shopify://shop_images/BBQ_3126d2fb-9586-4ac1-b923-a8be0119eebb.jpg",
             "pretext": "",
             "title": "#BBQHQ",
             "subtitle": "<p>Whether it is the perfect Grill, Charcoal or Accessory that you are looking for, we have it!</p>",
@@ -105,7 +104,6 @@
           "type": "image",
           "name": "Cooking & Baking",
           "settings": {
-            "image": "shopify://shop_images/284266244_10158332288796555_6902283072435739871_n_819d0586-2124-43f6-9f71-2ee067ab43ec.jpg",
             "link": "shopify://collections/cooking-baking",
             "title": "Cooking & Baking",
             "text": "",
@@ -270,17 +268,17 @@
           "type": "guest_service_overlay",
           "settings": {
             "caption_content_background": "original",
-            "heading": "Kitchen & Company",
-            "address": "Henlopen Plaza\n34164 Citizen Drive\nLewes, DE 19958",
-            "phone": "302-644-7749",
-            "email": "guestservice@kitchenandcompany.com",
-            "hours_mon": "9:00 am to 7:00 pm",
-            "hours_tue": "9:00 am to 7:00 pm",
-            "hours_wed": "9:00 am to 7:00 pm",
-            "hours_thu": "9:00 am to 7:00 pm",
-            "hours_fri": "9:00 am to 8:00 pm",
-            "hours_sat": "9:00 am to 8:00 pm",
-            "hours_sun": "10:00 am to 6:00 pm"
+            "heading": "Reading China & Glass",
+            "address": "Shops@Rockvale\n35 S Willow Dr\nLancaster, PA 17602",
+            "phone": "717-393-9747",
+            "email": "rcguestservice@readingchina.com",
+            "hours_mon": "10:00 am to 8:00 pm",
+            "hours_tue": "10:00 am to 8:00 pm",
+            "hours_wed": "10:00 am to 8:00 pm",
+            "hours_thu": "10:00 am to 8:00 pm",
+            "hours_fri": "10:00 am to 8:00 pm",
+            "hours_sat": "10:00 am to 8:00 pm",
+            "hours_sun": "11:00 am to 6:00 pm"
           }
         }
       },
@@ -291,7 +289,7 @@
       "settings": {
         "map_wide_display": true,
         "map_image_alt": "Store location map",
-        "map_address": "34164 Citizen Drive, Lewes, DE 19958",
+        "map_address": "35 S Willowdale Drive",
         "map_height": 400,
         "zoom_level": 15,
         "api_key": "",

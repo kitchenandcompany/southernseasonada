@@ -17,7 +17,7 @@
         "footer_0": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/K_C_logo_unstacked_black_vector_LG2.png",
+            "image": "shopify://shop_images/RCG---Black_169daaaf-dd6b-4f79-81af-205c5aa97e9c.png",
             "text_align": "center",
             "social_icons_footer": true
           }
@@ -25,14 +25,14 @@
         "footer_1": {
           "type": "link_list",
           "settings": {
-            "menu": "customer-services",
+            "menu": "",
             "social_icons_footer": false
           }
         },
         "footer_2": {
           "type": "link_list",
           "settings": {
-            "menu": "about-us",
+            "menu": "",
             "social_icons_footer": false
           }
         },
@@ -41,15 +41,15 @@
           "name": "Contact Information",
           "settings": {
             "heading": "Get in Touch",
-            "phone": "302-644-7749",
-            "email": "guestservice@kitchenandcompany.com",
-            "hours_mon": "10:00 am to 7:00 pm",
-            "hours_tue": "10:00 am to 7:00 pm",
-            "hours_wed": "10:00 am to 7:00 pm",
-            "hours_thu": "10:00 am to 7:00 pm",
+            "phone": "717-393-9747",
+            "email": "rcguestservice@readingchina.com",
+            "hours_mon": "10:00 am to 8:00 pm",
+            "hours_tue": "10:00 am to 8:00 pm",
+            "hours_wed": "10:00 am to 8:00 pm",
+            "hours_thu": "10:00 am to 8:00 pm",
             "hours_fri": "10:00 am to 8:00 pm",
-            "hours_sat": "9:00 am to 8:00 pm",
-            "hours_sun": "10:00 am to 6:00 pm",
+            "hours_sat": "10:00 am to 8:00 pm",
+            "hours_sun": "11:00 am to 6:00 pm",
             "social_icons_footer": false
           }
         }

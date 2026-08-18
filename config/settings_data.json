@@ -165,17 +165,17 @@
     "behance_link": "",
     "clubhouse_link": "",
     "discord_link": "",
-    "email_link": "guestservice@kitchenandcompany.com",
+    "email_link": "rcguestservice@readingchina.com",
     "facebook_link": "https://www.facebook.com/kitchenandcompany/",
     "flickr_link": "",
     "houzz_link": "",
-    "instagram_link": "https://www.instagram.com/kitchenandcompany/",
+    "instagram_link": "",
     "kickstarter_link": "",
     "linkedin_link": "",
     "medium_link": "",
     "messenger_link": "",
     "opensea_link": "",
-    "pinterest_link": "http://pinterest.com/kitchenandco/",
+    "pinterest_link": "",
     "reddit_link": "",
     "rss_link": "",
     "snapchat_link": "",
@@ -212,11 +212,6 @@
           "mobile_side_margin": 16,
           "mobile_bottom_margin": 46
         }
-      },
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
       },
       "12331707899451543273": {
         "type": "shopify://apps/powerx-functions/blocks/powerx-app-embed/dff772ea-9dfb-4eb2-9268-03f89642169d",
