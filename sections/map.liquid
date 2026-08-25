@@ -47,7 +47,7 @@
                 href="https://www.google.com/maps/search/?api=1&query={{ block.settings.address | url_encode }}"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="View Henlopen Plaza 34164 Citizen Drive Lewes, DE 19958 on google map(Opens in a new tab)"
+                aria-label="View {{ block.settings.address | strip_newlines | escape }} on Google Maps (opens in a new tab)"
               >{{- block.settings.address | newline_to_br -}}</a>
             </div>
           </div>

@@ -78,8 +78,8 @@
           ACCESSIBILITY FIX: This is the frame title we added.
           URL Reverted to http:// to comply with theme script matching.
         {% endcomment %}
-        <a href="https://maps.app.goo.gl/XLhRKcA4rNLsFCjn9" class="new-map-added" aria-label="Kitchen & Company 34164 Citizen Drive, Henlopen Ct, Lewes, DE 19958 Google Map Location">
-        <img alt="Kitchen & Company 34164 Citizen Drive, Henlopen Ct, Lewes, DE 19958 Google Map Location" src="https://cdn.shopify.com/s/files/1/0474/2338/9856/files/Screen_Shot_2026-07-25_at_9.55.26_PM.png?v=1785343614" />
+        <a href="https://www.google.com/maps/search/?api=1&query={{ map_address | default: 'Reading China & Glass, 35 S Willowdale Dr, Lancaster, PA 17602' | url_encode }}" class="new-map-added" target="_blank" rel="noopener noreferrer" aria-label="Reading China & Glass, 35 S Willowdale Dr, Lancaster, PA 17602 Google Map Location (opens in a new tab)">
+        <img alt="Reading China & Glass, 35 S Willowdale Dr, Lancaster, PA 17602 Google Map Location" src="{{ 'rcg-map-rockvale.png' | asset_url }}" width="1024" height="340" />
         </a>
         {% comment %} <iframe
           title="{{ map_iframe_title | escape }}"
