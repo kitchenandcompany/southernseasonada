@@ -1,17 +1,21 @@
 .feature-wrap h2.title{
     background-color: #00000001 !important;
+    color: inherit !important;
 }
 
 a span.visually-hidden {
     background-color: #000000 !important;
+    color: #ffffff !important;
 }
 
 span.price-ui-badge__sticker-text {
     background-color: #D24141 !important;
+    color: #ffffff !important;
 }
 
 span.was_price span.money {
     color: #EB0000 !important;
+    background-color: transparent !important;
 }
 
 .sr-only.visually-hidden h2 p a,
@@ -20,10 +24,12 @@ a.breadcrumb_link span,
 a.shopify-payment-button__more-options,
 a.visually-hidden.skip-link {
     color: #C65010 !important;
+    background-color: transparent !important;
 }
 
 label.visually-hidden {
     background-color: #C65010 !important;
+    color: #ffffff !important;
 }
 
 /* .cart_content {
@@ -70,6 +76,7 @@ button.enblk-btn-submit,
 .newsletter-text.newsletter-section__subheading p,
 .newsletter_section {
     background-color: #C65010 !important;
+    color: #ffffff !important;
 }
 
 @media (max-width: 767px) {
@@ -122,10 +129,12 @@ span.back-to-top__button-label.back-to-top__button-label--mobile,
 span.back-to-top__button-label.back-to-top__button-label--desktop,
 span.icon-down-arrow{
     color: #fff !important;
+    background-color: transparent !important;
 }
 
 .search-form--header .search-form__submit-button:hover{
     color: #000 !important;
+    background-color: transparent !important;
 }
 
 .product-wrap:focus-within .thumbnail-overlay {
@@ -150,7 +159,7 @@ span.icon-down-arrow{
 span.compare-at-price span.money,
 span.visually-hidden-link {
     color: #EB0000 !important;
-    
+    background-color: transparent !important;
 }
 
 a.icon-twitter-share:focus-within,
@@ -172,4 +181,3 @@ a.global-button.feature-details__button {
     font-weight: 400 !important;
 
 }
- 

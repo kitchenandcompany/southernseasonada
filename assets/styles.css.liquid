@@ -3649,6 +3649,7 @@ h1, .age-gate__heading {
   text-transform: {{ settings.headline_font_style }};
   line-height: 1.5;
   color: {{ settings.headline_color }};
+  background-color: transparent;
   display: block;
   letter-spacing: {{ settings.headline_letter_spacing | append: 'px' }};
   text-rendering: optimizeLegibility;
@@ -3679,6 +3680,7 @@ h2.title {
   text-transform: {{ settings.headline_font_style }};
   line-height: 1.5;
   color: {{ settings.headline_color }};
+  background-color: transparent;
   display: block;
   letter-spacing: {{ settings.headline_letter_spacing | append: 'px' }};
   text-rendering: optimizeLegibility;
@@ -3879,6 +3881,7 @@ div.collection_title_tags {
   text-transform: {{ settings.headline_font_style }};
   line-height: 1.5;
   color: {{ settings.headline_color }};
+  background-color: transparent;
   display: block;
   letter-spacing: {{ settings.headline_letter_spacing | append: 'px' }};
   text-rendering: optimizeLegibility;
@@ -4091,6 +4094,7 @@ div.breadcrumb-collection.breadcrumb-collection--product {
 .breadcrumb_text .breadcrumb-divider,
 .article-pagination .breadcrumb-divider {
   color: {{ settings.link_color }};
+  background-color: transparent;
   margin: 0 5px;
 }
 
@@ -4103,12 +4107,14 @@ div.breadcrumb-collection.breadcrumb-collection--product {
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:visited,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link span {
   color: #9a3b0b;
+  background-color: transparent;
 }
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:hover,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:focus,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:hover span,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:focus span {
   color: #7a2f08;
+  background-color: transparent;
 }
 
 .breadcrumb {
@@ -4126,6 +4132,7 @@ a,
 a:visited,
 a span {
   color: {{ settings.link_color }};
+  background-color: transparent;
   text-decoration: none;
   position: relative;
   transition: color 0.1s linear;
@@ -12217,6 +12224,7 @@ img.footer-logo {
 .footer a,
 .footer a:visited {
   color: {{ settings.sub_footer_link_color }};
+  background-color: transparent;
   font-size: {{ settings.footer_font_size | append: 'px' }};
 }
 
@@ -12340,6 +12348,8 @@ img.footer-logo {
 .footer-credits__bottom .credits {
   text-align: left;
   padding-top: 20px;
+  color: {{ settings.sub_footer_text_color }};
+  background-color: transparent;
 }
 
 /* Currency / language switcher in footer */
@@ -17714,6 +17724,8 @@ footer .social_icons a:hover {
   border-bottom-width: {{ settings.headline_border | append: 'px' }};
   border-bottom-style: {{ settings.divider_style }};
   border-color: {{ settings.headline_border_color }};
+  color: {{ settings.regular_color }};
+  background-color: transparent;
 }
 
 /* #Home page - Rich text and image
@@ -19487,6 +19499,13 @@ display:none;
 .menu-toggle:focus,
 .menu-toggle:focus-visible {
   outline: 2px solid #000;
+}
+
+/* Skip links: pair color/background in default state (WCAG F24); focus styles below reveal them. */
+a.skip-link,
+a.skip-to-content-link {
+  color: {{ settings.link_color }};
+  background-color: transparent;
 }
 
 /* #Accessibility — WCAG-oriented (beyond automated Lighthouse checks)

@@ -3452,6 +3452,7 @@ h1, .age-gate__heading {
   text-transform: uppercase;
   line-height: 1.5;
   color: #333333;
+  background-color: transparent;
   display: block;
   letter-spacing: 2px;
   text-rendering: optimizeLegibility;
@@ -3683,6 +3684,7 @@ div.collection_title_tags {
   text-transform: uppercase;
   line-height: 1.5;
   color: #333333;
+  background-color: transparent;
   display: block;
   letter-spacing: 2px;
   text-rendering: optimizeLegibility;
@@ -3875,6 +3877,7 @@ div.breadcrumb-collection.breadcrumb-collection--product {
 .breadcrumb_text .breadcrumb-divider,
 .article-pagination .breadcrumb-divider {
   color: #03a196;
+  background-color: transparent;
   margin: 0 5px;
 }
 
@@ -3887,12 +3890,14 @@ div.breadcrumb-collection.breadcrumb-collection--product {
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:visited,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link span {
   color: #9a3b0b;
+  background-color: transparent;
 }
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:hover,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:focus,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:hover span,
 .breadcrumb-wrapper .nav_arrows .breadcrumb_link:focus span {
   color: #7a2f08;
+  background-color: transparent;
 }
 
 .breadcrumb {
@@ -3910,6 +3915,7 @@ a,
 a:visited,
 a span {
   color: #03a196;
+  background-color: transparent;
   text-decoration: none;
   position: relative;
   transition: color 0.1s linear;
@@ -11595,6 +11601,7 @@ img.footer-logo {
 .footer a,
 .footer a:visited {
   color: #7f8c8d;
+  background-color: transparent;
   font-size: 13px;
 }
 
@@ -11718,6 +11725,8 @@ img.footer-logo {
 .footer-credits__bottom .credits {
   text-align: left;
   padding-top: 20px;
+  color: #7f8c8d;
+  background-color: transparent;
 }
 
 /* Currency / language switcher in footer */
@@ -16978,6 +16987,8 @@ footer .social_icons a:hover {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-color: #aaaaaa;
+  color: #000000;
+  background-color: transparent;
 }
 
 /* #Home page - Rich text and image
@@ -18643,6 +18654,13 @@ footer .social_icons a:hover {
 */
 /* #Custom Styles
 ================================================== */
+
+/* Skip links: pair color/background in default state (WCAG F24); focus styles below reveal them. */
+a.skip-link,
+a.skip-to-content-link {
+  color: #03a196;
+  background-color: transparent;
+}
 
 /* #Accessibility — WCAG-oriented (skip link, focus-visible, reduced motion) */
 a.skip-link:focus,
