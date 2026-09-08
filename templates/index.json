@@ -104,6 +104,7 @@
           "type": "image",
           "name": "Cooking & Baking",
           "settings": {
+            "image": "shopify://shop_images/68296966_2579112718816588_7948661997220921344_o.jpg",
             "link": "shopify://collections/cooking-baking",
             "title": "Cooking & Baking",
             "text": "",
