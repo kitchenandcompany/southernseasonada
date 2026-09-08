@@ -134,18 +134,29 @@
             "text": "",
             "button_label": "SHOP NOW"
           }
+        },
+        "image_gyjeNW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_11_924044b6-5445-49bd-b1a5-ce92aa8f089f.png",
+            "link": "shopify://collections/local",
+            "title": "A Taste of Lancaster County",
+            "text": "",
+            "button_label": ""
+          }
         }
       },
       "block_order": [
         "block-2",
         "block-3",
-        "block-1"
+        "block-1",
+        "image_gyjeNW"
       ],
       "name": "Featured Promotions",
       "settings": {
         "wide_display": false,
         "promo_text_on_image_enabled": true,
-        "featured_promos_per_row": 3,
+        "featured_promos_per_row": 4,
         "featured_links_animation": "fadeInDown",
         "feature_style": "rounded",
         "padding_top": 0,
