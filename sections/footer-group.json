@@ -25,14 +25,14 @@
         "footer_1": {
           "type": "link_list",
           "settings": {
-            "menu": "",
+            "menu": "guest-service",
             "social_icons_footer": false
           }
         },
         "footer_2": {
           "type": "link_list",
           "settings": {
-            "menu": "",
+            "menu": "explore-reading-china-glass",
             "social_icons_footer": false
           }
         },
