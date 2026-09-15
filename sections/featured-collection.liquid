@@ -134,14 +134,7 @@
       <section class="section" aria-label="Products grid">
         <div class="container">
           <div class="one-whole column">
-            {%
-              render 'product-loop',
-              limit: section.settings.products_limit | plus: 1,
-              products: collection.products,
-              collection: collection,
-              skip_product: product,
-              products_per_row: products_per_row,
-            %}
+            {% render 'product-loop', limit: section.settings.products_limit, plus: 1, products: collection.products, collection: collection, skip_product: product, products_per_row: products_per_row %}
           </div>
         </div>
       </section>
@@ -321,4 +314,23 @@
     ]
   }
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+                  render 'product-loop',
+                  limit: section.settings.products_limit | plus: 1,
+                  products: collection.products,
+                  collection: collection,
+                  skip_product: product,
+                  products_per_row: products_per_row,
+                %}
+  to: "{% render 'product-loop', limit: section.settings.products_limit, plus: 1,
+    products: collection.products, collection: collection, skip_product: product,
+    products_per_row: products_per_row %}"
+  position: 4770..4960
+{%- endcomment -%}

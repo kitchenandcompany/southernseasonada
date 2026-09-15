@@ -6279,7 +6279,7 @@ product-cta,
   .sidebar .faceted-active-filters__remove-filter {
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 .global-button,
   product-cta,
   .custom-html-container button,
@@ -6694,7 +6694,7 @@ button.shopify-payment-button__button.shopify-payment-button__button--unbranded 
 div.shopify-payment-button__button {
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 div.shopify-payment-button__button {
     border-radius: 100px;
     max-height: 44px;
@@ -7488,7 +7488,7 @@ select {
     padding: 8px 14px 8px;
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 select {
     padding: 8px 16px 8px;
     border-radius: 100px;
@@ -8761,7 +8761,7 @@ a.continue:hover {
 .shopify-challenge__container .shopify-challenge__button {
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 .shopify-challenge__container .shopify-challenge__button {
     border-radius: 100px;
   }
@@ -9824,7 +9824,7 @@ div.is-absolute {
 .search-form__input[type=text] {
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 .search-form__input[type=text] {
     border-radius: 100px;
   }
@@ -10514,7 +10514,7 @@ a.tag,
   .paginate .current {
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 a.tag,
   .paginate .page a,
   .paginate .current {
@@ -19330,7 +19330,7 @@ footer .social_icons a:hover {
 .age-gate__confirm_btn {
     border-radius: 3px;
   }
-{%- elsif settings.button_style=="pill_shaped" -%}
+{%- elsif settings.button_style.pill_shaped -%}
 .age-gate__confirm_btn {
     border-radius: 100px;
   }
@@ -19560,4 +19560,31 @@ summary:focus-visible,
   .back-to-top__button-label[data-animation] {
     transition: none !important;
   }
-}
+}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 147766..147813
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 162595..162642
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 180368..180415
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 207313..207360
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 229929..229976
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 247380..247427
+- from: '{%- elsif settings.button_style=="pill_shaped" -%}'
+  to: "{%- elsif settings.button_style.pill_shaped -%}"
+  position: 450043..450090
+{%- endcomment -%}

@@ -95,13 +95,7 @@
               {% endif %}
 
               {% if block.settings.image %}
-                {%
-                  render 'image-element',
-                  image: block.settings.image,
-                  alt: block.settings.image.alt | default: '',
-                  stretch_width: true,
-                  focal_point: block.settings.image.presentation.focal_point,
-                %}
+                {% render 'image-element', image: block.settings.image, alt: block.settings.image.alt, default: '', stretch_width: true, focal_point: block.settings.image.presentation.focal_point %}
 
                 {% if block.settings.caption_content_background == 'darken_bg' %}
                   <div class="darken-bg" aria-hidden="true"></div>
@@ -114,13 +108,7 @@
               {% if block.settings.mobile_image %}
                 </div>
                 <div class="is-hidden-desktop-only">
-                  {%
-                    render 'image-element',
-                    image: block.settings.mobile_image,
-                    alt: block.settings.mobile_image.alt | default: '',
-                    stretch_width: true,
-                    focal_point: block.settings.mobile_image.presentation.focal_point,
-                  %}
+                  {% render 'image-element', image: block.settings.mobile_image, alt: block.settings.mobile_image.alt, default: '', stretch_width: true, focal_point: block.settings.mobile_image.presentation.focal_point %}
 
                   {% if block.settings.caption_content_background == 'darken_bg' %}
                     <div class="darken-bg" aria-hidden="true"></div>
@@ -534,4 +522,34 @@
     "groups": [ "*" ]
   }
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+                      render 'image-element',
+                      image: block.settings.image,
+                      alt: block.settings.image.alt | default: '',
+                      stretch_width: true,
+                      focal_point: block.settings.image.presentation.focal_point,
+                    %}
+  to: "{% render 'image-element', image: block.settings.image, alt: block.settings.image.alt,
+    default: '', stretch_width: true, focal_point: block.settings.image.presentation.focal_point
+    %}"
+  position: 3260..3442
+- from: |-
+    {%
+                        render 'image-element',
+                        image: block.settings.mobile_image,
+                        alt: block.settings.mobile_image.alt | default: '',
+                        stretch_width: true,
+                        focal_point: block.settings.mobile_image.presentation.focal_point,
+                      %}
+  to: "{% render 'image-element', image: block.settings.mobile_image, alt: block.settings.mobile_image.alt,
+    default: '', stretch_width: true, focal_point: block.settings.mobile_image.presentation.focal_point
+    %}"
+  position: 4001..4204
+{%- endcomment -%}

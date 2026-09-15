@@ -101,12 +101,7 @@
           {% endif %}
 
           {% if image != blank %}
-            {%
-              render 'image-element',
-              image: image,
-              alt: map_alt_primary | default: image.alt | default: fallback_alt,
-              focal_point: image.presentation.focal_point,
-            %}
+            {% render 'image-element', image: image, alt: map_alt_primary, default: fallback_alt, focal_point: image.presentation.focal_point %}
           {% else %}
             <span class="map-section__map-placeholder-svg" role="img" aria-label="{{ map_static_alt | escape }}">
               {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--map' }}
@@ -116,13 +111,7 @@
           {% if mobile_image != blank %}
             </div>
             <div class="is-hidden-desktop-only">
-              {%
-                render 'image-element',
-                image: mobile_image,
-                alt: map_alt_primary | default: mobile_image.alt | default: fallback_alt,
-                stretch_width: true,
-                focal_point: mobile_image.presentation.focal_point,
-              %}
+              {% render 'image-element', image: mobile_image, alt: map_alt_primary, default: fallback_alt, stretch_width: true, focal_point: mobile_image.presentation.focal_point %}
             </div>
           {% endif %}
         </div>
@@ -360,4 +349,32 @@
   .map-section__guest-sidebar--{{ id }} .guest-service-hours__time {
     text-align: right;
   }
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+                  render 'image-element',
+                  image: image,
+                  alt: map_alt_primary | default: image.alt | default: fallback_alt,
+                  focal_point: image.presentation.focal_point,
+                %}
+  to: "{% render 'image-element', image: image, alt: map_alt_primary, default: fallback_alt,
+    focal_point: image.presentation.focal_point %}"
+  position: 4405..4537
+- from: |-
+    {%
+                    render 'image-element',
+                    image: mobile_image,
+                    alt: map_alt_primary | default: mobile_image.alt | default: fallback_alt,
+                    stretch_width: true,
+                    focal_point: mobile_image.presentation.focal_point,
+                  %}
+  to: "{% render 'image-element', image: mobile_image, alt: map_alt_primary, default:
+    fallback_alt, stretch_width: true, focal_point: mobile_image.presentation.focal_point
+    %}"
+  position: 4935..5102
+{%- endcomment -%}
