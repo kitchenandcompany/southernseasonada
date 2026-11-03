@@ -176,6 +176,17 @@ a.global-button.feature-details__button {
     color: #fff !important;
 }
 
+.thumbnail .product_image img.product-badge--freeship {
+    position: absolute;
+    top: 0;
+    left: 2%;
+    z-index: 2;
+    width: 32%;
+    max-width: 160px;
+    height: auto;
+    pointer-events: none;
+}
+
 .nav-desktop__tier-2 .widemenu .widemenu__submenu ul.widemenu__submenu-items .widemenu__submenu-item > a{
 
     font-weight: 400 !important;
