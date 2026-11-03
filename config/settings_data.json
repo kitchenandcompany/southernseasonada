@@ -99,7 +99,7 @@
     "headline_font_size": 30,
     "headline_letter_spacing": 2,
     "slideshow_headline__font": "roboto_n4",
-    "slideshow_headline_font_style": "none",
+    "slideshow_headline_font_style": "uppercase",
     "slideshow_headline_size": 26,
     "slideshow_headline_letter_spacing": 0,
     "slideshow_headline_shadow": false,

@@ -9,12 +9,51 @@
  */
 {
   "sections": {
+    "slideshow-1": {
+      "type": "slideshow",
+      "blocks": {
+        "image_kdDqt8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ThanksgivingHQ.jpg",
+            "pretext": "",
+            "title": "Thanksgiving hq",
+            "subtitle": "<p>Everything you need for a delicious Thanksgiving.</p>",
+            "button1": "Shop Now",
+            "button1_link": "shopify://collections/thanksgiving",
+            "button1_style": "global-button--banner",
+            "button2": "",
+            "button2_link": "",
+            "button2_style": "global-button--banner",
+            "text_position": "right",
+            "text_align": "center",
+            "caption_content_background": "translucent_text_box"
+          }
+        }
+      },
+      "block_order": [
+        "image_kdDqt8"
+      ],
+      "settings": {
+        "wide_display": true,
+        "slideshow_text_animation": "fadeInDown",
+        "slideshow_animation": "slide",
+        "slideshow_speed": 6,
+        "activate_adaptiveHeight": false,
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
     "image_with_text_overlay_yCf6RX": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "name": "Banner with Link to Cook's Tools",
       "settings": {
         "wide_display": true,
-        "image": "shopify://shop_images/Coook1.jpg",
         "pretext": "",
         "title": "COOK'S TOOLS",
         "subtitle": "<p>130' Wall Featuring 2,000+ Cooking Tools</p>",
@@ -27,68 +66,7 @@
         "text_position": "right",
         "text_align": "center",
         "caption_content_background": "text_box",
-        "mobile_image": "shopify://shop_images/Coook1.jpg",
         "mobile_image_crop": false,
-        "mobile_text_below_image": true,
-        "mobile_text_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "slideshow-1": {
-      "type": "slideshow",
-      "blocks": {
-        "block-1": {
-          "type": "image",
-          "name": "Cooking Tools",
-          "settings": {
-            "image": "shopify://shop_images/Coook1.jpg",
-            "pretext": "",
-            "title": "Cooking Tools",
-            "subtitle": "<p>130 Foot Wall of Cooking Tools. </p>",
-            "button1": "SHOP NOW",
-            "button1_link": "shopify://collections/cooks-tools",
-            "button1_style": "global-button--banner-highlighted",
-            "button2": "",
-            "button2_link": "",
-            "button2_style": "global-button--banner",
-            "text_position": "right",
-            "text_align": "center",
-            "caption_content_background": "text_box"
-          }
-        },
-        "block-2": {
-          "type": "image",
-          "name": "Slide - BBQHQ",
-          "settings": {
-            "pretext": "",
-            "title": "#BBQHQ",
-            "subtitle": "<p>Whether it is the perfect Grill, Charcoal or Accessory that you are looking for, we have it!</p>",
-            "button1": "Shop Now",
-            "button1_link": "shopify://collections/bbq-outdoors",
-            "button1_style": "global-button--banner",
-            "button2": "",
-            "button2_link": "",
-            "button2_style": "global-button--banner",
-            "text_position": "right",
-            "text_align": "center",
-            "caption_content_background": "text_box"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "wide_display": true,
-        "slideshow_text_animation": "fadeInDown",
-        "slideshow_animation": "slide",
-        "slideshow_speed": 6,
-        "activate_adaptiveHeight": false,
         "mobile_text_below_image": true,
         "mobile_text_color": "",
         "padding_top": 0,
@@ -104,7 +82,6 @@
           "type": "image",
           "name": "Cooking & Baking",
           "settings": {
-            "image": "shopify://shop_images/68296966_2579112718816588_7948661997220921344_o.jpg",
             "link": "shopify://collections/cooking-baking",
             "title": "Cooking & Baking",
             "text": "",
@@ -115,8 +92,6 @@
           "type": "image",
           "name": "Featured",
           "settings": {
-            "image": "shopify://shop_images/134429494_10159101602966873_4501871983386349403_n.jpg",
-            "mobile_image": "shopify://shop_images/134429494_10159101602966873_4501871983386349403_n.jpg",
             "link": "shopify://collections/cooks-tools",
             "title": "COOK'S TOOLS",
             "text": "<p>2,000+ Cooking Tools for Every Occasion.</p>",
@@ -127,8 +102,6 @@
           "type": "image",
           "name": "Featured",
           "settings": {
-            "image": "shopify://shop_images/Irnwd_650_food_close-1201x801-d21b45d.jpg",
-            "mobile_image": "shopify://shop_images/Irnwd_650_food_close-1201x801-d21b45d.jpg",
             "link": "shopify://collections/bbq-outdoors",
             "title": "BBQ & Outdoors",
             "text": "",
@@ -138,7 +111,6 @@
         "image_gyjeNW": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/image_11_924044b6-5445-49bd-b1a5-ce92aa8f089f.png",
             "link": "shopify://collections/local",
             "title": "A Taste of Lancaster County",
             "text": "",
@@ -331,8 +303,8 @@
     }
   },
   "order": [
-    "image_with_text_overlay_yCf6RX",
     "slideshow-1",
+    "image_with_text_overlay_yCf6RX",
     "featured-promotions-1",
     "featured_collection_4kddXg",
     "testimonials-1",
