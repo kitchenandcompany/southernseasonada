@@ -72,25 +72,16 @@
       </div>
 
     {% elsif map_address != blank and object.settings.api_key == blank %}
-      <div>
-        
-        {% comment %} 
-          ACCESSIBILITY FIX: This is the frame title we added.
-          URL Reverted to http:// to comply with theme script matching.
-        {% endcomment %}
-        <a href="https://www.google.com/maps/search/?api=1&query={{ map_address | default: 'Reading China & Glass, 35 S Willowdale Dr, Lancaster, PA 17602' | url_encode }}" class="new-map-added" target="_blank" rel="noopener noreferrer" aria-label="Reading China & Glass, 35 S Willowdale Dr, Lancaster, PA 17602 Google Map Location (opens in a new tab)">
-        <img alt="Reading China & Glass, 35 S Willowdale Dr, Lancaster, PA 17602 Google Map Location" src="{{ 'rcg-map-rockvale.png' | asset_url }}" width="1024" height="340" />
-        </a>
-        {% comment %} <iframe
+      <div id="map--{{ id }}" class="maps map-section__embed">
+        <iframe
           title="{{ map_iframe_title | escape }}"
           width="100%"
           height="{{ object.settings.map_height }}"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-          src="https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q={% if map_address != blank %}{{ map_address | strip_html | replace: ' ', '+' }}{% else %}{{ shop.address.street }}{% endif %}&z={{ object.settings.zoom_level }}&output=embed">
-        </iframe> {% endcomment %}
+          style="border: 0; display: block;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q={{ map_address | strip_html | url_encode }}&z={{ object.settings.zoom_level }}&hl=en&output=embed">
+        </iframe>
       </div>
     {% else %}
       {% unless template contains 'page.contact-custom' %}

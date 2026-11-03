@@ -112,26 +112,6 @@
 {% endcomment %}
 {% include 'include-map-new', iframe_title: section.settings.map_iframe_title, map_overlay: map_overlay, map_overlay_title_id: map_overlay_title_id, map_overlay_contrast: map_overlay_contrast %}
 
-{% comment %} 
-  =============================================================================
-  WCAG 2.2 ACCESSIBILITY FALLBACK
-  This creates a screen-reader accessible section that won't break your visual layout.
-  =============================================================================
-{% endcomment %}
-{% if section.settings.map_address != blank %}
-  {% capture map_sr_h %}{{ 'general.accessibility.map_sr_heading' | t }}{% endcapture %}
-  {% capture map_sr_addr %}{{ 'general.accessibility.map_sr_address' | t: address: section.settings.map_address }}{% endcapture %}
-  {% capture map_sr_addr_fb %}Our address: {{ section.settings.map_address }}{% endcapture %}
-  {% capture map_sr_dir %}{{ 'general.accessibility.map_open_directions' | t }}{% endcapture %}
-  <div class="sr-only visually-hidden" role="presentation" tabindex="-1" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">
-    <h2>{% render 'a11y-missing-fallback', text: map_sr_h, fallback: 'Store location' %}</h2>
-    <p>{% render 'a11y-missing-fallback', text: map_sr_addr, fallback: map_sr_addr_fb %}</p>
-    <a href="https://www.google.com/maps/search/?api=1&query={{ section.settings.map_address | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="{% render 'a11y-missing-fallback', text: map_sr_dir, fallback: 'Open directions in Google Maps (opens in a new window)' %}">
-      {% render 'a11y-missing-fallback', text: map_sr_dir, fallback: 'Open directions in Google Maps (opens in a new window)' %}
-    </a>
-  </div>
-{% endif %}
-
 {% schema %}
 {
   "name": "Map",
