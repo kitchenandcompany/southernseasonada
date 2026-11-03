@@ -139,7 +139,7 @@
     "display_tos_checkbox": false,
     "tos_page": "",
     "go_to_checkout": true,
-    "display_special_instructions": false,
+    "display_special_instructions": true,
     "display_savings": true,
     "cart_message": "",
     "show_shipping_calculator": false,
