@@ -87,9 +87,13 @@ button.enblk-btn-submit {
 }
 
 .newsletter_section .newsletter-section__signup-cluster {
-    width: 100% !important;
+    width: fit-content !important;
     max-width: 1200px;
-    justify-content: space-between !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px 28px !important;
 }
 
 .newsletter_section h2.newsletter-section__signup-heading {
@@ -97,12 +101,15 @@ button.enblk-btn-submit {
     font-size: 28px;
     font-weight: 700;
     line-height: 1.5;
+    margin: 0 !important;
+    align-self: center;
 }
 
 .newsletter_section .newsletter.newsletter--inline-signup {
     flex: 0 1 640px !important;
+    width: 640px;
     max-width: 640px !important;
-    margin: 0 auto;
+    margin: 0 !important;
 }
 
 .newsletter_section .newsletter-section__email-row {
