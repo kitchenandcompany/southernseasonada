@@ -17,7 +17,7 @@
         "footer_0": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/RCG---Black_169daaaf-dd6b-4f79-81af-205c5aa97e9c.png",
+            "image": "shopify://shop_images/ss_logo_horizontal_color-01.png",
             "text_align": "center",
             "social_icons_footer": true
           }
@@ -25,14 +25,14 @@
         "footer_1": {
           "type": "link_list",
           "settings": {
-            "menu": "guest-service",
+            "menu": "customer-service",
             "social_icons_footer": false
           }
         },
         "footer_2": {
           "type": "link_list",
           "settings": {
-            "menu": "explore-reading-china-glass",
+            "menu": "explore-southern-season",
             "social_icons_footer": false
           }
         },
@@ -41,9 +41,9 @@
           "name": "Contact Information",
           "settings": {
             "heading": "Get in Touch",
-            "phone": "717-393-9747",
-            "email": "rcguestservice@readingchina.com",
-            "hours_mon": "10:00 am to 8:00 pm",
+            "phone": "1-1800-253-3663",
+            "email": "guesthelp@southernseason",
+            "hours_mon": "",
             "hours_tue": "10:00 am to 8:00 pm",
             "hours_wed": "10:00 am to 8:00 pm",
             "hours_thu": "10:00 am to 8:00 pm",
@@ -64,7 +64,7 @@
         "span.icon-down-arrow {color: #000 !important;}"
       ],
       "settings": {
-        "copyright_text": "",
+        "copyright_text": "All Rights Reserved.",
         "display_designed_by": false,
         "display_payment_methods": true,
         "enable_follow_on_shop": false,
