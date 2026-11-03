@@ -11,6 +11,21 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "SIGN UP FOR OUR NEWSLETTER",
+        "newsletter_text": "",
+        "newsletter_section_text_align": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -74,6 +89,7 @@
     }
   },
   "order": [
+    "newsletter",
     "footer"
   ]
 }

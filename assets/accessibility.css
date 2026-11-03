@@ -71,12 +71,82 @@ label.visually-hidden {
     padding-top: 50px; /* 50-60px adjust kar sakte ho */
 }
 
-button.enblk-btn-submit,
-.one-whole.column.section_form,
-.newsletter-text.newsletter-section__subheading p,
-.newsletter_section {
+button.enblk-btn-submit {
     background-color: #C65010 !important;
     color: #ffffff !important;
+}
+
+.newsletter_section,
+.newsletter_section .section_form {
+    background-color: #E31837 !important;
+    color: #ffffff !important;
+}
+
+.newsletter_section .section_form {
+    padding: 20px 0;
+}
+
+.newsletter_section .newsletter-section__signup-cluster {
+    width: 100% !important;
+    max-width: 1200px;
+    justify-content: space-between !important;
+}
+
+.newsletter_section h2.newsletter-section__signup-heading {
+    color: #ffffff !important;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.newsletter_section .newsletter.newsletter--inline-signup {
+    flex: 0 1 640px !important;
+    max-width: 640px !important;
+    margin: 0 auto;
+}
+
+.newsletter_section .newsletter-section__email-row {
+    gap: 5px !important;
+}
+
+.newsletter_section input.contact_email[type="email"] {
+    background-color: #ffffff;
+    color: #5F6A7D;
+    border: 0;
+    border-radius: 3px;
+    padding: 0 10px;
+    height: 44px;
+}
+
+.newsletter_section input.newsletter-form__sign-up[type="submit"] {
+    width: 120px !important;
+    background-color: #E31837 !important;
+    border: 1px solid #E31837 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.newsletter_section input:focus-visible {
+    outline: 2px solid #ffffff !important;
+    outline-offset: 2px;
+}
+
+@media only screen and (max-width: 798px) {
+    .newsletter_section h2.newsletter-section__signup-heading {
+        font-size: 22px;
+    }
+
+    .newsletter_section .newsletter.newsletter--inline-signup {
+        flex: 0 1 auto !important;
+        max-width: 100% !important;
+        width: 100%;
+    }
+
+    .newsletter_section input.newsletter-form__sign-up[type="submit"] {
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 767px) {

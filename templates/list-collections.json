@@ -24,25 +24,9 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "wide_display": true,
-        "display_first_name": false,
-        "display_last_name": false,
-        "newsletter_title": "Subscribe",
-        "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …</p>",
-        "newsletter_section_text_align": "center",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
-      }
     }
   },
   "order": [
-    "main",
-    "newsletter"
+    "main"
   ]
 }
