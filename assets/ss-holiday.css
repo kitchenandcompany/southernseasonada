@@ -599,12 +599,26 @@ a.ss-categories__link:hover .ss-categories__title {
 /* Title over image: keep the shade on at every screen size so the white title stays readable */
 
 .ss-promos .feature-section.title-overlay-true .feature-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, var(--fp-shade-desktop, 0.5));
 }
 
 .ss-promos .feature-section.title-overlay-true:hover .feature-overlay,
 .ss-promos .feature-section.title-overlay-true:focus-within .feature-overlay {
-  background: rgba(0, 0, 0, 0.62);
+  background: rgba(0, 0, 0, min(0.9, calc(var(--fp-shade-desktop, 0.5) + 0.12)));
+}
+
+[data-fp-shade] .featured-promotions .feature-section:hover .feature-overlay {
+  background: rgba(0, 0, 0, var(--fp-shade-desktop, 0.5));
+}
+
+@media only screen and (max-width: 798px) {
+  [data-fp-shade] .featured-promotions .feature-section .feature-overlay,
+  [data-fp-shade] .featured-promotions .feature-section:hover .feature-overlay,
+  [data-fp-shade].ss-promos .featured-promotions .feature-section.title-overlay-true .feature-overlay,
+  [data-fp-shade].ss-promos .featured-promotions .feature-section.title-overlay-true:hover .feature-overlay,
+  [data-fp-shade].ss-promos .featured-promotions .feature-section.title-overlay-true:focus-within .feature-overlay {
+    background: rgba(0, 0, 0, var(--fp-shade-mobile, 0.5));
+  }
 }
 
 .ss-promos .feature-section.title-overlay-true .feature-wrap .title {

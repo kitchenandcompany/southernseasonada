@@ -31,6 +31,8 @@
       {{ section.settings.css_class }}
     "
     {% if section.settings.heading != blank %}aria-labelledby="FeaturedPromotionsHeading-{{ id }}"{% endif %}
+    data-fp-shade
+    style="--fp-shade-desktop: {{ section.settings.overlay_desktop | default: 50 | divided_by: 100.0 }}; --fp-shade-mobile: {{ section.settings.overlay_mobile | default: 50 | divided_by: 100.0 }};"
   >
     {% if section.settings.heading != blank %}
       <div class="container">
@@ -172,6 +174,27 @@
       "id": "promo_text_on_image_enabled",
       "label": "Show title on image",
       "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_desktop",
+      "label": "Image shade on desktop",
+      "info": "How dark the shade behind titles is. Below about 40%, white titles can be hard to read on light photos.",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "overlay_mobile",
+      "label": "Image shade on mobile",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 50
     },
     {
       "type": "range",
