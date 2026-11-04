@@ -100,7 +100,7 @@
         "products_limit": 4,
         "padding_top": 0,
         "padding_bottom": 0,
-        "css_class": "ss-band ss-band--blush ss-band--cards",
+        "css_class": "ss-band ss-band--blush",
         "custom_css": ""
       }
     },
