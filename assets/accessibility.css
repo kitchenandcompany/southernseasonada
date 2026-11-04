@@ -268,6 +268,13 @@ a.global-button.feature-details__button {
     position: relative;
 }
 
+img.product-badge--freeship,
+.product_gallery .image__container img.product-badge--freeship {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
 .product_gallery .image__container img.product-badge--freeship {
     position: absolute;
     top: 0;
