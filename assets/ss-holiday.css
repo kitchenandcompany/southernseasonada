@@ -356,8 +356,15 @@ a.ss-categories__link:hover .ss-categories__title {
   color: #30302F;
 }
 
+.ss-band .product-list {
+  justify-content: center;
+}
+
 .ss-band .thumbnail .price,
-.ss-band .thumbnail .price .money {
+.ss-band .thumbnail .price .money,
+.ss-band .thumbnail .current_price span.money,
+.ss-band .thumbnail-hover-enabled--false .price:not(.sale) .current_price span.money,
+.ss-band .thumbnail.quick-shop-style--popup .current_price span.money {
   font-family: var(--ss-font-body);
   font-weight: 700;
   font-size: 17px;
@@ -735,7 +742,10 @@ a.ss-ship__pill:hover {
   }
 
   .ss-band .thumbnail .price,
-  .ss-band .thumbnail .price .money {
+  .ss-band .thumbnail .price .money,
+  .ss-band .thumbnail .current_price span.money,
+  .ss-band .thumbnail-hover-enabled--false .price:not(.sale) .current_price span.money,
+  .ss-band .thumbnail.quick-shop-style--popup .current_price span.money {
     font-size: 15px;
   }
 
