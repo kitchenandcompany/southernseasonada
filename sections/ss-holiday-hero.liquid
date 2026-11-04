@@ -42,7 +42,7 @@
         aria-label="{{ forloop.index }} of {{ slide_count }}"
         data-ss-hero-slide
         data-block-id="{{ block.id }}"
-        style="--ss-hero-bg: {{ block.settings.background_color }}; --ss-hero-text: {{ block.settings.text_color }};"
+        style="--ss-hero-bg: {{ block.settings.background_color }}; --ss-hero-text: {{ block.settings.text_color }}; --ss-hero-btn-bg: {{ block.settings.button_color | default: '#0E553C' }}; --ss-hero-btn-text: {{ block.settings.button_text_color | default: '#FFFFFF' }};"
         {% unless forloop.first %}hidden{% endunless %}
         {{ block.shopify_attributes }}
       >
@@ -342,7 +342,21 @@
           "type": "color",
           "id": "text_color",
           "label": "Text color",
+          "info": "Also used for the secondary (outline) button",
           "default": "#30302F"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Primary button color",
+          "info": "Pick a color that stands out from the panel background, such as Southern Season red on a green panel",
+          "default": "#0E553C"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Primary button text",
+          "default": "#FFFFFF"
         }
       ]
     }

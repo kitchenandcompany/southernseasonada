@@ -184,6 +184,38 @@
   object-fit: cover;
 }
 
+.ss-hero .ss-btn--primary,
+.ss-hero .ss-btn--primary:visited {
+  background: var(--ss-hero-btn-bg, #0E553C);
+  border-color: var(--ss-hero-btn-bg, #0E553C);
+  color: var(--ss-hero-btn-text, #ffffff);
+}
+
+.ss-hero .ss-btn--primary:hover,
+.ss-hero .ss-btn--primary:focus {
+  background: var(--ss-hero-btn-bg, #0E553C);
+  border-color: var(--ss-hero-btn-bg, #0E553C);
+  color: var(--ss-hero-btn-text, #ffffff);
+  filter: brightness(0.85);
+}
+
+.ss-hero .ss-btn--outline,
+.ss-hero .ss-btn--outline:visited {
+  border-color: var(--ss-hero-text, #30302F);
+  color: var(--ss-hero-text, #30302F);
+}
+
+.ss-hero .ss-btn--outline:hover,
+.ss-hero .ss-btn--outline:focus {
+  background: var(--ss-hero-text, #30302F);
+  border-color: var(--ss-hero-text, #30302F);
+  color: var(--ss-hero-bg, #F6EEDE);
+}
+
+.ss-hero .ss-btn:focus-visible {
+  outline-color: var(--ss-hero-text, #005fcc);
+}
+
 .ss-hero--image-left {
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
