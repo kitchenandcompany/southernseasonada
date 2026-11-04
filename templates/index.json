@@ -18,6 +18,8 @@
             "badge": "2026 Catalog",
             "heading": "Holiday Gifts",
             "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
+            "heading_size": 76,
+            "subheading_size": 22,
             "image": "shopify://shop_images/HP.png",
             "image_position": "right",
             "button1_label": "Shop Holiday Gifts",
@@ -25,22 +27,29 @@
             "button2_label": "ORDER HOLIDAy extravaganza",
             "button2_link": "shopify://pages/christmas-in-person-shopping",
             "background_color": "#f6eede",
-            "text_color": "#30302f"
+            "text_color": "#30302f",
+            "button_color": "#0e553c",
+            "button_text_color": "#ffffff"
           }
         },
         "slide_7nPbLW": {
           "type": "slide",
           "settings": {
-            "badge": "",
+            "badge": "Thanksgiving is on 11/26",
             "heading": "Thanksgiving Headquarters",
-            "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
+            "subheading": "Everything you need for a delicious Thanksgiving.",
+            "heading_size": 40,
+            "subheading_size": 22,
+            "image": "shopify://shop_images/ThanksgivingHQ.jpg",
             "image_position": "left",
-            "button1_label": "Shop Holiday Gifts",
-            "button1_link": "",
-            "button2_label": "View the Catalog",
+            "button1_label": "SHOP NOW",
+            "button1_link": "shopify://collections/thanksgiving",
+            "button2_label": "",
             "button2_link": "",
             "background_color": "#f6eede",
-            "text_color": "#30302f"
+            "text_color": "#30302f",
+            "button_color": "#0e553c",
+            "button_text_color": "#ffffff"
           }
         }
       },
