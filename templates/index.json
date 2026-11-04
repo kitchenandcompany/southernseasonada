@@ -73,7 +73,7 @@
             "link": "shopify://collections/gift-crates-1",
             "title": "Gift Crates",
             "text": "",
-            "button_label": ""
+            "button_label": "SHOP NOW"
           }
         },
         "promo_2": {
@@ -83,17 +83,17 @@
             "link": "shopify://collections/gift-totes",
             "title": "Gift Totes",
             "text": "",
-            "button_label": ""
+            "button_label": "Shop now"
           }
         },
         "promo_3": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Bestsellers.png",
-            "link": "",
+            "link": "shopify://collections/carolina-pride",
             "title": "Bestsellers",
             "text": "",
-            "button_label": ""
+            "button_label": "SHOP NOW"
           }
         },
         "promo_4": {
