@@ -15,12 +15,13 @@
         "badge": "2026 Catalog",
         "heading": "Holiday Gifts",
         "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
+        "image": "shopify://shop_images/HP.png",
         "button1_label": "Shop Holiday Gifts",
         "button1_link": "shopify://collections/holiday",
         "button2_label": "View the Catalog",
         "button2_link": "",
-        "background_color": "#F6EEDE",
-        "text_color": "#30302F"
+        "background_color": "#f6eede",
+        "text_color": "#30302f"
       }
     },
     "ss_categories": {
@@ -28,27 +29,45 @@
       "blocks": {
         "category_1": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "title": "",
+            "link": ""
+          }
         },
         "category_2": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "title": "",
+            "link": ""
+          }
         },
         "category_3": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "title": "",
+            "link": ""
+          }
         },
         "category_4": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "title": "",
+            "link": ""
+          }
         },
         "category_5": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "title": "",
+            "link": ""
+          }
         },
         "category_6": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "title": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -63,7 +82,7 @@
         "eyebrow": "",
         "heading": "Shop By Category",
         "columns": 3,
-        "background_color": "#FFFFFF"
+        "background_color": "#ffffff"
       }
     },
     "seasons_best": {
@@ -142,9 +161,9 @@
         "pill_text": "Over 20 Gifts Ship Free",
         "pill_link": "",
         "footnote": "Free shipping applies to standard shipping only. Excludes PO Box, APO/FPO, AK & HI addresses.",
-        "background_color": "#0E553C",
-        "text_color": "#F6EEDE",
-        "accent_color": "#DDB868"
+        "background_color": "#0e553c",
+        "text_color": "#f6eede",
+        "accent_color": "#ddb868"
       }
     },
     "warehouse_store": {
