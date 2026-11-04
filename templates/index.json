@@ -119,10 +119,11 @@
         "promo_6": {
           "type": "image",
           "settings": {
-            "link": "",
-            "title": "",
+            "image": "shopify://shop_images/chctg.png",
+            "link": "shopify://collections/christmas-chocolates-truffles",
+            "title": "Chocolates & More",
             "text": "",
-            "button_label": ""
+            "button_label": "SHOP NOW"
           }
         }
       },
