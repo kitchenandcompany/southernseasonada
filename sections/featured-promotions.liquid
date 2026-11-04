@@ -13,6 +13,12 @@
 {% style %}
   {% render 'section-space' %}
 
+  {% if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' %}
+    #shopify-section-{{ id }} {
+      background-color: {{ section.settings.background_color }};
+    }
+  {% endif %}
+
   {%
     render 'css-loop',
     css: section.settings.custom_css,
@@ -32,7 +38,7 @@
     "
     {% if section.settings.heading != blank %}aria-labelledby="FeaturedPromotionsHeading-{{ id }}"{% endif %}
     data-fp-shade
-    style="--fp-shade-desktop: {{ section.settings.overlay_desktop | default: 50 | divided_by: 100.0 }}; --fp-shade-mobile: {{ section.settings.overlay_mobile | default: 50 | divided_by: 100.0 }};{% if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' %} background-color: {{ section.settings.background_color }};{% endif %}"
+    style="--fp-shade-desktop: {{ section.settings.overlay_desktop | default: 50 | divided_by: 100.0 }}; --fp-shade-mobile: {{ section.settings.overlay_mobile | default: 50 | divided_by: 100.0 }};"
   >
     {% if section.settings.heading != blank %}
       <div class="container">
