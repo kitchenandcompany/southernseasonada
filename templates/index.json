@@ -222,9 +222,9 @@
         "heading": "Order by",
         "heading_date": "Dec 16",
         "subheading": "for Christmas delivery with standard shipping.",
-        "pill_text": "Over 20 Gifts Ship Free",
+        "pill_text": "",
         "pill_link": "",
-        "footnote": "Free shipping applies to standard shipping only. Excludes PO Box, APO/FPO, AK & HI addresses.",
+        "footnote": "",
         "background_color": "#0e553c",
         "text_color": "#f6eede",
         "accent_color": "#ddb868"
