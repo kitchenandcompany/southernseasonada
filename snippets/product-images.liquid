@@ -47,6 +47,12 @@
 }
 {% endstyle %}
 
+{%- assign product_tags_downcased = product.tags | join: '|' | downcase | split: '|' -%}
+{%- assign show_freeship_badge = false -%}
+{%- if product_tags_downcased contains 'freeship' -%}
+  {%- assign show_freeship_badge = true -%}
+{%- endif -%}
+
 <div
   class="
     gallery-wrap
@@ -174,6 +180,17 @@
                   {% comment %} Accessible Fix: Prevented empty alt falling through if featured image lacks one {% endcomment %}
                   {% assign backup_alt = featured_image.alt | default: product.title | escape %}
                   <img src="{{ featured_image | image_url: width: 1200 }}" alt="{{ backup_alt }}" />
+                {% endif %}
+
+                {% if show_freeship_badge %}
+                  <img
+                    class="product-badge--freeship"
+                    src="{{ 'shipfree-badge.png' | asset_url }}"
+                    alt="{% if forloop.first %}Ships free{% endif %}"
+                    width="400"
+                    height="362"
+                    loading="lazy"
+                  >
                 {% endif %}
               </div>
 
