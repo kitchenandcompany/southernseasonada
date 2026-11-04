@@ -19,18 +19,34 @@
             "heading": "Holiday Gifts",
             "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
             "image": "shopify://shop_images/HP.png",
+            "image_position": "right",
             "button1_label": "Shop Holiday Gifts",
             "button1_link": "shopify://collections/holiday",
-            "button2_label": "View the Catalog",
+            "button2_label": "ORDER HOLIDAy extravaganza",
             "button2_link": "shopify://pages/christmas-in-person-shopping",
             "background_color": "#f6eede",
-            "text_color": "#30302f",
-            "image_position": "right"
+            "text_color": "#30302f"
+          }
+        },
+        "slide_7nPbLW": {
+          "type": "slide",
+          "settings": {
+            "badge": "",
+            "heading": "Thanksgiving Headquarters",
+            "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
+            "image_position": "left",
+            "button1_label": "Shop Holiday Gifts",
+            "button1_link": "",
+            "button2_label": "View the Catalog",
+            "button2_link": "",
+            "background_color": "#f6eede",
+            "text_color": "#30302f"
           }
         }
       },
       "block_order": [
-        "slide_1"
+        "slide_1",
+        "slide_7nPbLW"
       ],
       "settings": {
         "autoplay": false,
@@ -40,26 +56,25 @@
     },
     "shop_by_category": {
       "type": "featured-promotions",
-      "name": "Shop By Category",
       "blocks": {
         "promo_1": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/GIFT_Crates.png",
             "link": "shopify://collections/gift-crates-1",
             "title": "Gift Crates",
             "text": "",
-            "button_label": "",
-            "image": "shopify://shop_images/GIFT_Crates.png"
+            "button_label": ""
           }
         },
         "promo_2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/GiftTotes.png",
             "link": "shopify://collections/gift-totes",
             "title": "Gift Totes",
             "text": "",
-            "button_label": "",
-            "image": "shopify://shop_images/GiftTotes.png"
+            "button_label": ""
           }
         },
         "promo_3": {
@@ -107,6 +122,7 @@
         "promo_5",
         "promo_6"
       ],
+      "name": "Shop By Category",
       "settings": {
         "eyebrow": "",
         "heading": "Shop By Category",
