@@ -138,6 +138,8 @@
         "heading": "Shop By Category",
         "wide_display": false,
         "promo_text_on_image_enabled": true,
+        "overlay_desktop": 20,
+        "overlay_mobile": 20,
         "featured_promos_per_row": 3,
         "featured_links_animation": "",
         "feature_style": "rounded",
