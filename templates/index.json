@@ -19,7 +19,7 @@
         "button1_label": "Shop Holiday Gifts",
         "button1_link": "shopify://collections/holiday",
         "button2_label": "View the Catalog",
-        "button2_link": "",
+        "button2_link": "shopify://pages/christmas-in-person-shopping",
         "background_color": "#f6eede",
         "text_color": "#30302f"
       }
