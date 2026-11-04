@@ -138,7 +138,7 @@
       "name": "Shop By Category",
       "settings": {
         "eyebrow": "",
-        "heading": "Shop By Category",
+        "heading": "",
         "wide_display": false,
         "promo_text_on_image_enabled": true,
         "overlay_desktop": 20,
@@ -148,7 +148,7 @@
         "feature_style": "rounded",
         "padding_top": 0,
         "padding_bottom": 0,
-        "css_class": "ss-band ss-promos",
+        "css_class": "ss-band ss-band--tight ss-promos",
         "custom_css": ""
       }
     },
