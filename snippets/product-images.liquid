@@ -47,9 +47,9 @@
 }
 {% endstyle %}
 
-{%- capture ships_free -%}{% render 'ships-free-check', product: product %}{%- endcapture -%}
+{%- assign product_tags_downcased = product.tags | join: '|' | downcase | split: '|' -%}
 {%- assign show_freeship_badge = false -%}
-{%- if ships_free == 'true' -%}
+{%- if product_tags_downcased contains 'freeship' -%}
   {%- assign show_freeship_badge = true -%}
 {%- endif -%}
 

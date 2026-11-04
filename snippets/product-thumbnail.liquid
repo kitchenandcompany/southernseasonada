@@ -1,7 +1,7 @@
 {%- assign secondaryImage = product.media[1] -%}
 {%- assign collection_handles = product.collections | map: 'handle' -%}
 {%- assign product_heading_id = 'product-thumb-title-' | append: section.id | append: '-' | append: product.id -%}
-{%- capture ships_free -%}{% render 'ships-free-check', product: product %}{%- endcapture -%}
+{%- assign product_tags_downcased = product.tags | join: '|' | downcase | split: '|' -%}
 
 {% if product.featured_media.preview_image.alt contains 'youtube' or image.alt contains 'vimeo' %}
   {%- assign alt_text = product.title | escape -%}
@@ -98,7 +98,7 @@
         {% endif %}
       </a>
 
-      {% if ships_free == 'true' %}
+      {% if product_tags_downcased contains 'freeship' %}
         <img
           class="product-badge--freeship"
           src="{{ 'shipfree-badge.png' | asset_url }}"
