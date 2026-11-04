@@ -89,6 +89,7 @@
         "promo_3": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Bestsellers.png",
             "link": "",
             "title": "",
             "text": "",
