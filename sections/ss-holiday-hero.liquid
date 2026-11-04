@@ -42,7 +42,7 @@
         aria-label="{{ forloop.index }} of {{ slide_count }}"
         data-ss-hero-slide
         data-block-id="{{ block.id }}"
-        style="--ss-hero-bg: {{ block.settings.background_color }}; --ss-hero-text: {{ block.settings.text_color }}; --ss-hero-btn-bg: {{ block.settings.button_color | default: '#0E553C' }}; --ss-hero-btn-text: {{ block.settings.button_text_color | default: '#FFFFFF' }};"
+        style="--ss-hero-bg: {{ block.settings.background_color }}; --ss-hero-text: {{ block.settings.text_color }}; --ss-hero-btn-bg: {{ block.settings.button_color | default: '#0E553C' }}; --ss-hero-btn-text: {{ block.settings.button_text_color | default: '#FFFFFF' }}; --ss-hero-heading-size: {{ block.settings.heading_size | default: 76 }}px; --ss-hero-sub-size: {{ block.settings.subheading_size | default: 22 }}px;"
         {% unless forloop.first %}hidden{% endunless %}
         {{ block.shopify_attributes }}
       >
@@ -279,6 +279,27 @@
           "id": "subheading",
           "label": "Subheading",
           "default": "Local NC Goods & Gift Baskets\nSince 1975"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "label": "Heading size",
+          "info": "Largest size on desktop. Shrinks automatically on smaller screens.",
+          "min": 32,
+          "max": 110,
+          "step": 2,
+          "unit": "px",
+          "default": 76
+        },
+        {
+          "type": "range",
+          "id": "subheading_size",
+          "label": "Subheading size",
+          "min": 16,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 22
         },
         {
           "type": "image_picker",

@@ -146,7 +146,8 @@
 .ss-hero .ss-hero__heading {
   font-family: var(--ss-font-display);
   font-weight: var(--ss-font-display-weight);
-  font-size: clamp(44px, 6vw, 76px);
+  font-size: var(--ss-hero-heading-size, 76px);
+  overflow-wrap: break-word;
   line-height: 0.95;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -158,7 +159,7 @@
   font-family: var(--ss-font-subtitle);
   font-style: var(--ss-font-subtitle-style);
   font-weight: var(--ss-font-subtitle-weight);
-  font-size: clamp(18px, 1.8vw, 22px);
+  font-size: var(--ss-hero-sub-size, 22px);
   line-height: 1.35;
   margin: 0 0 28px;
 }
@@ -935,7 +936,21 @@ a.ss-ship__pill:hover {
   }
 }
 
+@media only screen and (min-width: 799px) and (max-width: 1024px) {
+  .ss-hero .ss-hero__heading {
+    font-size: max(32px, calc(var(--ss-hero-heading-size, 76px) * 0.8));
+  }
+}
+
 @media only screen and (max-width: 798px) {
+  .ss-hero .ss-hero__heading {
+    font-size: max(30px, calc(var(--ss-hero-heading-size, 76px) * 0.6));
+  }
+
+  .ss-hero__sub {
+    font-size: min(var(--ss-hero-sub-size, 22px), 20px);
+  }
+
   .ss-section {
     padding: 44px 0 48px;
   }
