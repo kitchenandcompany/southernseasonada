@@ -11,17 +11,31 @@
   "sections": {
     "ss_hero": {
       "type": "ss-holiday-hero",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "badge": "2026 Catalog",
+            "heading": "Holiday Gifts",
+            "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
+            "image": "shopify://shop_images/HP.png",
+            "button1_label": "Shop Holiday Gifts",
+            "button1_link": "shopify://collections/holiday",
+            "button2_label": "View the Catalog",
+            "button2_link": "shopify://pages/christmas-in-person-shopping",
+            "background_color": "#f6eede",
+            "text_color": "#30302f",
+            "image_position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1"
+      ],
       "settings": {
-        "badge": "2026 Catalog",
-        "heading": "Holiday Gifts",
-        "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
-        "image": "shopify://shop_images/HP.png",
-        "button1_label": "Shop Holiday Gifts",
-        "button1_link": "shopify://collections/holiday",
-        "button2_label": "View the Catalog",
-        "button2_link": "shopify://pages/christmas-in-person-shopping",
-        "background_color": "#f6eede",
-        "text_color": "#30302f"
+        "autoplay": false,
+        "speed": 7,
+        "carousel_label": "Featured holiday gifts"
       }
     },
     "shop_by_category": {
