@@ -1,0 +1,15 @@
+{% comment %}
+  Outputs "true" when the product has any tag listed in Theme settings > Ships Free badge.
+  Usage: {%- capture ships_free -%}{% render 'ships-free-check', product: product %}{%- endcapture -%}
+{% endcomment %}
+{%- liquid
+  assign badge_tags = settings.ships_free_tags | downcase | split: ','
+  assign product_tags = product.tags | join: '|' | downcase | split: '|'
+  for badge_tag in badge_tags
+    assign wanted = badge_tag | strip
+    if wanted != blank and product_tags contains wanted
+      echo 'true'
+      break
+    endif
+  endfor
+-%}

@@ -2054,5 +2054,21 @@
         "label": "[DISQUS](http:\/\/help.disqus.com/en/articles/1717111-what-s-a-shortname\/) shortname"
       }
     ]
+  },
+  {
+    "name": "Ships Free badge",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shows the red SHIPS FREE ribbon on product photos (homepage, collection pages and product pages) for products with any of these tags."
+      },
+      {
+        "type": "text",
+        "id": "ships_free_tags",
+        "label": "Product tags",
+        "info": "Separate tags with commas. Not case-sensitive. Leave blank to turn the ribbon off.",
+        "default": "FREESHIP, UPSFREE"
+      }
+    ]
   }
 ]
