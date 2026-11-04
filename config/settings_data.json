@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "ships_free_tags": "FREESHIP, UPSFREE",
+    "ships_free_tags": "SHIPSFREE, FREESHIP",
     "performance": "ludicrous",
     "image_loading_style": "appear",
     "shop_bg_color": "#ffffff",
