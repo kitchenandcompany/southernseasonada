@@ -77,7 +77,8 @@
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
-.ss-btn--primary {
+.ss-btn--primary,
+.ss-btn--primary:visited {
   background: var(--ss-btn-bg, #0E553C);
   border-color: var(--ss-btn-bg, #0E553C);
   color: var(--ss-btn-text, #ffffff);
@@ -90,10 +91,11 @@
   color: var(--ss-btn-text, #ffffff);
 }
 
-.ss-btn--outline {
+.ss-btn--outline,
+.ss-btn--outline:visited {
   background: transparent;
-  border-color: currentColor;
-  color: inherit;
+  border-color: #30302F;
+  color: #30302F;
 }
 
 .ss-btn--outline:hover,
@@ -197,10 +199,15 @@
   margin: 0;
 }
 
-.ss-categories__link {
+.ss-categories__link,
+.ss-categories__link:visited {
   display: block;
   color: #30302F;
   text-decoration: none;
+}
+
+.ss-categories__link span {
+  color: #30302F;
 }
 
 .ss-categories__media {
@@ -309,10 +316,33 @@ a.ss-categories__link:hover .ss-categories__title {
 
 .ss-band--cards .thumbnail {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
   border-radius: 8px;
   padding: 16px 16px 20px;
   margin-bottom: 20px;
+}
+
+.ss-band .thumbnail,
+.ss-band .thumbnail .product-info__caption,
+.ss-band .thumbnail .product-details,
+.ss-band .thumbnail .title,
+.ss-band .thumbnail .price {
+  text-align: center;
+}
+
+.ss-band--cards .thumbnail > .product-info__caption {
+  flex: 1 0 auto;
+}
+
+.ss-band .thumbnail .product-info__caption,
+.ss-band .thumbnail .product-info__caption:visited {
+  color: #30302F;
+}
+
+.ss-band .thumbnail .price {
+  display: block;
 }
 
 .ss-band .thumbnail .title {
@@ -551,7 +581,8 @@ a.ss-ship__pill:hover {
   margin: 0;
 }
 
-.ss-store__directions {
+.ss-store__directions,
+.ss-store__directions:visited {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -568,6 +599,24 @@ a.ss-ship__pill:hover {
 .ss-store__directions:focus {
   background: #0A3F2C;
   color: #ffffff;
+}
+
+.ss-store__directions span,
+.ss-store__directions:visited span,
+.ss-store__directions:hover span,
+.ss-store__directions:focus span {
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.ss-store__directions .ss-store__directions-arrow {
+  color: #DDB868;
+}
+
+.ss-store__directions:hover .ss-store__directions-label,
+.ss-store__directions:focus .ss-store__directions-label {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .ss-store__directions svg {
@@ -598,7 +647,6 @@ a.ss-ship__pill:hover {
 
 .ss-store__directions-arrow {
   font-size: 24px;
-  color: #DDB868;
 }
 
 .ss-store__map {
