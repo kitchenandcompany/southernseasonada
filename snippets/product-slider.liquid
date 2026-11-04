@@ -43,6 +43,7 @@
   {% for product in products limit: loop_limit %}
 
     {%- assign collection_handles = product.collections | map: 'handle' -%}
+    {%- assign product_tags_downcased = product.tags | join: '|' | downcase | split: '|' -%}
 
     {% if product.id != skip_product.id %}
       <div class="gallery-cell
@@ -95,6 +96,17 @@
                 {% endif %}
               </div>
             </a>
+
+            {% if product_tags_downcased contains 'freeship' %}
+              <img
+                class="product-badge--freeship"
+                src="{{ 'shipfree-badge.png' | asset_url }}"
+                alt="Ships free"
+                width="400"
+                height="362"
+                loading="lazy"
+              >
+            {% endif %}
 
             {%
               render 'product-details',
