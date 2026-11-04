@@ -53,6 +53,12 @@
       data-promo-animation="{{ section.settings.featured_links_animation }}"
     >
       {% for block in blocks %}
+        {%- liquid
+          assign title_tag = 'h2'
+          if section.settings.heading != blank
+            assign title_tag = 'h3'
+          endif
+        -%}
         {% comment %} Content settings {% endcomment %}
         {%- assign image = block.settings.image -%}
         {%- assign mobile_image = block.settings.mobile_image -%}
@@ -89,17 +95,7 @@
             {% endif %}
 
             {% if block.settings.text != blank or block.settings.button_label != blank or block.settings.title != blank and section.settings.promo_text_on_image_enabled != blank %}
-              <figcaption class="feature-overlay" tabindex="0">
-                {%- capture aria_label -%}
-  {%- if block.settings.title != blank -%}
-    {{ block.settings.title | escape }}
-  {%- elsif block.settings.button_label != blank -%}
-    {{ block.settings.button_label | escape }}
-  {%- else -%}
-    {{ 'general.accessibility.link_label' | t | default: 'View promotion' }}
-  {%- endif -%}
-{%- endcapture -%}
-
+              <figcaption class="feature-overlay" {% if block.settings.link == blank or block.settings.title == blank %}tabindex="0"{% endif %}>
 <a 
   {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} 
   class="link-promo" 
@@ -107,7 +103,13 @@
 ></a>
                   <div class="feature-wrap">
                     {% if block.settings.title != blank %}
-                      <h2 class="title">{{ block.settings.title }}</h2>
+                      <{{ title_tag }} class="title">
+                        {%- if block.settings.link != blank -%}
+                          <a class="feature-title-link" href="{{ block.settings.link }}">{{ block.settings.title }}</a>
+                        {%- else -%}
+                          {{ block.settings.title }}
+                        {%- endif -%}
+                      </{{ title_tag }}>
                     {% endif %}
 
                     <div class="feature-details">
@@ -132,12 +134,6 @@
 
           {% if section.settings.promo_text_on_image_enabled == blank %}
             {% if block.settings.title != blank %}
-              {%- liquid
-                assign title_tag = 'h2'
-                if section.settings.heading != blank
-                  assign title_tag = 'h3'
-                endif
-              -%}
               <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
                 <{{ title_tag }} class="title title-below">{{ block.settings.title }}</{{ title_tag }}>
               </a>

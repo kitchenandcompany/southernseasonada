@@ -450,6 +450,41 @@ a.ss-categories__link:hover .ss-categories__title {
   outline-offset: 3px;
 }
 
+/* Title over image: keep the shade on at every screen size so the white title stays readable */
+
+.ss-promos .feature-section.title-overlay-true .feature-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ss-promos .feature-section.title-overlay-true:hover .feature-overlay,
+.ss-promos .feature-section.title-overlay-true:focus-within .feature-overlay {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.ss-promos .feature-section.title-overlay-true .feature-wrap .title {
+  margin: 0;
+  font-family: var(--ss-font-body);
+  font-weight: 700;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.ss-promos .feature-wrap .feature-title-link,
+.ss-promos .feature-wrap .feature-title-link:visited {
+  color: #ffffff;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.ss-promos .feature-wrap .feature-title-link:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
 /* Shipping deadline */
 
 .ss-ship {
