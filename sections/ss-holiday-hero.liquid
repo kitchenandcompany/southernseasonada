@@ -1,0 +1,144 @@
+{%- liquid
+  assign image = section.settings.image
+  assign heading_id = 'ss-hero-heading-' | append: section.id
+  assign show_button1 = false
+  assign show_button2 = false
+  if section.settings.button1_label != blank and section.settings.button1_link != blank
+    assign show_button1 = true
+  endif
+  if section.settings.button2_label != blank and section.settings.button2_link != blank
+    assign show_button2 = true
+  endif
+-%}
+{%- capture image_style -%}object-position: {{ image.presentation.focal_point | default: 'center' }};{%- endcapture -%}
+
+<section
+  class="ss-hero"
+  aria-labelledby="{{ heading_id }}"
+  style="--ss-hero-bg: {{ section.settings.background_color }}; --ss-hero-text: {{ section.settings.text_color }};"
+>
+  <div class="ss-hero__text">
+    {%- if section.settings.badge != blank -%}
+      <p class="ss-hero__badge">{{ section.settings.badge | escape }}</p>
+    {%- endif -%}
+
+    <h1 class="ss-hero__heading" id="{{ heading_id }}">{{ section.settings.heading | escape }}</h1>
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="ss-hero__sub">{{ section.settings.subheading | escape | newline_to_br }}</p>
+    {%- endif -%}
+
+    {%- if show_button1 or show_button2 -%}
+      <div class="ss-hero__buttons">
+        {%- if show_button1 -%}
+          <a class="ss-btn ss-btn--primary" href="{{ section.settings.button1_link }}">{{ section.settings.button1_label | escape }}</a>
+        {%- endif -%}
+        {%- if show_button2 -%}
+          <a class="ss-btn ss-btn--outline" href="{{ section.settings.button2_link }}">{{ section.settings.button2_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="ss-hero__media">
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 1800
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '600, 900, 1200, 1500, 1800',
+          sizes: '(min-width: 990px) 60vw, 100vw',
+          alt: image.alt,
+          class: 'ss-hero__img',
+          style: image_style
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'ss-hero__img ss-placeholder' }}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Holiday hero",
+  "class": "shopify-section--ss-holiday-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "2026 Catalog"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Holiday Gifts"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Local NC Goods & Gift Baskets\nSince 1975"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Landscape photo, at least 1800px wide. Set the alt text on the image in Files."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button1_label",
+      "label": "Primary button label",
+      "default": "Shop Holiday Gifts"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button2_label",
+      "label": "Secondary button label",
+      "default": "View the Catalog"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Text panel background",
+      "default": "#F6EEDE"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#30302F"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Holiday hero"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["index", "page", "collection"]
+  }
+}
+{% endschema %}

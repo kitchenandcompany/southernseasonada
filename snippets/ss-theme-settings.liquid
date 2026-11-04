@@ -1,0 +1,176 @@
+{% comment %}
+  Applies Theme settings (Typography and core colors) on top of the precompiled assets/styles.css,
+  which has fonts and colors baked in and does not read theme settings.
+  Rendered in layout/theme.liquid after the main stylesheets.
+{% endcomment %}
+{%- liquid
+  assign headline_font = settings.headline__font
+  assign headline_italic = headline_font | font_modify: 'style', 'italic'
+  assign display_font = settings.slideshow_headline__font
+  assign subtitle_font = settings.slideshow_subtitle__font
+  assign subtitle_upright = subtitle_font | font_modify: 'style', 'normal'
+  assign body_font = settings.regular__font
+  assign body_italic = body_font | font_modify: 'style', 'italic'
+  assign body_semibold = body_font | font_modify: 'weight', '600'
+  assign body_bold = body_font | font_modify: 'weight', 'bold'
+  assign nav_font = settings.nav__font
+-%}
+<style>
+  {{ headline_font | font_face: font_display: 'swap' }}
+  {{ headline_italic | font_face: font_display: 'swap' }}
+  {{ display_font | font_face: font_display: 'swap' }}
+  {{ subtitle_font | font_face: font_display: 'swap' }}
+  {{ subtitle_upright | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_italic | font_face: font_display: 'swap' }}
+  {{ body_semibold | font_face: font_display: 'swap' }}
+  {{ body_bold | font_face: font_display: 'swap' }}
+  {{ nav_font | font_face: font_display: 'swap' }}
+
+  :root {
+    --ss-font-headline: {{ headline_font.family }}, {{ headline_font.fallback_families }};
+    --ss-font-headline-weight: {{ headline_font.weight }};
+    --ss-font-display: {{ display_font.family }}, {{ display_font.fallback_families }};
+    --ss-font-display-weight: {{ display_font.weight }};
+    --ss-font-subtitle: {{ subtitle_font.family }}, {{ subtitle_font.fallback_families }};
+    --ss-font-subtitle-weight: {{ subtitle_font.weight }};
+    --ss-font-subtitle-style: {{ subtitle_font.style }};
+    --ss-font-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --ss-font-body-weight: {{ body_font.weight }};
+    --ss-font-nav: {{ nav_font.family }}, {{ nav_font.fallback_families }};
+    --ss-font-nav-weight: {{ nav_font.weight }};
+    --ss-color-text: {{ settings.regular_color }};
+    --ss-color-headline: {{ settings.headline_color }};
+    --ss-btn-bg: {{ settings.btn_color }};
+    --ss-btn-bg-hover: {{ settings.btn_hover_color }};
+    --ss-btn-text: {{ settings.btn_text_color }};
+  }
+
+  body,
+  .cart_content,
+  .promo-banner,
+  button.shopify-payment-button__more-options,
+  .accordion > dt > a,
+  .accordion > dt > button,
+  .faqAccordion > dt > a,
+  .faqAccordion > dt > button,
+  .contact-form ul li label,
+  .custom-contact-form ul li label,
+  .footer-menu__disclosure .disclosure__toggle,
+  .footer-menu__disclosure button.disclosure__button,
+  .caption .pretext,
+  .caption .subtitle,
+  .complementary-products__title {
+    font-family: var(--ss-font-body);
+    font-weight: var(--ss-font-body-weight);
+  }
+
+  body {
+    color: var(--ss-color-text);
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .h2, .h3, .h4, .h5, .h6,
+  h2.title,
+  .title,
+  .headline,
+  .collection_title,
+  .caption .headline,
+  .empty_cart,
+  .age-gate__heading,
+  .shopify-section--text-columns-with-images .large_text,
+  .surface-pick-up__modal-title,
+  .complementary-product__name {
+    font-family: var(--ss-font-headline);
+    font-weight: var(--ss-font-headline-weight);
+    letter-spacing: {{ settings.headline_letter_spacing | default: 0 }}px;
+  }
+
+  .menu a,
+  .menu a:visited,
+  .menu a span,
+  .menu .mobile-menu-trigger,
+  .menu .mobile-nav__split-anchor,
+  .top-bar .top-bar__menu a,
+  .top-bar .social_icons a,
+  .top-bar .mobile-menu-title,
+  .top-bar__login-link,
+  .dropdown_content p,
+  .mobile-mega-menu p,
+  .nav-desktop__tier-1-link,
+  .nav-desktop__tier-2-link,
+  .nav-desktop__tier-3-link,
+  .widemenu__link,
+  .section_select .blog_filter,
+  .section_select .tag_filter,
+  .section_select .sort_by,
+  .global-button,
+  product-cta,
+  .custom-html-container button,
+  .shopify-payment-button__button.shopify-payment-button__button--unbranded,
+  .sidebar .faceted-active-filters__clear,
+  .sidebar .faceted-active-filters__remove-filter,
+  .shopify-challenge__container .shopify-challenge__button,
+  .search-form--header .search-form__input[type=text],
+  .predictive-search__list-item-title,
+  .disclosure__toggle,
+  button.disclosure__button,
+  a.secondary_button,
+  input.secondary_button,
+  .continue-shopping,
+  .price-ui-badge__sticker,
+  .age-gate__confirm_btn {
+    font-family: var(--ss-font-nav);
+    font-weight: var(--ss-font-nav-weight);
+  }
+
+  .thumbnail .title,
+  .product-details .title {
+    font-family: var(--ss-font-body);
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .global-button--primary,
+  .global-button--primary-desktop,
+  .global-button--primary-mobile {
+    --button-color-border: var(--ss-btn-bg);
+    --button-color-background: var(--ss-btn-bg);
+    --button-color-text: var(--ss-btn-text);
+    --button-color-border-hover: var(--ss-btn-bg-hover);
+    --button-color-background-hover: var(--ss-btn-bg-hover);
+    --button-color-text-hover: var(--ss-btn-text);
+  }
+
+  .promo-banner {
+    background-color: {{ settings.promo_bg_color }};
+    color: {{ settings.promo_text_color }};
+  }
+
+  .promo-banner a {
+    color: inherit;
+  }
+
+  .footer {
+    background-color: {{ settings.sub_footer_color }};
+    border-top-color: {{ settings.sub_footer_border_color }};
+    color: {{ settings.sub_footer_text_color }};
+  }
+
+  .footer h2,
+  .footer h2.h6,
+  .footer .footer-heading,
+  .footer .footer-title-toggle {
+    color: {{ settings.headline_footer_text_color }};
+  }
+
+  .footer a {
+    color: {{ settings.sub_footer_link_color }};
+  }
+
+  .footer a:hover,
+  .footer a:focus {
+    color: {{ settings.sub_footer_link_color_hover }};
+  }
+</style>

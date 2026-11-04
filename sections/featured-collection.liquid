@@ -44,6 +44,9 @@
     class="section">
     <div class="container">
       <div class="one-whole column center homepage_content">
+        {% if section.settings.eyebrow != blank %}
+          <p class="featured-collection__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% endif %}
         {% if section.settings.title != blank %}
           {% comment %} 
             FIX: Flipped the nesting. Screen readers prefer the Heading to be the parent of the Link.
@@ -178,9 +181,15 @@
               global-button--text
             "
             href="{% if collection != blank %}{{ collection.url }}{% else %}#{% endif %}"
-            aria-label="View all of {% if collection != blank %}{{ collection.title | escape }}{% else %}this collection{% endif %}"
+            {% if section.settings.view_all_label == blank %}
+              aria-label="View all of {% if collection != blank %}{{ collection.title | escape }}{% else %}this collection{% endif %}"
+            {% endif %}
           >
-            {{- 'collections.general.view_all' | t -}}
+            {%- if section.settings.view_all_label != blank -%}
+              {{- section.settings.view_all_label | escape -}}
+            {%- else -%}
+              {{- 'collections.general.view_all' | t -}}
+            {%- endif -%}
           </a>
         </div>
       </div>
@@ -193,6 +202,11 @@
   "name": "Featured collection",
   "class": "shopify-section--featured-collection",
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Line above heading"
+    },
     {
       "type": "text",
       "id": "title",
@@ -210,6 +224,12 @@
       "id": "collection_view_all",
       "label": "Enable 'View all' button",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "'View all' button label",
+      "info": "Leave blank for the default \"View all\""
     },
     {
       "type": "collection",

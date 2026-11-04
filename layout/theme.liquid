@@ -33,6 +33,8 @@
 
     {{ 'styles.css' | asset_url | stylesheet_tag }}
     {{ 'accessibility.css' | asset_url | stylesheet_tag }}
+    {% render 'ss-theme-settings' %}
+    {{ 'ss-holiday.css' | asset_url | stylesheet_tag }}
 
     {% if settings.favicon != nil %}
       <link rel="shortcut icon" type="image/x-icon" href="{{ settings.favicon | img_url: '180x180' }}">

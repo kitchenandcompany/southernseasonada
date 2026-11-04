@@ -9,292 +9,174 @@
  */
 {
   "sections": {
-    "slideshow-1": {
-      "type": "slideshow",
-      "blocks": {
-        "image_kdDqt8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/ThanksgivingHQ.jpg",
-            "pretext": "",
-            "title": "Thanksgiving hq",
-            "subtitle": "<p>Everything you need for a delicious Thanksgiving.</p>",
-            "button1": "Shop Now",
-            "button1_link": "shopify://collections/thanksgiving",
-            "button1_style": "global-button--banner",
-            "button2": "",
-            "button2_link": "",
-            "button2_style": "global-button--banner",
-            "text_position": "right",
-            "text_align": "center",
-            "caption_content_background": "translucent_text_box",
-            "mobile_image": "shopify://shop_images/ThanksgivingHQ2.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "image_kdDqt8"
-      ],
+    "ss_hero": {
+      "type": "ss-holiday-hero",
       "settings": {
-        "wide_display": true,
-        "slideshow_text_animation": "fadeInDown",
-        "slideshow_animation": "slide",
-        "slideshow_speed": 6,
-        "activate_adaptiveHeight": false,
-        "mobile_text_below_image": true,
-        "mobile_text_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "image_with_text_overlay_yCf6RX": {
-      "type": "image-with-text-overlay",
-      "disabled": true,
-      "name": "Banner with Link to Cook's Tools",
-      "settings": {
-        "wide_display": true,
-        "pretext": "",
-        "title": "COOK'S TOOLS",
-        "subtitle": "<p>130' Wall Featuring 2,000+ Cooking Tools</p>",
-        "button1": "SHOP NOW",
-        "button1_link": "shopify://collections/cooks-tools",
-        "button1_style": "global-button--banner-text",
-        "button2": "",
+        "badge": "2026 Catalog",
+        "heading": "Holiday Gifts",
+        "subheading": "Local NC Goods & Gift Baskets\nSince 1975",
+        "button1_label": "Shop Holiday Gifts",
+        "button1_link": "shopify://collections/holiday",
+        "button2_label": "View the Catalog",
         "button2_link": "",
-        "button2_style": "global-button--banner",
-        "text_position": "right",
-        "text_align": "center",
-        "caption_content_background": "text_box",
-        "mobile_image_crop": false,
-        "mobile_text_below_image": true,
-        "mobile_text_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
+        "background_color": "#F6EEDE",
+        "text_color": "#30302F"
       }
     },
-    "featured-promotions-1": {
-      "type": "featured-promotions",
+    "ss_categories": {
+      "type": "ss-category-grid",
       "blocks": {
-        "block-2": {
-          "type": "image",
-          "name": "Cooking & Baking",
-          "settings": {
-            "link": "shopify://collections/cooking-baking",
-            "title": "Cooking & Baking",
-            "text": "",
-            "button_label": "SHOP NOW"
-          }
+        "category_1": {
+          "type": "category",
+          "settings": {}
         },
-        "block-3": {
-          "type": "image",
-          "name": "Featured",
-          "settings": {
-            "link": "shopify://collections/cooks-tools",
-            "title": "COOK'S TOOLS",
-            "text": "<p>2,000+ Cooking Tools for Every Occasion.</p>",
-            "button_label": "SHOP NOW"
-          }
+        "category_2": {
+          "type": "category",
+          "settings": {}
         },
-        "block-1": {
-          "type": "image",
-          "name": "Featured",
-          "settings": {
-            "link": "shopify://collections/bbq-outdoors",
-            "title": "BBQ & Outdoors",
-            "text": "",
-            "button_label": "SHOP NOW"
-          }
+        "category_3": {
+          "type": "category",
+          "settings": {}
         },
-        "image_gyjeNW": {
-          "type": "image",
-          "settings": {
-            "link": "shopify://collections/local",
-            "title": "A Taste of Lancaster County",
-            "text": "",
-            "button_label": ""
-          }
+        "category_4": {
+          "type": "category",
+          "settings": {}
+        },
+        "category_5": {
+          "type": "category",
+          "settings": {}
+        },
+        "category_6": {
+          "type": "category",
+          "settings": {}
         }
       },
       "block_order": [
-        "block-2",
-        "block-3",
-        "block-1",
-        "image_gyjeNW"
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4",
+        "category_5",
+        "category_6"
       ],
-      "name": "Featured Promotions",
       "settings": {
-        "wide_display": false,
-        "promo_text_on_image_enabled": true,
-        "featured_promos_per_row": 4,
-        "featured_links_animation": "fadeInDown",
-        "feature_style": "rounded",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
+        "eyebrow": "",
+        "heading": "Shop By Category",
+        "columns": 3,
+        "background_color": "#FFFFFF"
       }
     },
-    "featured_collection_4kddXg": {
+    "seasons_best": {
       "type": "featured-collection",
-      "name": "Featured collection",
+      "name": "Season's Best",
       "settings": {
-        "title": "Featured",
+        "eyebrow": "Holiday",
+        "title": "Season’s Best",
         "collection_description": false,
         "collection_view_all": true,
-        "collection": "featured-products",
-        "collection_style": "slider",
-        "products_per": 5,
-        "products_limit": 20,
+        "view_all_label": "Shop All Season’s Best",
+        "collection": "seasons-best",
+        "collection_style": "grid",
+        "products_per": 4,
+        "products_limit": 4,
         "padding_top": 0,
         "padding_bottom": 0,
-        "css_class": "",
+        "css_class": "ss-band ss-band--cream ss-band--cards",
         "custom_css": ""
       }
     },
-    "testimonials-1": {
-      "type": "testimonial",
+    "classic_gifts": {
+      "type": "featured-collection",
+      "name": "Classic Gifts",
+      "settings": {
+        "eyebrow": "Staples Since 1975",
+        "title": "Classic Gifts",
+        "collection_description": false,
+        "collection_view_all": true,
+        "view_all_label": "Shop All Classic Gifts",
+        "collection": "classic-gifts",
+        "collection_style": "grid",
+        "products_per": 4,
+        "products_limit": 4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "ss-band ss-band--blush ss-band--cards",
+        "custom_css": ""
+      }
+    },
+    "shipping_deadline": {
+      "type": "ss-shipping-deadline",
       "blocks": {
-        "image_UDMkPX": {
-          "type": "image",
+        "deadline_1": {
+          "type": "deadline",
           "settings": {
-            "title": "Guest Testimonial",
-            "testimonial": "<p>If you're looking for a statement gift for a foodie..this is the place. You're gonna love it!</p>",
-            "name": "Laurie A.",
-            "store_name": "",
-            "link": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_content_background": "original"
+            "date": "Dec 16",
+            "label": "Standard Shipping & UPS Ground"
           }
         },
-        "block-1": {
-          "type": "image",
+        "deadline_2": {
+          "type": "deadline",
           "settings": {
-            "title": "Guest Testimonial",
-            "testimonial": "<p>I was looking for a birthday gift to send to my Dad in IL that had a NC taste to it. &nbsp;I sent him a Taste of Tar Heel gift tin; he loved the assortment of goodies.</p>",
-            "name": "Gwendolyn J.",
-            "store_name": "",
-            "link": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_content_background": "darken_bg"
+            "date": "Dec 22",
+            "label": "UPS 2-Day Air"
           }
         },
-        "block-2": {
-          "type": "image",
+        "deadline_3": {
+          "type": "deadline",
           "settings": {
-            "title": "Guest Testimonial",
-            "testimonial": "<p>Absolutely love Southern Season! I have been a long time customer and was very impressed with how well the company transition to an online business. Especially LOVE their gift crates. They are legit. Everyone who i’ve ever sent one too can also agree.</p>",
-            "name": "Fourteen Clothing Co.",
-            "store_name": "",
-            "link": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_content_background": "original"
-          }
-        },
-        "block-3": {
-          "type": "image",
-          "settings": {
-            "title": "Guest Testimonial",
-            "testimonial": "<p>A Gift Lover's Destination. Wonderful holiday treasures, delightful selection of coffee and wonderful sweets from around the world.</p>",
-            "name": "Melissa S.",
-            "store_name": "",
-            "link": "",
-            "text_position": "center",
-            "text_align": "center",
-            "caption_content_background": "original"
+            "date": "Dec 23",
+            "label": "UPS Next Day Air"
           }
         }
       },
       "block_order": [
-        "image_UDMkPX",
-        "block-1",
-        "block-2",
-        "block-3"
+        "deadline_1",
+        "deadline_2",
+        "deadline_3"
       ],
       "settings": {
-        "wide_display": true,
-        "testimonial_text_animation": "fadeInDown",
-        "testimonial_speed": 6,
-        "activate_adaptiveHeight": false,
-        "mobile_text_below_image": true,
-        "mobile_text_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
+        "eyebrow": "Holiday Shipping Deadline",
+        "heading": "Order by",
+        "heading_date": "Dec 16",
+        "subheading": "for Christmas delivery with standard shipping.",
+        "pill_text": "Over 20 Gifts Ship Free",
+        "pill_link": "",
+        "footnote": "Free shipping applies to standard shipping only. Excludes PO Box, APO/FPO, AK & HI addresses.",
+        "background_color": "#0E553C",
+        "text_color": "#F6EEDE",
+        "accent_color": "#DDB868"
       }
     },
-    "featured_text_D6Faib": {
-      "type": "featured-text",
-      "name": "Rich text and image",
+    "warehouse_store": {
+      "type": "ss-warehouse-store",
       "settings": {
-        "title": "FIND US",
-        "content": "",
-        "button_label": "",
-        "button_link": "",
-        "text_size": "featured_text",
-        "text_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "map_fMeJXX": {
-      "type": "map",
-      "blocks": {
-        "guest_service_overlay_jjHVQk": {
-          "type": "guest_service_overlay",
-          "settings": {
-            "caption_content_background": "original",
-            "heading": "Southern Season",
-            "address": "1125 Jay Lane\nGraham, NC 27253",
-            "phone": "1-800-253-3663",
-            "email": "guesthelp@southernseason.com",
-            "hours_mon": "Closed",
-            "hours_tue": "Closed",
-            "hours_wed": "Closed",
-            "hours_thu": "10:00 am to 6:00 pm",
-            "hours_fri": "10:00 am to 6:00 pm",
-            "hours_sat": "10:00 am to 6:00 pm",
-            "hours_sun": "Closed"
-          }
-        }
-      },
-      "block_order": [
-        "guest_service_overlay_jjHVQk"
-      ],
-      "name": "Map",
-      "settings": {
-        "map_wide_display": true,
-        "map_image_alt": "Map showing Southern Season at 1125 Jay Lane, Graham, NC 27253",
+        "eyebrow": "Visit Us",
+        "heading": "Our Warehouse Store",
+        "address": "1125 Jay Lane\nGraham, NC 27253",
+        "phone": "1-800-253-3663",
+        "email": "",
+        "hours_mon": "Closed",
+        "hours_tue": "Closed",
+        "hours_wed": "Closed",
+        "hours_thu": "10 am – 6 pm",
+        "hours_fri": "10 am – 6 pm",
+        "hours_sat": "10 am – 6 pm",
+        "hours_sun": "Closed",
         "map_address": "Southern Season, 1125 Jay Lane, Graham, NC 27253",
-        "map_height": 400,
-        "zoom_level": 15,
-        "api_key": "",
-        "show_pin": true,
-        "map_style": "default",
-        "map_iframe_title": "Google Map showing Southern Season at 1125 Jay Lane, Graham, NC",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "css_class": "",
-        "custom_css": ""
+        "zoom_level": 16,
+        "map_height": 320,
+        "map_title": "Google Map of Southern Season at 1125 Jay Lane, Graham, NC",
+        "directions_label": "Get Directions",
+        "directions_note": "Opens Google Maps in a new tab"
       }
     }
   },
   "order": [
-    "slideshow-1",
-    "image_with_text_overlay_yCf6RX",
-    "featured-promotions-1",
-    "featured_collection_4kddXg",
-    "testimonials-1",
-    "featured_text_D6Faib",
-    "map_fMeJXX"
+    "ss_hero",
+    "ss_categories",
+    "seasons_best",
+    "classic_gifts",
+    "shipping_deadline",
+    "warehouse_store"
   ]
 }

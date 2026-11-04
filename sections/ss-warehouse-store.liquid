@@ -1,0 +1,252 @@
+{%- liquid
+  assign heading_id = 'ss-store-heading-' | append: section.id
+  assign address_one_line = section.settings.address | newline_to_br | replace: '<br />', ', ' | strip_newlines
+  assign map_address = section.settings.map_address | default: address_one_line
+  assign day_keys = 'hours_mon,hours_tue,hours_wed,hours_thu,hours_fri,hours_sat,hours_sun' | split: ','
+  assign day_short = 'Mon,Tue,Wed,Thu,Fri,Sat,Sun' | split: ','
+  assign day_long = 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday' | split: ','
+  assign phone_digits = section.settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.'
+-%}
+
+{%- capture hours_rows -%}
+  {%- assign group_start = -1 -%}
+  {%- assign group_end = -1 -%}
+  {%- assign group_value = '' -%}
+  {%- for key in day_keys -%}
+    {%- assign value = section.settings[key] | strip -%}
+    {%- if group_start >= 0 and value == group_value -%}
+      {%- assign group_end = forloop.index0 -%}
+    {%- else -%}
+      {%- if group_start >= 0 and group_value != blank -%}
+        <dt>
+          <span aria-hidden="true">{{ day_short[group_start] }}{% if group_end != group_start %}–{{ day_short[group_end] }}{% endif %}</span>
+          <span class="visually-hidden">{{ day_long[group_start] }}{% if group_end != group_start %} to {{ day_long[group_end] }}{% endif %}</span>
+        </dt>
+        <dd>{{ group_value | escape }}</dd>
+      {%- endif -%}
+      {%- assign group_start = forloop.index0 -%}
+      {%- assign group_end = forloop.index0 -%}
+      {%- assign group_value = value -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if group_start >= 0 and group_value != blank -%}
+    <dt>
+      <span aria-hidden="true">{{ day_short[group_start] }}{% if group_end != group_start %}–{{ day_short[group_end] }}{% endif %}</span>
+      <span class="visually-hidden">{{ day_long[group_start] }}{% if group_end != group_start %} to {{ day_long[group_end] }}{% endif %}</span>
+    </dt>
+    <dd>{{ group_value | escape }}</dd>
+  {%- endif -%}
+{%- endcapture -%}
+
+<section class="ss-section ss-store" aria-labelledby="{{ heading_id }}">
+  <div class="ss-container ss-store__grid">
+    <div class="ss-store__info">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ss-eyebrow ss-eyebrow--left">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2 class="ss-store__heading" id="{{ heading_id }}">{{ section.settings.heading | escape }}</h2>
+
+      <div class="ss-store__details">
+        <div class="ss-store__contact">
+          {%- if section.settings.address != blank -%}
+            <p class="ss-store__row">
+              <svg class="ss-store__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+              <span><span class="visually-hidden">Address: </span>{{ section.settings.address | escape | newline_to_br }}</span>
+            </p>
+          {%- endif -%}
+          {%- if section.settings.phone != blank -%}
+            <p class="ss-store__row">
+              <svg class="ss-store__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.6 21 3 13.4 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <a href="tel:+1{{ phone_digits }}"><span class="visually-hidden">Call </span>{{ section.settings.phone | escape }}</a>
+            </p>
+          {%- endif -%}
+          {%- if section.settings.email != blank -%}
+            <p class="ss-store__row">
+              <svg class="ss-store__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:{{ section.settings.email }}"><span class="visually-hidden">Email </span>{{ section.settings.email | escape }}</a>
+            </p>
+          {%- endif -%}
+        </div>
+
+        {%- if hours_rows != blank -%}
+          <div class="ss-store__row ss-store__hours-wrap">
+            <svg class="ss-store__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            <div>
+              <h3 class="visually-hidden">Store hours</h3>
+              <dl class="ss-store__hours">{{ hours_rows }}</dl>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if map_address != blank -%}
+        <a
+          class="ss-store__directions"
+          href="https://www.google.com/maps/dir/?api=1&destination={{ map_address | url_encode }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5z"/></svg>
+          <span class="ss-store__directions-text">
+            <span class="ss-store__directions-label">{{ section.settings.directions_label | escape }}</span>
+            <span class="ss-store__directions-note">{{ section.settings.directions_note | escape }}</span>
+          </span>
+          <span class="ss-store__directions-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if map_address != blank -%}
+      <div class="ss-store__map" style="--ss-map-height: {{ section.settings.map_height }}px;">
+        <iframe
+          title="{{ section.settings.map_title | default: 'Google Map of our store location' | escape }}"
+          src="https://maps.google.com/maps?q={{ map_address | url_encode }}&z={{ section.settings.zoom_level }}&hl=en&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Warehouse store",
+  "class": "shopify-section--ss-warehouse-store",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Line above heading",
+      "default": "Visit Us"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Warehouse Store"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "1125 Jay Lane\nGraham, NC 27253"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "1-800-253-3663"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "info": "Leave blank to hide"
+    },
+    {
+      "type": "header",
+      "content": "Hours",
+      "info": "Days with the same hours are grouped automatically (for example \"Mon–Wed\"). Leave a day blank to hide it."
+    },
+    {
+      "type": "text",
+      "id": "hours_mon",
+      "label": "Monday",
+      "default": "Closed"
+    },
+    {
+      "type": "text",
+      "id": "hours_tue",
+      "label": "Tuesday",
+      "default": "Closed"
+    },
+    {
+      "type": "text",
+      "id": "hours_wed",
+      "label": "Wednesday",
+      "default": "Closed"
+    },
+    {
+      "type": "text",
+      "id": "hours_thu",
+      "label": "Thursday",
+      "default": "10 am – 6 pm"
+    },
+    {
+      "type": "text",
+      "id": "hours_fri",
+      "label": "Friday",
+      "default": "10 am – 6 pm"
+    },
+    {
+      "type": "text",
+      "id": "hours_sat",
+      "label": "Saturday",
+      "default": "10 am – 6 pm"
+    },
+    {
+      "type": "text",
+      "id": "hours_sun",
+      "label": "Sunday",
+      "default": "Closed"
+    },
+    {
+      "type": "header",
+      "content": "Map and directions"
+    },
+    {
+      "type": "text",
+      "id": "map_address",
+      "label": "Map address",
+      "info": "Used for the Google map and the Get Directions link",
+      "default": "Southern Season, 1125 Jay Lane, Graham, NC 27253"
+    },
+    {
+      "type": "range",
+      "id": "zoom_level",
+      "label": "Map zoom",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "label": "Map height",
+      "min": 240,
+      "max": 480,
+      "step": 10,
+      "unit": "px",
+      "default": 320
+    },
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "Map title for screen readers",
+      "default": "Google Map of Southern Season at 1125 Jay Lane, Graham, NC"
+    },
+    {
+      "type": "text",
+      "id": "directions_label",
+      "label": "Directions button label",
+      "default": "Get Directions"
+    },
+    {
+      "type": "text",
+      "id": "directions_note",
+      "label": "Directions button note",
+      "default": "Opens Google Maps in a new tab"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Warehouse store"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["index", "page"]
+  }
+}
+{% endschema %}
