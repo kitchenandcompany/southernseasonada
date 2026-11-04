@@ -2067,7 +2067,7 @@
         "id": "ships_free_tags",
         "label": "Product tags",
         "info": "Separate tags with commas. Not case-sensitive. Leave blank to turn the ribbon off.",
-        "default": "SHIPSFREE, FREESHIP"
+        "default": "FREESHIP, UPSFREE"
       }
     ]
   }
