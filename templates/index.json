@@ -137,6 +137,7 @@
       ],
       "name": "Shop By Category",
       "settings": {
+        "background_color": "#FBF7EF",
         "eyebrow": "",
         "heading": "",
         "wide_display": false,

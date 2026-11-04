@@ -32,7 +32,7 @@
     "
     {% if section.settings.heading != blank %}aria-labelledby="FeaturedPromotionsHeading-{{ id }}"{% endif %}
     data-fp-shade
-    style="--fp-shade-desktop: {{ section.settings.overlay_desktop | default: 50 | divided_by: 100.0 }}; --fp-shade-mobile: {{ section.settings.overlay_mobile | default: 50 | divided_by: 100.0 }};"
+    style="--fp-shade-desktop: {{ section.settings.overlay_desktop | default: 50 | divided_by: 100.0 }}; --fp-shade-mobile: {{ section.settings.overlay_mobile | default: 50 | divided_by: 100.0 }};{% if section.settings.background_color != blank and section.settings.background_color != 'rgba(0,0,0,0)' %} background-color: {{ section.settings.background_color }};{% endif %}"
   >
     {% if section.settings.heading != blank %}
       <div class="container">
@@ -162,6 +162,12 @@
       "type": "text",
       "id": "heading",
       "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Clear to remove the background. Catalog-friendly options: warm ivory #FBF7EF, cream #F6EEDE."
     },
     {
       "type": "checkbox",
