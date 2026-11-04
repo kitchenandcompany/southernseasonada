@@ -99,10 +99,11 @@
         "promo_4": {
           "type": "image",
           "settings": {
-            "link": "",
-            "title": "",
+            "image": "shopify://shop_images/Cakes.png",
+            "link": "shopify://collections/christmas-cookies-cakes-european-treats",
+            "title": "Cakes & Cookies",
             "text": "",
-            "button_label": ""
+            "button_label": "SHOP NOW"
           }
         },
         "promo_5": {
