@@ -100,7 +100,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Cakes.png",
-            "link": "shopify://collections/christmas-cookies-cakes-european-treats",
+            "link": "shopify://collections/holiday-cakes",
             "title": "Cakes & Cookies",
             "text": "",
             "button_label": "SHOP NOW"
