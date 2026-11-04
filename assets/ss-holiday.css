@@ -390,6 +390,50 @@ a.ss-categories__link:hover .ss-categories__title {
   content: "\00a0\2192" / "";
 }
 
+/* Featured promotions used as a category grid (css_class "ss-band ss-promos") */
+
+.ss-promos .featured-promotions__header {
+  float: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ss-promos .feature-inner {
+  border-radius: 6px;
+  overflow: hidden;
+  background: #F6EEDE;
+}
+
+.ss-promos .feature-section a,
+.ss-promos .feature-section a:visited {
+  color: #30302F;
+  text-decoration: none;
+}
+
+.ss-promos .feature-section .title-below {
+  margin: 14px 0 0;
+  text-align: center;
+  font-family: var(--ss-font-body);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #30302F;
+}
+
+.ss-promos .feature-section a:hover .title-below,
+.ss-promos .feature-section a:focus .title-below {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ss-promos .feature-section a:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+}
+
 /* Shipping deadline */
 
 .ss-ship {

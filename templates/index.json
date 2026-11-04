@@ -24,67 +24,87 @@
         "text_color": "#30302f"
       }
     },
-    "ss_categories": {
-      "type": "ss-category-grid",
+    "shop_by_category": {
+      "type": "featured-promotions",
+      "name": "Shop By Category",
       "blocks": {
-        "category_1": {
-          "type": "category",
+        "promo_1": {
+          "type": "image",
           "settings": {
-            "image": "shopify://shop_images/GIFT_Crates.png",
+            "link": "shopify://collections/gift-crates-1",
             "title": "Gift Crates",
-            "link": "shopify://collections/gift-crates-1"
+            "text": "",
+            "button_label": "",
+            "image": "shopify://shop_images/GIFT_Crates.png"
           }
         },
-        "category_2": {
-          "type": "category",
+        "promo_2": {
+          "type": "image",
           "settings": {
-            "image": "shopify://shop_images/GiftTotes.png",
+            "link": "shopify://collections/gift-totes",
             "title": "Gift Totes",
-            "link": ""
+            "text": "",
+            "button_label": "",
+            "image": "shopify://shop_images/GiftTotes.png"
           }
         },
-        "category_3": {
-          "type": "category",
+        "promo_3": {
+          "type": "image",
           "settings": {
+            "link": "",
             "title": "",
-            "link": ""
+            "text": "",
+            "button_label": ""
           }
         },
-        "category_4": {
-          "type": "category",
+        "promo_4": {
+          "type": "image",
           "settings": {
+            "link": "",
             "title": "",
-            "link": ""
+            "text": "",
+            "button_label": ""
           }
         },
-        "category_5": {
-          "type": "category",
+        "promo_5": {
+          "type": "image",
           "settings": {
+            "link": "",
             "title": "",
-            "link": ""
+            "text": "",
+            "button_label": ""
           }
         },
-        "category_6": {
-          "type": "category",
+        "promo_6": {
+          "type": "image",
           "settings": {
+            "link": "",
             "title": "",
-            "link": ""
+            "text": "",
+            "button_label": ""
           }
         }
       },
       "block_order": [
-        "category_1",
-        "category_2",
-        "category_3",
-        "category_4",
-        "category_5",
-        "category_6"
+        "promo_1",
+        "promo_2",
+        "promo_3",
+        "promo_4",
+        "promo_5",
+        "promo_6"
       ],
       "settings": {
         "eyebrow": "",
         "heading": "Shop By Category",
-        "columns": 3,
-        "background_color": "#ffffff"
+        "wide_display": false,
+        "promo_text_on_image_enabled": false,
+        "featured_promos_per_row": 3,
+        "featured_links_animation": "",
+        "feature_style": "rounded",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "ss-band ss-promos",
+        "custom_css": ""
       }
     },
     "seasons_best": {
@@ -194,7 +214,7 @@
   },
   "order": [
     "ss_hero",
-    "ss_categories",
+    "shop_by_category",
     "seasons_best",
     "classic_gifts",
     "shipping_deadline",
