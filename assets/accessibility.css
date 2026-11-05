@@ -13,6 +13,15 @@ span.price-ui-badge__sticker-text {
     color: #ffffff !important;
 }
 
+.price-ui-badge__sticker--sold-out {
+    background-color: #000000 !important;
+}
+
+.price-ui-badge__sticker--sold-out span.price-ui-badge__sticker-text {
+    background-color: transparent !important;
+    color: #ffffff !important;
+}
+
 span.was_price span.money {
     color: #EB0000 !important;
     background-color: transparent !important;
