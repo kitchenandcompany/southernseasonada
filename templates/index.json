@@ -137,10 +137,10 @@
       ],
       "name": "Shop By Category",
       "settings": {
-        "background_color": "#FBF7EF",
         "eyebrow": "",
         "heading": "",
-        "wide_display": false,
+        "background_color": "#fbf7ef",
+        "wide_display": true,
         "promo_text_on_image_enabled": true,
         "overlay_desktop": 20,
         "overlay_mobile": 20,
