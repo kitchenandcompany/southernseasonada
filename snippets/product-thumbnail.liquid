@@ -1,4 +1,19 @@
-{%- assign secondaryImage = product.media[1] -%}
+{%- liquid
+  assign card_media = product.featured_media
+  for media_item in product.media
+    if media_item.media_type == 'image'
+      assign media_src = media_item.preview_image.src | split: '?' | first | downcase
+      if media_src contains '.png'
+        assign card_media = media_item
+        break
+      endif
+    endif
+  endfor
+  assign secondaryImage = product.media[1]
+  if card_media.id != product.featured_media.id
+    assign secondaryImage = product.featured_media
+  endif
+-%}
 {%- assign collection_handles = product.collections | map: 'handle' -%}
 {%- assign product_heading_id = 'product-thumb-title-' | append: section.id | append: '-' | append: product.id -%}
 {%- assign product_tags_downcased = product.tags | join: '|' | downcase | split: '|' -%}
@@ -6,7 +21,7 @@
 {% if product.featured_media.preview_image.alt contains 'youtube' or image.alt contains 'vimeo' %}
   {%- assign alt_text = product.title | escape -%}
 {% else %}
-  {%- assign alt_text = product.featured_image.alt -%}
+  {%- assign alt_text = card_media.preview_image.alt | default: product.title | escape -%}
 {% endif %}
 
 <div
@@ -59,7 +74,7 @@
             {% else %}
               {%
                 render 'image-element',
-                image: product.featured_media.preview_image,
+                image: card_media.preview_image,
                 alt: alt_text,
                 lazyload: lazyload,
                 object_fit: align_height,
@@ -69,8 +84,8 @@
           {% endif %}
         </div>
 
-        {% if settings.collection_secondary_image != blank and product.media[1] != blank %}
-          {% if product.media[1].media_type == 'external_video' %}
+        {% if settings.collection_secondary_image != blank and secondaryImage != blank %}
+          {% if secondaryImage.media_type == 'external_video' %}
             <div
               class="
                 external-video__container
@@ -80,17 +95,17 @@
               "
             >
               <div class="youtube-wrapper" data-youtube-video>
-                {{ product.media[1] | external_video_tag }}
+                {{ secondaryImage | external_video_tag }}
               </div>
             </div>
-          {% elsif product.media[1].media_type == 'video' %}
+          {% elsif secondaryImage.media_type == 'video' %}
             <div class="video__container lazyload lazypreload secondary-media-hidden video-on-hover" data-html5-video>
-              {{ product.media[1] | video_tag: controls: false }}
+              {{ secondaryImage | video_tag: controls: false }}
             </div>
           {% else %}
             {%
               render 'image-element',
-              image: product.media[1].preview_image,
+              image: secondaryImage.preview_image,
               alt: alt_text,
               additional_classes: 'secondary lazypreload secondary-media-hidden',
             %}

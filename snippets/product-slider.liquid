@@ -44,6 +44,23 @@
 
     {%- assign collection_handles = product.collections | map: 'handle' -%}
     {%- assign product_tags_downcased = product.tags | join: '|' | downcase | split: '|' -%}
+    {%- liquid
+      assign card_media = product.featured_media
+      for media_item in product.media
+        if media_item.media_type == 'image'
+          assign media_src = media_item.preview_image.src | split: '?' | first | downcase
+          if media_src contains '.png'
+            assign card_media = media_item
+            break
+          endif
+        endif
+      endfor
+      assign secondary_media = product.media[1]
+      if card_media.id != product.featured_media.id
+        assign secondary_media = product.featured_media
+      endif
+      assign alt_text = card_media.preview_image.alt | default: product.title | escape
+    -%}
 
     {% if product.id != skip_product.id %}
       <div class="gallery-cell
@@ -53,7 +70,7 @@
                   product__details
                   thumbnail-hover-enabled--{{ settings.thumbnail_hover_enabled }}
                   product-{{ product.id }}">
-        <div class="product-wrap {% if settings.collection_secondary_image != blank and product.media[1] != blank %}has-secondary-media-swap{% endif %}">
+        <div class="product-wrap {% if settings.collection_secondary_image != blank and secondary_media != blank %}has-secondary-media-swap{% endif %}">
           <div class="relative product_image">
             <a href="{{ product.url | within: collection }}" aria-label="{{ product.title | escape }}" tabindex="-1" role="presentation" aria-hidden="true">
               <div class="image__container">
@@ -68,27 +85,27 @@
                 {% else %}
                   {%
                     render 'image-element',
-                    image: product.featured_media.preview_image,
+                    image: card_media.preview_image,
                     alt: alt_text,
                     object_fit: settings.align_height,
                     max_height: settings.collection_height,
                   %}
                 {% endif %}
-                {% if settings.collection_secondary_image != blank and product.media[1] != blank %}
-                  {% if product.media[1].media_type == 'external_video' %}
+                {% if settings.collection_secondary_image != blank and secondary_media != blank %}
+                  {% if secondary_media.media_type == 'external_video' %}
                     <div class="external-video__container lazyload lazypreload secondary-media-hidden video-on-hover">
                       <div class="youtube-wrapper" data-youtube-video>
-                        {{ product.media[1] | external_video_tag }}
+                        {{ secondary_media | external_video_tag }}
                       </div>
                     </div>
-                  {% elsif product.media[1].media_type == 'video' %}
+                  {% elsif secondary_media.media_type == 'video' %}
                     <div class="video__container lazyload lazypreload secondary-media-hidden video-on-hover" data-html5-video>
-                      {{ product.media[1] | video_tag: controls: false }}
+                      {{ secondary_media | video_tag: controls: false }}
                     </div>
                   {% else %}
                     {%
                       render 'image-element',
-                      image: product.media[1].preview_image,
+                      image: secondary_media.preview_image,
                       alt: alt_text,
                       additional_classes: 'secondary lazypreload secondary-media-hidden',
                     %}
