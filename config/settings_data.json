@@ -138,8 +138,8 @@
     "cart_action": "ajax",
     "display_tos_checkbox": false,
     "tos_page": "",
-    "go_to_checkout": true,
-    "display_special_instructions": true,
+    "go_to_checkout": false,
+    "display_special_instructions": false,
     "display_savings": true,
     "cart_message": "",
     "show_shipping_calculator": false,
@@ -198,9 +198,33 @@
     "dribble_link": "",
     "content_for_index": [],
     "blocks": {
+      "2353461558643755616": {
+        "type": "shopify://apps/tinyseo-seo-speed/blocks/breadcrumbs-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {
+          "include_first_collection": false
+        }
+      },
+      "15154131639906026026": {
+        "type": "shopify://apps/tinyseo-seo-speed/blocks/broken-link-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": false,
+        "settings": {}
+      },
+      "12601257459161342390": {
+        "type": "shopify://apps/giftship/blocks/giftship/26bd5756-d344-471d-baf8-ba6267b82da9",
+        "disabled": false,
+        "settings": {
+          "gs_drawer_cart": false
+        }
+      },
+      "18131037017812181619": {
+        "type": "shopify://apps/mailchimp-email-sms/blocks/mailchimp_for_shopify_script/e3b67dce-fd41-4b61-b3cf-961c12344cde",
+        "disabled": false,
+        "settings": {}
+      },
       "6159598353363395418": {
         "type": "shopify://apps/google-youtube/blocks/store_widget/14ec7bd0-ac77-49a9-9417-90752398bdff",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "widget_position": "LEFT_BOTTOM",
           "side_margin": 36,
@@ -209,13 +233,36 @@
           "mobile_bottom_margin": 46
         }
       },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
       "12331707899451543273": {
         "type": "shopify://apps/powerx-functions/blocks/powerx-app-embed/dff772ea-9dfb-4eb2-9268-03f89642169d",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "tracked_parameters": "powerx_attr",
           "remove_parameter": "powerx_rm_attr",
           "expire_after_hours": 5
+        }
+      },
+      "14971748854670876780": {
+        "type": "shopify://apps/tinyseo-seo-speed/blocks/product-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": true,
+        "settings": {
+          "include_metafields": false,
+          "hide_price": false,
+          "hide_full_price": false,
+          "hide_reviews": false,
+          "excluded_tags": ""
+        }
+      },
+      "1369284949797581044": {
+        "type": "shopify://apps/tinyseo-seo-speed/blocks/collection-json-ld-embed/0605268f-f7c4-4e95-b560-e43df7d59ae4",
+        "disabled": true,
+        "settings": {
+          "products_per_page": 20
         }
       }
     }
