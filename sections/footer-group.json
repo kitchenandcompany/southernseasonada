@@ -58,13 +58,13 @@
             "heading": "Get in Touch",
             "phone": "1-800-253-3663",
             "email": "guesthelp@southernseason",
-            "hours_mon": "",
-            "hours_tue": "10:00 am to 8:00 pm",
-            "hours_wed": "10:00 am to 8:00 pm",
-            "hours_thu": "10:00 am to 8:00 pm",
-            "hours_fri": "10:00 am to 8:00 pm",
-            "hours_sat": "10:00 am to 8:00 pm",
-            "hours_sun": "11:00 am to 6:00 pm",
+            "hours_mon": "Closed",
+            "hours_tue": "Closed",
+            "hours_wed": "10:00 am to 6:00 pm",
+            "hours_thu": "10:00 am to 6:00 pm",
+            "hours_fri": "10:00 am to 6:00 pm",
+            "hours_sat": "10:00 am to 6:00 pm",
+            "hours_sun": "12:00 pm to 5:00 pm",
             "social_icons_footer": false
           }
         }
