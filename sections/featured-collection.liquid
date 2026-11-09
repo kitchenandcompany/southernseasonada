@@ -17,6 +17,14 @@
   else
     assign section_onboarding = false
   endif
+
+  # Sold-out products are hidden on the homepage only
+  assign section_products = collection.products
+  assign slider_collection = collection
+  if template.name == 'index' and section_onboarding == false
+    assign section_products = collection.products | where: 'available'
+    assign slider_collection = nil
+  endif
 %}
 
 {% style %}
@@ -88,14 +96,14 @@
       aria-roledescription="carousel">
       
       {% if section_onboarding == false %}
-        {% if collection.products.size > 0 %}
+        {% if section_products.size > 0 %}
           {%
             render 'product-slider',
             limit: section.settings.products_limit,
-            products: collection.products,
+            products: section_products,
             collection: collection,
             per_slide: products_per_row,
-            featured_collection: collection,
+            featured_collection: slider_collection,
           %}
         {% endif %}
       {% else %}
@@ -137,7 +145,7 @@
       <section class="section" aria-label="Products grid">
         <div class="container">
           <div class="one-whole column">
-            {% render 'product-loop', limit: section.settings.products_limit, plus: 1, products: collection.products, collection: collection, skip_product: product, products_per_row: products_per_row %}
+            {% render 'product-loop', limit: section.settings.products_limit, plus: 1, products: section_products, collection: collection, skip_product: product, products_per_row: products_per_row %}
           </div>
         </div>
       </section>
