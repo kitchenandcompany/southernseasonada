@@ -12,7 +12,7 @@
     "main": {
       "type": "cart-template",
       "settings": {
-        "display_special_instructions": true,
+        "display_special_instructions": false,
         "display_savings": true,
         "cart_message": "",
         "continue_shopping_url": "",
@@ -24,9 +24,11 @@
       "type": "featured-collection",
       "disabled": true,
       "settings": {
+        "eyebrow": "",
         "title": "You may also be interested in",
         "collection_description": true,
         "collection_view_all": false,
+        "view_all_label": "",
         "collection": "",
         "collection_style": "grid",
         "products_per": 6,
