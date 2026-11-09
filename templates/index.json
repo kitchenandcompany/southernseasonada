@@ -12,6 +12,26 @@
     "ss_hero": {
       "type": "ss-holiday-hero",
       "blocks": {
+        "slide_nWpaWN": {
+          "type": "slide",
+          "settings": {
+            "badge": "New Holiday Edition",
+            "heading": "Naughty Never Tasted So Nice",
+            "subheading": "Luscious white chocolate and crisp peppermint, drizzled over hot, handcrafted kettle corn.",
+            "heading_size": 58,
+            "subheading_size": 22,
+            "image": "shopify://shop_images/WCPeppermint_front_2_scene.jpg",
+            "image_position": "right",
+            "button1_label": "SHOP NOW",
+            "button1_link": "shopify://products/carolina-popcorn-co-white-chocolate-peppermint-popcorn-6-oz",
+            "button2_label": "",
+            "button2_link": "",
+            "background_color": "#f6eede",
+            "text_color": "#30302f",
+            "button_color": "#0e553c",
+            "button_text_color": "#ffffff"
+          }
+        },
         "slide_1": {
           "type": "slide",
           "settings": {
@@ -54,6 +74,7 @@
         }
       },
       "block_order": [
+        "slide_nWpaWN",
         "slide_1",
         "slide_7nPbLW"
       ],
