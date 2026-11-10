@@ -79,7 +79,7 @@
         "slide_7nPbLW"
       ],
       "settings": {
-        "autoplay": false,
+        "autoplay": true,
         "speed": 5,
         "carousel_label": "Featured holiday gifts"
       }
