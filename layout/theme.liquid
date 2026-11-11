@@ -148,6 +148,14 @@
       {{ settings.custom_scripts }}
     </script>
 
+    <script>
+      /** Disable gistToken attribute */
+      if (typeof(GIST) == 'undefined') {
+        window.GIST = {};
+      }
+      window.GIST.disable_token = true;
+    </script>
+
     {{ content_for_header }}
 
     {% render 'social-meta-info' %}
