@@ -151,9 +151,28 @@
     <script>
       /** Disable gistToken attribute */
       if (typeof(GIST) == 'undefined') {
-        window.GIST = {};
+        window.GIST = GIST = {};
       }
       window.GIST.disable_token = true;
+
+      function clearGistToken() {
+        document.cookie = 'gistToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        fetch('/cart.js', { credentials: 'same-origin' })
+          .then(function(response) { return response.json(); })
+          .then(function(cart) {
+            if (!cart.attributes || !cart.attributes.gistToken) return;
+            return fetch('/cart/update.js', {
+              method: 'POST',
+              credentials: 'same-origin',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ attributes: { gistToken: '' } })
+            });
+          })
+          .catch(function() {});
+      }
+
+      clearGistToken();
+      document.addEventListener('DOMContentLoaded', clearGistToken);
     </script>
 
     {{ content_for_header }}
