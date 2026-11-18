@@ -155,8 +155,23 @@
       }
       window.GIST.disable_token = true;
 
-      function clearGistToken() {
+      function eraseGistTokenCookie() {
         document.cookie = 'gistToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      }
+
+      function blockGistTokenCookie() {
+        eraseGistTokenCookie();
+        if (!window.GIST || !window.GIST.cookie || window.GIST.cookie.__gistBlocked) return;
+        var createCookie = window.GIST.cookie.create;
+        window.GIST.cookie.create = function(name, value, days) {
+          if (name === 'gistToken') return;
+          return createCookie.apply(this, arguments);
+        };
+        window.GIST.cookie.__gistBlocked = true;
+        eraseGistTokenCookie();
+      }
+
+      function clearGistTokenAttribute() {
         fetch('/cart.js', { credentials: 'same-origin' })
           .then(function(response) { return response.json(); })
           .then(function(cart) {
@@ -171,8 +186,20 @@
           .catch(function() {});
       }
 
-      clearGistToken();
-      document.addEventListener('DOMContentLoaded', clearGistToken);
+      blockGistTokenCookie();
+      clearGistTokenAttribute();
+      document.addEventListener('DOMContentLoaded', function() {
+        blockGistTokenCookie();
+        clearGistTokenAttribute();
+      });
+      var gistTokenSweeps = 0;
+      var gistTokenTimer = setInterval(function() {
+        blockGistTokenCookie();
+        gistTokenSweeps += 1;
+        if (window.GIST && window.GIST.cookie && window.GIST.cookie.__gistBlocked || gistTokenSweeps >= 8) {
+          clearInterval(gistTokenTimer);
+        }
+      }, 1000);
     </script>
 
     {{ content_for_header }}
