@@ -193,6 +193,26 @@
         "custom_css": ""
       }
     },
+    "featured_collection_QmPDyN": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "Season's Best",
+      "settings": {
+        "eyebrow": "Since 1975",
+        "title": "Bestsellers",
+        "collection_description": false,
+        "collection_view_all": true,
+        "view_all_label": "Shop All Season’s Best",
+        "collection": "seasons-best",
+        "collection_style": "slider",
+        "products_per": 5,
+        "products_limit": 10,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "css_class": "ss-band ss-band--cream",
+        "custom_css": ""
+      }
+    },
     "classic_gifts": {
       "type": "featured-collection",
       "name": "Classic Gifts",
@@ -283,6 +303,7 @@
     "ss_hero",
     "shop_by_category",
     "seasons_best",
+    "featured_collection_QmPDyN",
     "classic_gifts",
     "shipping_deadline",
     "warehouse_store"
